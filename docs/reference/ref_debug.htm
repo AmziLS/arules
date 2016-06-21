@@ -1,0 +1,222 @@
+<html><!-- #BeginTemplate "/Templates/arulesxl.dwt" --><!-- DW6 -->
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="../arulesxl.css" />
+<!-- #BeginEditable "doctitle" -->
+<title>Reference - Debugging Rule Sets</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1><!-- #BeginEditable "head" -->Reference<!-- #EndEditable --></h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="../images/logo.gif" width="150" height="115" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+<p><font size="-1"><b><a href="../index.htm" target=_top>Top</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../install.htm">Installation</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../introduction.htm">Introduction</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../samples.htm">Samples</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="../tutorial.htm">Tutorial</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../reference.htm">Reference</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../release_notes.htm">Release Notes</a></b></font></p>
+<hr>
+<!-- #BeginEditable "body" --> 
+<h2><a name="debugging"></a>Debugging Rule Sets  </h2>
+
+<p>Sometimes a rule set does not work as expected. The trace facility allows you 
+  to step through the rule engine's reasoning process to see exactly how the rules 
+  and data are being used.</p>
+<p>The trace facility is also an excellent tool for learning exactly how a rule reasoning engine works.</p>
+<h3><a name="trace"></a>Trace</h3>
+<p>
+  <!amzi_index debugger;trace>
+  To start the trace:</p>
+<ul>
+  <li>Select a cell with an =<code>RQuery()</code> function call, and
+    select <b>ARulesXL | Trace Query</b> from the menu<br>
+  or</li>
+  <li>Right-click on a cell with an =<code>RQuery()</code> function call, and select <b>Trace Query</b> from the menu </li>
+</ul>
+<p>The trace then starts with:</p>
+<ul>
+  <li>A pop-up menu with the Trace controls, and</li>
+  <li>A new workbook/worksheet that will contains the trace user interface.</li>
+</ul>
+<p>(See the <a href="../index_tutor.htm">Tutorial</a> for screen images.)</p>
+<p>
+  <!amzi_index Step; Skip; Run; End>
+  The  buttons on the Trace menu are:</p>
+<ul>
+  <li><b>Step</b> - step into the reasoning process.</li>
+  <li><b>Skip</b> - skip the details for this reasoning step; and/or skip out of the 
+    current reasoning step.</li>
+  <li><b>Run</b> - run to the end of query. Note that you will have to hit End to see 
+    the final results.</li>
+  <li><b>End</b> - end the reasoning process, report on the status at the time of ending.</li>
+  <li><b>Help</b> - Displays this documentation. </li>
+</ul>
+<p>Directions on how to use the trace appear at the top of the Trace worksheet.</p>
+<p>The output on the worksheet is divided into three sections:</p>
+<ul>
+  <li><em>Headers</em> - contain the Trace title, a line of instructions on the 
+    options available, and the query being traced.</li>
+  <li><em>Actions</em> - the current active steps in the reasoning process.</li>
+  <li><em>Knowns</em> - the property values that have been derived at this point 
+    in the reasoning, and the source of those values.</li>
+</ul>
+<p>The trace actions are organized in a number of layers of detail:</p>
+<blockquote>
+<table width="75%" border="1" cellpadding="3" cellspacing="0" bordercolor="#000099">
+  <tr>
+    <td align="left" valign="top"><div align="left">
+        <p><em>Find<br>
+          Found</em></p>
+    </div></td>
+    <td align="left" valign="top"><div align="left">
+        <p>Seeking the value of an property.</p>
+    </div></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><div align="left">
+      <p><em>Try<br>
+        Succeed<br>
+        Fail<br> 
+        Retry</em></p>
+    </div></td>
+    <td align="left" valign="top"><div align="left">
+      <p>Applying rules that will find 
+        the value of an property. The rule is echoed on the Trace worksheet.</p>
+    </div></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><div align="left">
+      <p><em>Findall<br>
+        Foundall</em></p>
+    </div></td>
+    <td align="left" valign="top"><div align="left">
+      <p>Indicates the reasoning engine is entering 
+        or exiting a findall, which means it will be searching for all possible 
+        answers for goals within the Findall.</p>
+    </div></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><div align="left">
+      <p><em>Known<br> 
+        Data</em></p>
+    </div></td>
+    <td align="left" valign="top"><div align="left">
+      <p>Indicates a property value is already known, 
+        or was input as data in RCell() or RArray().</p>
+    </div></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><div align="left">
+      <p><em>Test<br> 
+        Match<br>
+        Yes<br> 
+        No</em></p>
+    </div></td>
+    <td align="left" valign="top"><div align="left">
+      <p>Trying a test in the When clause 
+        of a rule (ex. .Quantity &gt; 20). Match indicates a test which is really 
+        setting the value of a pattern-matching variable (ex. ?p = .part).</p>
+    </div></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><div align="left">
+      <p><em>Try<br>
+        Succeed<br> 
+        Fail<br>
+        Retry</em></p>
+    </div></td>
+    <td align="left" valign="top"><div align="left"> 
+      <p>For logic predicates. In these 
+        cases the value is the pattern of the left side of the logic predicate 
+        (ex. member(?H23, [ apple, pear, plum] ).</p>
+    </div></td>
+  </tr>
+</table>
+</blockquote>
+  <p><em>
+    <!amzi_index=Pattern Matching Variables>
+    Pattern matching  variables</em> in a rule, such as <var>?x</var> or <var>?part</var>, 
+    do NOT get displayed in the trace with their original names. Instead they are 
+    displayed with an internal name, such as <var>?H234</var>.</p>
+  <p>Certain functions that call back to Excel cannot be used during trace; these include EVALUATE(), ASK(), MSGBOX(). </p>
+  <p>The <em>Skip</em> control button for the trace causes the trace to skip until 
+    a pair of trace outputs are matched. For example, a skip given at a <em>Find</em> will run until the corresponding <em>Found</em>. Similarly for <em>Try</em> and <em>Findall</em>.</p>
+  <h3><a name="formatting_trace"></a>Formatting the Trace Spreadsheet </h3>
+  <p><em>
+    <!amzi_index=ARulesXL Trace.xls; Trace Spreadsheet Format>
+  </em>You can change the location, size and format of the trace spreadsheet, for example, the you can widen the columns. Your changes will be used during the remainder of the  trace. The format is also saved in a file named 'ARulesXL Trace.xls' in the same directory as your spreadsheet. That file will be used the next time you start a trace on any spreadsheet in that directory. This allows you to save your format changes across Excel sessions. </p>
+  <h3><a name="text_output"></a>Trace Log File</h3>
+  <p><em>
+    <!amzi_index=arulesxl trace.txt; Trace Log File>
+    </em>The file <em>'arulesxl trace.txt</em>' contains a full text transcript of the most recent 
+    trace. It is in the same directory as the workbook being traced. The format 
+    is semi-colon delimited with the fields corresponding to the columns of the 
+    Trace worksheet. You can open it into an Excel worksheet with the <b>Open Trace Log File</b> command. </p>
+  <p>You can use this to go over the full reasoning process, and also to send to 
+    technical support in case of difficulties.</p>
+  <h3><a name="diagnostic_messages"></a>Diagnostic Messages</h3>
+  <p>
+    <!amzi_index Diagnostic Messages; call_stack; Call Stack; MSGBOX()>
+    Sometimes the simplest way to find a logic error in rules is to use the 
+    <code>MSGBOX()</code> function to generate diagnostic messages. For example, if the simple 
+    pricing rules were not working, maybe the problem was the input <var>quantity</var>. 
+    The rules could be modified to check this theory as follows:</p>
+  <pre>price = 10 WHEN MSGBOX(quantity) AND quantity &gt; 20
+price = 15 WHEN MSGBOX(quantity) AND quantity &lt;= 20</pre>
+  <p>The special value, <var>call_stack</var>, can be used to get the value 
+    of the call stack as a string for display. For example, if <var>quantity</var> should never be negative, but somehow it is, this rule could be used to 
+    find out why.  </p>
+  <pre>price = 0 WHEN quantity &lt; 0 AND MSGBOX( &quot;Negative quantity at: &quot;    &amp; call_stack)</pre>
+  <h2><a name="common_errors"></a>
+    Common Errors</h2>
+  <p>
+    <!amzi_index Errors, Common; Stack Overflow; Parse Error>
+    These errors commonly occur when building rule sets. </p>
+  <ul>
+    <li><em>Stack Overflow &#8212;</em> This message occurs when the ARulesXL control 
+      stack overflows. In indicates the program has a very deep reasoning tree. 
+      Usually this is caused by circular reasoning in the rules, that is a rule 
+      that depends on another rule which depends on the first rule. If the error 
+      isn't obvious, the debugger can be used to trace execution. It will show 
+      the error. The easiest way is to simply tell the debugger to run. Since 
+      it is generating diagnostics, it might take a while, but when it is finished 
+      it will show you the control stack error and what it was trying to do 
+      before getting the error. You should see the circular logic.<br>
+      <br>
+      It is possible the application really requires a deeper stack. In that 
+      case, edit the arules.cfg file in your ...\Microsoft Office\...\Library\ 
+      directory. Remove the # in front of the 'control stack' parameter and 
+      put in a larger number. Restart Excel &amp; ARulesXL.<br>
+      <br>
+    </li>
+    <li><em>Parse Error &#8212;</em> Parsing errors are due to syntax errors in rules. 
+        The error message gives a hint as to where the parser was confused, but 
+        the error could be earlier. Typical errors involve use of the wrong brackets, 
+        square or parentheses, or missing dots in front of properties, or non 
+      quoted text values with embedded spaces. </li>
+</ul>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="100%" scope="col"><h4><a href="ref_debug.htm" target="_blank">Open in New Window to Print</a></h4></th>
+  </tr>
+</table>
+<!-- #EndEditable --> 
+<hr>
+<table width=100%>
+<tr>
+<td>
+<img src="../images/logo_very_small.gif">
+</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-7 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2>
+</td>
+</tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,122 @@
+<html><!-- #BeginTemplate "/Templates/tutorial_collections.dwt" --><!-- DW6 -->
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="../../arulesxl.css" />
+<!-- #BeginEditable "doctitle" -->
+
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1><!-- #BeginEditable "head" -->VBA<!-- #EndEditable --></h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="../../images/logo.gif" width="150" height="115" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+<p><font size="-1"><b><a href="../../tutorial.htm" target=_top>Tutorial Index</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="collections_01-02_rules_decision_tables.htm" target=_top>Rules &amp; Decision Tables</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="collections_03_column_queries.htm" target=_top>Column Queries</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="collections_04_property_arrays.htm" target=_top>Arrays</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="collections_05_data_tables.htm">Tables &amp; Pattern Matching</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="collections_06_lists.htm" target=_top>Lists</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="collections_07_vba.htm" target=_top>VBA</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="collections_08_modules.htm" target=_top>Multiple Rule Sets</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="collections_09_array_queries.htm" target=_top>Array Queries</a></b></font></p>
+<hr>
+<!-- #BeginEditable "body" --> 
+<h3><a name="loans_07_vba"></a>loans_07_vba.xls</h3>
+<p>In this example, two buttons are provided for the user to push. One highlights 
+  the loans that can be resold to <var>Ace</var>, and the other the loans that 
+  can be resold to <var>Acme</var>.</p>
+<p>VBA code is necessary for this example because a cell function in Excel cannot 
+  modify cells other than the one it is in.</p>
+<p>The application looks like this when the <var>Ace</var> button is pushed:</p>
+<p><img src="images/collections_07_vba.gif" width="924" height="680"><br>
+  <cite>loans_07_vba.xls</cite></p>
+<p>When a table is read into the rule engine using <code>RArray()</code>, the 
+  cell addresses of each data element are remembered as well.</p>
+<p>The <code>RANGE()</code> function is used to get those cell addresses back. 
+  This is mainly useful when calling RQuery() from VBA.</p>
+<p><code>RANGE()</code> can be used with a single element, such as <code>RANGE( 
+  loans[203, 'Amount'] )</code> or it can be used with a whole row or column by 
+  using an * for one of the indices as in <code>RANGE( loans[203, *] )</code>.</p>
+<p>Before going to VBA, it is often a good technique to use RQuery() in cells 
+  away from the main display for testing. In this case RQuery() is called with 
+  <var>&quot;FIND ResaleCells['Ace']&quot;</var> to see if it's working.</p>
+<p></p>
+<p><img src="images/collections_07b.gif" width="909" height="121"><cite><br>
+  Using RQuery() to test a rule</cite></p>
+<p>It works as expected, returning a list of the ranges of the desired rows.</p>
+<p>Two call this function from VBA, there are two buttons, one for each investor, 
+  that call a function that will call <code>RQuery()</code> from VBA.</p>
+<pre class=vba>Option Explicit
+
+Private Sub Ace_Click()
+    HighLight "Ace"
+End Sub
+
+Private Sub Acme_Click()
+    HighLight "Acme"
+End Sub</pre>
+<p>There are two versions of the <code>RQuery()</code> call for VBA. One returns 
+  a single value, just as <code>RQuery()</code> does; the other returns a VB array 
+  constructed from a result which is a list. The two entry points in ARulesXL.xls 
+  are:</p>
+<ul>
+  <li><em>VBARQuery</em> - returns a single value</li>
+  <li><em>VBARArrayQuery</em> - returns a two dimensional VB array constructed 
+    from a list result, or a list of lists result. In the case of a simple list, 
+    as in this example, the second dimension of the VB array has the single value 
+    1.</li>
+</ul>
+<p>The arguments for each are:</p>
+<ul>
+  <li>The range of the rule set being called</li>
+  <li>A boolean indicating if this is a first call to the rule set (TRUE) or a 
+    subsequent call that make use of intermediate results from a previous call.</li>
+  <li>A string containing the query</li>
+</ul>
+<p>This is the actual code in the sample:</p>
+<pre class=vba>Public Sub HighLight(Investor As String)
+Dim result As Variant
+Dim rules, data As Range
+Dim i, vt As Integer
+
+    <font color="#00cc00">' The data range, better as a named range for a general purpose application.</font>
+    Set data = Range("C5:G19")
+    <font color="#00CC00">' Reset the data cell colors</font>
+    data.Font.Color = &H999999       ' grey
+    data.Interior.Color = &HCCFFCC   ' light green
+    
+    <font color="#00CC00">' The name of a rule set is it's Excel range name as well.</font>
+    Set rules = Range("ResaleRules")
+    
+    <font color="#00CC00">' VBARArrayQuery formats a list result as a VBA array so it can be easily processed by VBA code.</font>
+    result = Application.Run("ARulesXL.xla!VBARArrayQuery", rules, True, "FIND ResaleCells['" & Investor & "']")
+
+    <font color="#00CC00">' Since we expect an array, a string is an error message.</font>
+    vt = VarType(result)
+    If vt = vbString Then
+        MsgBox "Error: " & result
+    Else
+        <font color="#00CC00">' The result array is two dimensional, but in this case there is only one column.</font>
+        For i = LBound(result, 1) To UBound(result, 1)
+            Range(result(i, 1)).Interior.Color = &H99FFFF ' light yellow
+            Range(result(i, 1)).Font.Color = &H0          ' black
+        Next i
+    End If
+    
+End Sub
+</pre>
+<!-- #EndEditable --> 
+<hr>
+<table width=100%>
+<tr>
+<td>
+<img src="../../images/logo_very_small.gif">
+</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-7 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2>
+</td>
+</tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

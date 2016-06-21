@@ -1,0 +1,373 @@
+<html><!-- #BeginTemplate "/Templates/api.dwt" --><!-- DW6 -->
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="../arulesxl.css" />
+<!-- #BeginEditable "doctitle" -->
+<title>API Reference</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1><!-- #BeginEditable "head" -->  API Reference <!-- #EndEditable --><br><font size=4>Professional Edition</font></h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="../images/logo.gif" width="150" height="115" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+<!-- #BeginEditable "body" --> 
+<h2><a name="overview"></a>Overview</h2>
+<p>ARulesXL rulesets can be run in a variety of languages and tools outside of Microsoft Excel. They can be deployed in Web servers under JSP/Servlets or ASP.NET. They can also be embedded in applications written in C++, Java, Delphi, Visual Basic and C#. </p>
+<p>In each language environment, there is an 'ARulesXL' class with associated methods. Most of the methods are common across all environments. However, for ease of programming, there are a handful of language-specific, higher-level classes to transfer data to and get answers from ARulesXL and higher-level language constructs (such as collections and string lists). </p>
+<p>The <a href="#methods">methods</a> are detailed below. </p>
+<h2><a name="runtime_licensing"></a>Runtime Licensing </h2>
+<p>The default method for runtime licensing is for the ARulesXL runtime to silently register itself over the Internet. It will try to do this five times without any prompting of the user. If it fails, it will prompt the user five more times to connect to the Internet.</p>
+<p>You can manually control this process by calling the <a href="#RegisterRuntime">RegisterRuntime</a> API method.  </p>
+<p>Another method, which is not available in the public release, is a runtime that will only work with your rule sets. Contact us to license this method or for other distribution and private labelling options. </p>
+<h2><a name="methods"></a>Methods</h2>
+<p>
+  <!amzi_index=Methods; API>
+Starting/Stopping the ARulesXL Engine </p>
+<ul>
+  <li><a href="#OpenRules">OpenRules</a></li>
+  <li><a href="#CloseRules">CloseRules</a></li>
+</ul>
+<p>Loading Data into Ruleset Facts, Vectors and Tables  </p>
+<ul>
+  <li> <a href="#ClearTable">ClearTable</a></li>
+  <li>    <a href="#ClearVector">ClearVector</a></li>
+  <li>    <a href="#AddToTable">AddToTable</a></li>
+  <li>    <a href="#AddToVector">AddToVector</a></li>
+  <li>    <a href="#AddObject">AddObject</a></li>
+</ul>
+<p>Querying Rulesets</p>
+<ul>
+  <li><a href="#QueryRules">QueryRules</a></li>
+  <li><a href="#QueryMore">QueryMore</a></li>
+</ul>
+<p>Miscellaneous</p>
+<ul>
+  <li><a href="#GetLS">GetLS</a></li>
+  <li><a href="#RegisterRuntime">RegisterRuntime</a></li>
+</ul>
+<h3><a name="AddObject"></a>AddObject</h3>
+<!amzi_index=AddObject()>
+<p><b>Description:</b></p>
+<p>AddObject(STRING ruleset, STRING objectname, STRING/INTEGER value)</p>
+<DL>
+  <DT>ruleset</DT>
+  <DD>The name of the ruleset where the table fact is defined</DD>
+  <DT>objectname</DT>
+  <DD> The name of the fact </DD>
+  <DT>value</DT>
+  <DD> The data to add</DD>
+</DL>
+<p><B>Remarks:</B> </p>
+<BLOCKQUOTE>
+  <p>Adds or replaces a simple fact with a single value. The value can be an ARulesXL type including: date, time, era, number or string. </p>
+</BLOCKQUOTE>
+<p><B>Return Value:</B> </p>
+<BLOCKQUOTE>
+  <p>Throws an exception on failure. </p>
+</BLOCKQUOTE>
+<p><B>Example:</B> </p>
+<UL>
+  <PRE>arxl.AddObject(&quot;PriceRules&quot;, &quot;quantity&quot;, &quot;1&quot;)</PRE>
+</UL>
+<h3><a name="AddToTable"></a>AddToTable</h3>
+<!amzi_index=AddToTable()>
+<p><b>Description:</b></p>
+<p>AddToTable(STRING ruleset, STRING objectname, STRING/INTEGER rowname, STRING/INTEGER colname, STRING/INTEGER value)</p>
+<DL>
+  <DT>ruleset</DT>
+  <DD>The name of the ruleset where the table fact is defined</DD>
+  <DT>objectname</DT>
+  <DD> The name of the fact </DD>
+  <DT>rowname</DT>
+  <DD>The name of the row the data is to reside (can be numeric)</DD>
+  <DT>colname</DT>
+  <DD> The name of the column the data is to reside (can be numeric)</DD>
+  <DT>value</DT>
+  <DD> The data to add</DD>
+</DL>
+<p><B>Remarks:</B> </p>
+<BLOCKQUOTE>
+  <p>Adds data to an existing or previously cleared table. You must call <code>CleaRArray()</code> first. </p>
+  <p>The row and column indices can be text or numeric, but they are always passed as a string. Similarly the value can be an ARulesXL type including: date, time, era, number or string. You can intermix types for the same indices. </p>
+</BLOCKQUOTE>
+<p><B>Return Value:</B> </p>
+<BLOCKQUOTE>
+  <p>Throws an exception on failure. </p>
+</BLOCKQUOTE>
+<p><B>Example:</B> </p>
+<UL>
+  <PRE>arxl.CleaRArray('CommonRules', 'raw_vaccination');
+for i := 1 to VaccineList.RowCount-1 do
+  begin
+    s := VaccineList.Cells[0, i];
+    Str(i, idx);
+    arxl.AddToTable('CommonRules', 'raw_vaccination', idx, 'Vaccination', s);
+    s := VaccineList.Cells[1, i];
+    arxl.AddToTable('CommonRules', 'raw_vaccination', idx, 'Date', s);
+  end;</PRE>
+</UL>
+<h3><a name="AddToVector"></a>AddToVector</h3>
+<!amzi_index=AddToVector()>
+<p><b>Description:</b></p>
+<p>AddToVector(STRING ruleset, STRING objectname, STRING/INTEGER rowname, STRING/INTEGER value)</p>
+<DL>
+  <DT>ruleset</DT>
+  <DD>The name of the ruleset where the table fact is defined</DD>
+  <DT>objectname</DT>
+  <DD> The name of the fact </DD>
+  <DT>rowname</DT>
+  <DD>The name of the index where the data is to reside (can be numeric)</DD>
+  <DT>value</DT>
+  <DD> The data to add</DD>
+</DL>
+<p><B>Remarks:</B> </p>
+<BLOCKQUOTE>
+  <p>Adds data to an existing or previously cleared vector (a one-dimensional table). You must call ClearVector() first. </p>
+  <p>The row index can be text or numeric, but it is always passed as a string. Similarly the value can be an ARulesXL type including: date, time, era, number or string. The row index is any value you want to use as the index for the vector. So if the object name is .data and the index is '1', you can access the value with .data[1]. Similarly if the index is 'blue', you can access the value with .data[blue]. You can  intermix types in the same vector. </p>
+</BLOCKQUOTE>
+<p><B>Return Value:</B> </p>
+<BLOCKQUOTE>
+  <p>Throws an exception on failure. </p>
+</BLOCKQUOTE>
+<p><B>Example:</B> </p>
+<UL>
+  <PRE>'Load the user inputs, first clear the .in vector, then load it up
+arxl.ClearVector("ShaftRules", ".in")
+arxl.AddToVector("ShaftRules", ".in", "Favor", Favor.SelectedValue)
+arxl.AddToVector("ShaftRules", ".in", "Swing Speed", SwingSpeed.Text)
+arxl.AddToVector("ShaftRules", ".in", "Club Type", ClubType.SelectedValue)
+arxl.AddToVector("ShaftRules", ".in", "Ball Flight", BallFlight.SelectedValue)</PRE></UL>
+<p>After running the above code, the rules in &quot;ShaftRules&quot; can refer to the values <b>.</b>in[Favor], <b>.</b>in['Club Type'], etc.</p>
+<h3><a name="ClearTable"></a>ClearTable</h3>
+<!amzi_index=ClearTable()>
+<p><b>Description:</b></p>
+<p>CleaRArray(STRING ruleset, STRING objectname)</p>
+<DL>
+  <DT>ruleset   
+  <DD>The name of the ruleset where the table fact is defined
+  <DT>objectname   
+  <DD> The name of the fact
+</DL>
+<p><B>Remarks:</B> </p>
+<BLOCKQUOTE>
+  <p>Clears the values in a table (generally loaded using <code>RArray()</code>) so that new values can be loaded. </p>
+</BLOCKQUOTE>
+<p><B>Return Value:</B> </p>
+<BLOCKQUOTE>
+  <p>Throws an exception on failure. </p>
+</BLOCKQUOTE>
+<p><B>Example:</B> </p>
+<UL>
+<PRE>arxl.CleaRArray('CommonRules', 'raw_vaccination');
+for i := 1 to VaccineList.RowCount-1 do
+  begin
+    s := VaccineList.Cells[0, i];
+    Str(i, idx);
+    arxl.AddToTable('CommonRules', 'raw_vaccination', idx, 'Vaccination', s);
+    s := VaccineList.Cells[1, i];
+    arxl.AddToTable('CommonRules', 'raw_vaccination', idx, 'Date', s);
+  end;</PRE></UL>
+<h3><a name="ClearVector"></a>ClearVector</h3>
+<!amzi_index=ClearVector()>
+<p><b>Description:</b></p>
+<p>ClearVector(STRING ruleset, STRING objectname)</p>
+<DL>
+  <DT>ruleset   
+  <DD>The name of the ruleset where the vector fact (one dimensional table) is defined
+  <DT>objectname   
+  <DD> The name of the fact
+</DL>
+<p><B>Remarks:</B> </p>
+<BLOCKQUOTE>
+  <p>Clears the values in a vector (generally loaded using <code>RArray()</code>) so that new values can be loaded. </p>
+</BLOCKQUOTE>
+<p><B>Return Value:</B> </p>
+<BLOCKQUOTE>
+  <p>Throws an exception on failure. </p>
+</BLOCKQUOTE>
+<p><B>Example:</B> </p>
+<UL>
+  <PRE>'Load the user inputs, first clear the .in vector, then load it up
+arxl.ClearVector("ShaftRules", "in")
+arxl.AddToVector("ShaftRules", "in", "Favor", Favor.SelectedValue)
+arxl.AddToVector("ShaftRules", "in", "Swing Speed", SwingSpeed.Text)
+arxl.AddToVector("ShaftRules", "in", "Club Type", ClubType.SelectedValue)
+arxl.AddToVector("ShaftRules", "in", "Ball Flight", BallFlight.SelectedValue)</PRE></UL>
+<h3><b><a name="CloseRules"></a></b>CloseRules</h3>
+<!amzi_index=CloseRules()>
+<p><b>Description:</b></p>
+<p>CloseRules() </p>
+<p><B>Remarks:</B> </p>
+<BLOCKQUOTE>
+  <p>Closes and frees the ARulesXL engine. It is also called by the Dispose() method of the class (if there is one). </p>
+</BLOCKQUOTE>
+<p><B>Return Value:</B> </p>
+<BLOCKQUOTE>
+  <p>Throws an exception on failure. </p>
+</BLOCKQUOTE>
+<p><B>Example:</B> </p>
+<UL>
+  <PRE>arxl.CloseRules()</PRE>
+</UL>
+<h3><b><a name="GetLS"></a></b>GetLS</h3>
+<!amzi_index=GetLS()>
+<p><b>Description:</b></p>
+<p>GetLS() </p>
+<p><B>Remarks:</B> </p>
+<BLOCKQUOTE>
+  <p>Returns the Amzi! Logic Server used internally in ARulesXL. This is for advanced users who want to make use of the full Amzi! Logic Server API to query and parse results in ARulesXL. </p>
+  <p>The Logic Server object is implemented in arules.dll (not amzi.dll as you may be accustomed to). It is identical to amzi.dll from the programming interface point of view. However, amzi.dll cannot be used to run ARulesXL rulesets due to internal differences between the two libraries. </p>
+</BLOCKQUOTE>
+<p><B>Return Value:</B> </p>
+<BLOCKQUOTE>
+  <p>A LogicServer object . </p>
+</BLOCKQUOTE>
+<p><B>Example:</B> </p>
+<UL>
+  <PRE>LogicServer ls = arxl.GetLS()</PRE>
+</UL>
+<h3><a name="OpenRules"></a>OpenRules</h3>
+<!amzi_index=OpenRules()>
+<p><b>Description:</b></p>
+<p>OpenRules(STRING rulesetfile, STRING arulespath)</p>
+<DL>
+  <DT>rulesetfile   
+  <DD>The filename in the current directory or pathname to the ruleset file (.axl)    
+  <DT>arulespath   
+  <DD>
+    The directory where the ARulesXL engine (arules.dll and arules.xpl) are located ending with \
+</DL>
+<p><B>Remarks:</B> </p>
+<BLOCKQUOTE>
+  <p>Loads the ARulesXL engine from arulespath and the named rulesetfile. </p>
+  <p>For IIS, the rulesetfile must be located in the bin subdirectory of your IIS directory.</p>
+</BLOCKQUOTE>
+<p><B>Return Value:</B> </p>
+<BLOCKQUOTE>
+  <p>Throws an exception on failure. </p>
+</BLOCKQUOTE>
+<p><B>Example:</B> </p>
+<UL>
+  <PRE>'Determine where we are
+path = Request.PhysicalApplicationPath + "bin\"
+
+'Load the ARulesXL engine and ruleset file
+arxl.OpenRules(path + RulesetFilename.Text, path)
+</PRE>
+</UL>
+<h3><a name="QueryRules"></a>QueryRules</h3>
+<!amzi_index=QueryRules()>
+<p><b>Description:</b></p>
+<p>STRING QueryRules(STRING ruleset, STRING query)</p>
+<DL>
+  <DT>ruleset   
+  <DD>The name of the ruleset 
+  <DT>query   
+  <DD> The query to run in the same format as is used for <a href="../reference.htm#RQuery">RQuery()</a> 
+</DL>
+<p><B>Remarks:</B> </p>
+<BLOCKQUOTE>
+  <p>Queries the named ruleset and returns the result as a string. </p>
+</BLOCKQUOTE>
+<p><B>Return Value:</B> </p>
+<BLOCKQUOTE>
+  <p>The result of the query as a string.</p>
+  <p>Throws an exception on failure. </p>
+</BLOCKQUOTE>
+<p><B>Example:</B> </p>
+<UL>
+  <PRE>ans = arxl.QueryRules(Ruleset.Text, "FIND advice")</PRE>
+</UL>
+<h3><a name="QueryMore"></a>QueryMore</h3>
+<!amzi_index=QueryMore()>
+<p><b>Description:</b></p>
+<p>STRING QueryRules(STRING ruleset, STRING query)</p>
+<DL>
+  <DT>ruleset   
+  <DD>The name of the ruleset 
+  <DT>query   
+  <DD> The query to run in the same format as is used for <a href="../reference.htm#RQuery">RQuery()</a>
+</DL>
+<p><B>Remarks:</B> </p>
+<BLOCKQUOTE>
+  <p>Queries the named ruleset and returns the result as a string. This call differs from QueryRules() because any values that were found during prior queries are retained. This lets you query the same ruleset repeatedly gaining new information each time, instead of having to compute the values for all the objects each time. </p>
+</BLOCKQUOTE>
+<p><B>Return Value:</B> </p>
+<BLOCKQUOTE>
+  <p>The result of the query as a string.</p>
+  <p>Throws an exception on failure. </p>
+</BLOCKQUOTE>
+<p><B>Example:</B> </p>
+<UL>
+  <PRE>ans = arxl.QueryMore(Ruleset.Text, "FIND explanation")</PRE>
+</UL>
+<h3><b></b><b><a name="ARulesRegisterRuntime"></a></b>ARulesRegisterRuntime</h3>
+<!amzi_index=ARulesRegisterRuntime()>
+<p><b>Description:</b></p>
+<p>INTEGER ARulesRegisterRuntime(DWORD Method, STRING ProxyNames, STRING RuntimeID) </p>
+<p><B>Remarks:</B> </p>
+<BLOCKQUOTE>
+  <p>Registers this copy of the ARulesXL runtime on www.arulesxl.com using HTTP.</p>
+  <p>Method is the access type for the Microsoft Windows SDK function, InternetOpen(). The values from wininet.h are:</p>
+  <blockquote><table width="70%" cellpadding="0" cellspacing="0">
+    <TR>
+      <TD valign="top">INTERNET_OPEN_TYPE_DIRECT</TD>
+      <TD>Resolves all host names locally.</TD>
+    </TR>
+    <TR>
+      <TD valign="top">INTERNET_OPEN_TYPE_PRECONFIG</TD>
+      <TD>Retrieves the proxy or direct configuration from the   registry.</TD>
+    </TR>
+    <TR>
+      <TD valign="top">INTERNET_OPEN_TYPE_PRECONFIG_WITH_NO_AUTOPROXY</TD>
+      <TD>Retrieves the proxy or direct configuration from the registry   and prevents the use of a startup Microsoft JScript or Internet Setup (INS)   file.</TD>
+    </TR>
+    <TR>
+      <TD valign="top">INTERNET_OPEN_TYPE_PROXY</TD>
+      <TD>Passes requests to the proxy unless a proxy bypass list is   supplied and the name to be resolved bypasses the proxy. In this case, the   function uses INTERNET_OPEN_TYPE_DIRECT</A>.</TD>
+    </TR>
+  </table></blockquote>
+  <p>ProxyNames is a list of one or more proxy servers. The Microsoft documentation on 'Listing Proxy Servers' for InternetOpen() says:</p>
+  <blockquote>
+    <p>&quot;WinINet recognizes two types of proxies: CERN type proxies (HTTP only) and   TIS FTP proxies (FTP only). If Internet Explorer is installed, WinINet also   support SOCKS type proxies. InternetConnect assumes, by default, that   the specified proxy is a CERN proxy. If the access type is set to   INTERNET_OPEN_TYPE_DIRECT or INTERNET_OPEN_TYPE_PRECONFIG, the <I>lpszProxyName</I> parameter of InternetOpen should be set to NULL.   Otherwise, the value passed to <I>lpszProxyName</I> must contain the proxies in   a space-delimited string. The proxy listings can contain the port number that is   used to access the proxy.</p>
+    <p>To list a proxy for a specific protocol, the string must follow the format   ""&lt;protocol&gt;&lt;protocol&gt;://&lt;proxy_name&gt;"". The valid protocols   are HTTP, HTTPS, FTP, and Gopher. For example, to list an FTP proxy, a valid   string would be ""ftp=ftp://ftp_proxy_name:21"", where ftp_proxy_name is the   name of the FTP proxy and 21 is the port number that must be used to access the   proxy. If the proxy uses the default port number for that protocol, the port   number can be omitted. If a proxy name is listed by itself, it is used as the   default proxy for any protocols that do not have a specific proxy specified. For   example, ""http=http://http_proxy other"" would use http_proxy for any HTTP   operations, while all other protocols would use other.</p>
+    <p>By default, the function assumes that the proxy specified by <I>lpszProxyName</I> is a CERN proxy. An application can specify more than one   proxy, including different proxies for the different protocols. For example, if   you specify ""ftp=ftp://ftp-gw gopher=http://jericho:99 proxy"", FTP requests   are made through the ftp-gw proxy, which listens at port 21, and Gopher requests   are made through a CERN proxy called jericho, which listens at port 99. All   other requests (for example, HTTP requests) are made through the CERN proxy   called proxy, which listens at port 80. Note that if the application is only   using FTP, for example, it would not need to specify ""ftp=ftp://ftp-gw:21"". It   could specify just ""ftp-gw"". An application is only required to specify the   protocol names if it is using more than one protocol per handle returned by InternetOpen.&quot;</p>
+  </blockquote>
+  <p>RuntimeID is a string that is recorded on the ARulesXL website to identify this particular user when you request a report of registered runtime licenses. It is limited to 1024 characters.  If none is provided, the default is the 8-digit hardware fingerprint for the PC using the ARulesXL runtime. </p>
+  <p>This functions registers this PC's use of the ARulesXL runtime on the ARulesXL website. You can call this function anytime after the rule set has been opened with OpenRules(). It returns immediately if the registration has already been successfully completed.</p>
+  <p>If you do not call this function, the ARulesXL engine will attempt to register this instance via the first two methods silently the first five times OpenRules() is called. From the 6th through 10th times, the user will be informed that this software must connect to the Internet to continue working. After the 11th time, the ARulesXL engine will no longer operate. </p>
+</BLOCKQUOTE>
+<p><B>Return Value:</B> </p>
+<BLOCKQUOTE>
+  <p>0 for success. </p>
+  <p>-1 if unable to connect to the website and/or read any results back.</p>
+  <p>1 if your ARulesXL license key is not found in the database on the ARulesXL web server. Contact us to remedy this problem. </p>
+  <p>2 if you have exceeded your limit of runtime licenses.   Contact us to purchase more runtime licenses for your current license key. </p>
+</BLOCKQUOTE>
+<p><B>Example:</B> </p>
+<UL>
+  <PRE>   ecode = ARulesRegisterRuntime(INTERNET_OPEN_TYPE_PRECONFIG, &quot;&quot;, authorid, &quot;automatic&quot;);<br>   if (ecode == 0) {<br>      if (!silent)<br>         MessageBox(NULL, X(2)-&gt;getStr(), aS(&quot;ARulesXL&quot;), MB_OK);<br>         return TRUE;<br>   }<br>   // Then the next method<br>   ecode2 = ARulesRegisterRuntime(INTERNET_OPEN_TYPE_DIRECT, &quot;&quot;, authorid, &quot;automatic&quot;);<br>   if (ecode2 == 0) {<br>      if (!silent)<br>         MessageBox(NULL, X(2)-&gt;getStr(), aS(&quot;ARulesXL&quot;), MB_OK);<br>         return TRUE;<br>   }</PRE>
+</UL>
+<!-- #EndEditable --> 
+<hr>
+<table width=100%>
+<tr>
+<td>
+<img src="../images/logo_very_small.gif">
+</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-7 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2>
+</td>
+</tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,384 @@
+
+user:data(BudgetRules, obj([region(East), pl(2005, 'Budget Income', Q1)]), 100, "Sheet1!B22").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Budget Income', Q2)]), 120, "Sheet1!C22").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Budget Income', Q3)]), 140, "Sheet1!D22").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Budget Income', Q4)]), 160, "Sheet1!E22").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Budget Income', 'Year Total')]), 520, "Sheet1!F22").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Budget Outgo', Q1)]), 90, "Sheet1!B23").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Budget Outgo', Q2)]), 95, "Sheet1!C23").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Budget Outgo', Q3)]), 100, "Sheet1!D23").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Budget Outgo', Q4)]), 105, "Sheet1!E23").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Budget Outgo', 'Year Total')]), 390, "Sheet1!F23").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Actual Income', Q1)]), 100, "Sheet1!B24").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Actual Income', Q2)]), 130, "Sheet1!C24").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Actual Income', Q3)]), 777, "Sheet1!D24").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Actual Income', Q4)]), 166, "Sheet1!E24").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Actual Income', 'Year Total')]), 1173, "Sheet1!F24").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Actual Outgo', Q1)]), 90, "Sheet1!B25").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Actual Outgo', Q2)]), 95, "Sheet1!C25").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Actual Outgo', Q3)]), 99, "Sheet1!D25").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Actual Outgo', Q4)]), 135, "Sheet1!E25").
+user:data(BudgetRules, obj([region(East), pl(2005, 'Actual Outgo', 'Year Total')]), 419, "Sheet1!F25").
+user:data(BudgetRules, obj([region(East), pl(2005, Profit, Q1)]), 10, "Sheet1!B26").
+user:data(BudgetRules, obj([region(East), pl(2005, Profit, Q2)]), 35, "Sheet1!C26").
+user:data(BudgetRules, obj([region(East), pl(2005, Profit, Q3)]), 678, "Sheet1!D26").
+user:data(BudgetRules, obj([region(East), pl(2005, Profit, Q4)]), 31, "Sheet1!E26").
+user:data(BudgetRules, obj([region(East), pl(2005, Profit, 'Year Total')]), 754, "Sheet1!F26").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Budget Income', Q1)]), 100, "Sheet1!B4").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Budget Income', Q2)]), 120, "Sheet1!C4").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Budget Income', Q3)]), 140, "Sheet1!D4").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Budget Income', Q4)]), 160, "Sheet1!E4").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Budget Income', 'Year Total')]), 520, "Sheet1!F4").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Budget Outgo', Q1)]), 90, "Sheet1!B5").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Budget Outgo', Q2)]), 95, "Sheet1!C5").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Budget Outgo', Q3)]), 100, "Sheet1!D5").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Budget Outgo', Q4)]), 105, "Sheet1!E5").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Budget Outgo', 'Year Total')]), 390, "Sheet1!F5").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Actual Income', Q1)]), 100, "Sheet1!B6").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Actual Income', Q2)]), 130, "Sheet1!C6").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Actual Income', Q3)]), 667, "Sheet1!D6").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Actual Income', Q4)]), 165, "Sheet1!E6").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Actual Income', 'Year Total')]), 1062, "Sheet1!F6").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Actual Outgo', Q1)]), 90, "Sheet1!B7").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Actual Outgo', Q2)]), 200, "Sheet1!C7").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Actual Outgo', Q3)]), 110, "Sheet1!D7").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Actual Outgo', Q4)]), 135, "Sheet1!E7").
+user:data(BudgetRules, obj([region(East), pl(2004, 'Actual Outgo', 'Year Total')]), 535, "Sheet1!F7").
+user:data(BudgetRules, obj([region(East), pl(2004, Profit, Q1)]), 10, "Sheet1!B8").
+user:data(BudgetRules, obj([region(East), pl(2004, Profit, Q2)]), -70, "Sheet1!C8").
+user:data(BudgetRules, obj([region(East), pl(2004, Profit, Q3)]), 557, "Sheet1!D8").
+user:data(BudgetRules, obj([region(East), pl(2004, Profit, Q4)]), 30, "Sheet1!E8").
+user:data(BudgetRules, obj([region(East), pl(2004, Profit, 'Year Total')]), 527, "Sheet1!F8").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Budget Income', Q1)]), 100, "Sheet1!B31").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Budget Income', Q2)]), 120, "Sheet1!C31").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Budget Income', Q3)]), 140, "Sheet1!D31").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Budget Income', Q4)]), 160, "Sheet1!E31").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Budget Income', 'Year Total')]), 520, "Sheet1!F31").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Budget Outgo', Q1)]), 90, "Sheet1!B32").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Budget Outgo', Q2)]), 95, "Sheet1!C32").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Budget Outgo', Q3)]), 100, "Sheet1!D32").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Budget Outgo', Q4)]), 105, "Sheet1!E32").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Budget Outgo', 'Year Total')]), 390, "Sheet1!F32").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Actual Income', Q1)]), 100, "Sheet1!B33").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Actual Income', Q2)]), 125, "Sheet1!C33").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Actual Income', Q3)]), 230, "Sheet1!D33").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Actual Income', Q4)]), 177, "Sheet1!E33").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Actual Income', 'Year Total')]), 632, "Sheet1!F33").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Actual Outgo', Q1)]), 90, "Sheet1!B34").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Actual Outgo', Q2)]), 95, "Sheet1!C34").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Actual Outgo', Q3)]), 110, "Sheet1!D34").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Actual Outgo', Q4)]), 135, "Sheet1!E34").
+user:data(BudgetRules, obj([region(West), pl(2005, 'Actual Outgo', 'Year Total')]), 430, "Sheet1!F34").
+user:data(BudgetRules, obj([region(West), pl(2005, Profit, Q1)]), 10, "Sheet1!B35").
+user:data(BudgetRules, obj([region(West), pl(2005, Profit, Q2)]), 30, "Sheet1!C35").
+user:data(BudgetRules, obj([region(West), pl(2005, Profit, Q3)]), 120, "Sheet1!D35").
+user:data(BudgetRules, obj([region(West), pl(2005, Profit, Q4)]), 42, "Sheet1!E35").
+user:data(BudgetRules, obj([region(West), pl(2005, Profit, 'Year Total')]), 202, "Sheet1!F35").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Budget Income', Q1)]), 100, "Sheet1!B13").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Budget Income', Q2)]), 120, "Sheet1!C13").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Budget Income', Q3)]), 140, "Sheet1!D13").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Budget Income', Q4)]), 120, "Sheet1!E13").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Budget Income', 'Year Total')]), 480, "Sheet1!F13").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Budget Outgo', Q1)]), 90, "Sheet1!B14").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Budget Outgo', Q2)]), 95, "Sheet1!C14").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Budget Outgo', Q3)]), 100, "Sheet1!D14").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Budget Outgo', Q4)]), 105, "Sheet1!E14").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Budget Outgo', 'Year Total')]), 390, "Sheet1!F14").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Actual Income', Q1)]), 100, "Sheet1!B15").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Actual Income', Q2)]), 145, "Sheet1!C15").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Actual Income', Q3)]), 100, "Sheet1!D15").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Actual Income', Q4)]), 130, "Sheet1!E15").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Actual Income', 'Year Total')]), 475, "Sheet1!F15").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Actual Outgo', Q1)]), 90, "Sheet1!B16").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Actual Outgo', Q2)]), 95, "Sheet1!C16").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Actual Outgo', Q3)]), 110, "Sheet1!D16").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Actual Outgo', Q4)]), 90, "Sheet1!E16").
+user:data(BudgetRules, obj([region(West), pl(2004, 'Actual Outgo', 'Year Total')]), 385, "Sheet1!F16").
+user:data(BudgetRules, obj([region(West), pl(2004, Profit, Q1)]), 10, "Sheet1!B17").
+user:data(BudgetRules, obj([region(West), pl(2004, Profit, Q2)]), 50, "Sheet1!C17").
+user:data(BudgetRules, obj([region(West), pl(2004, Profit, Q3)]), -10, "Sheet1!D17").
+user:data(BudgetRules, obj([region(West), pl(2004, Profit, Q4)]), 40, "Sheet1!E17").
+user:data(BudgetRules, obj([region(West), pl(2004, Profit, 'Year Total')]), 90, "Sheet1!F17").
+user:data(People, obj([mf(Ana, BirthDate)]), datetime(1968, 1, 17, 0, 0, 0), "Tables!B2").
+user:data(People, obj([mf(Ana, Mother)]), Pilar, "Tables!C2").
+user:data(People, obj([mf(Ana, Father)]), Julien, "Tables!D2").
+user:data(People, obj([mf(Dennis, BirthDate)]), datetime(1946, 2, 24, 0, 0, 0), "Tables!B3").
+user:data(People, obj([mf(Dennis, Mother)]), Peg, "Tables!C3").
+user:data(People, obj([mf(Dennis, Father)]), Ralph, "Tables!D3").
+user:data(People, obj([mf(Diana, BirthDate)]), datetime(1979, 2, 25, 0, 0, 0), "Tables!B4").
+user:data(People, obj([mf(Diana, Mother)]), Ann, "Tables!C4").
+user:data(People, obj([mf(Diana, Father)]), Dennis, "Tables!D4").
+user:data(People, obj([mf(Diego, BirthDate)]), datetime(2002, 5, 14, 0, 0, 0), "Tables!B5").
+user:data(People, obj([mf(Diego, Mother)]), Ana, "Tables!C5").
+user:data(People, obj([mf(Diego, Father)]), Michael, "Tables!D5").
+user:data(People, obj([mf(Jenny, BirthDate)]), datetime(1964, 5, 15, 0, 0, 0), "Tables!B6").
+user:data(People, obj([mf(Jenny, Mother)]), Elaine, "Tables!C6").
+user:data(People, obj([mf(Jenny, Father)]), Dick, "Tables!D6").
+user:data(People, obj([mf(Juan, BirthDate)]), datetime(1999, 5, 5, 0, 0, 0), "Tables!B7").
+user:data(People, obj([mf(Juan, Mother)]), Ana, "Tables!C7").
+user:data(People, obj([mf(Juan, Father)]), Michael, "Tables!D7").
+user:data(People, obj([mf(Kathy, BirthDate)]), datetime(1961, 3, 8, 0, 0, 0), "Tables!B8").
+user:data(People, obj([mf(Kathy, Mother)]), Elaine, "Tables!C8").
+user:data(People, obj([mf(Kathy, Father)]), Dick, "Tables!D8").
+user:data(People, obj([mf(Mary, BirthDate)]), datetime(1959, 12, 16, 0, 0, 0), "Tables!B9").
+user:data(People, obj([mf(Mary, Mother)]), Elaine, "Tables!C9").
+user:data(People, obj([mf(Mary, Father)]), Dick, "Tables!D9").
+user:data(People, obj([mf(Michael, BirthDate)]), datetime(1967, 6, 30, 0, 0, 0), "Tables!B10").
+user:data(People, obj([mf(Michael, Mother)]), Cherry, "Tables!C10").
+user:data(People, obj([mf(Michael, Father)]), Dennis, "Tables!D10").
+user:data(People, obj([mf(Ricky, BirthDate)]), datetime(1962, 8, 8, 0, 0, 0), "Tables!B11").
+user:data(People, obj([mf(Ricky, Mother)]), Elaine, "Tables!C11").
+user:data(People, obj([mf(Ricky, Father)]), Dick, "Tables!D11").
+user:data(People, obj([cities(Column1)]), Column2, "Tables!C14").
+user:data(People, obj([cities(Diego)]), Madrid, "Tables!C15").
+user:data(People, obj([cities(Juan)]), Madrid, "Tables!C16").
+user:data(People, obj([cities(Ana)]), Madrid, "Tables!C17").
+user:data(People, obj([cities(Michael)]), Boston, "Tables!C18").
+user:data(People, obj([cities(Diana)]), Cambridge, "Tables!C19").
+user:data(People, obj([cities(Dennis)]), Brooklyn, "Tables!C20").
+user:data(People, obj([cities(Mary)]), Wisconsin, "Tables!C21").
+user:data(People, obj([cities(Peg)]), Darien, "Tables!C22").
+user:data(People, obj([cities(Ralph)]), Brooklyn, "Tables!C23").
+user:data(People, obj([cities(Jenny)]), Wisconsin, "Tables!C24").
+user:data(People, obj([cities(Kathy)]), Wisconsin, "Tables!C25").
+user:data(People, obj([cities(Ricky)]), Wisconsin, "Tables!C26").
+user:data(People, obj([nine(1, 1)]), 1, "Tables!B34").
+user:data(People, obj([nine(1, 2)]), 2, "Tables!C34").
+user:data(People, obj([nine(1, 3)]), 3, "Tables!D34").
+user:data(People, obj([nine(2, 1)]), 4, "Tables!B35").
+user:data(People, obj([nine(2, 2)]), 5, "Tables!C35").
+user:data(People, obj([nine(2, 3)]), 6, "Tables!D35").
+user:data(People, obj([nine(3, 1)]), 7, "Tables!B36").
+user:data(People, obj([nine(3, 2)]), 8, "Tables!C36").
+user:data(People, obj([nine(3, 3)]), 9, "Tables!D36").
+user:data(People, obj([hw(husband, 2)]), Dennis, "Tables!B30").
+user:data(People, obj([hw(husband, 3)]), Michael, "Tables!C30").
+user:data(People, obj([hw(husband, 4)]), Ralph, "Tables!D30").
+user:data(People, obj([hw(wife, 2)]), Mary, "Tables!B31").
+user:data(People, obj([hw(wife, 3)]), Ana, "Tables!C31").
+user:data(People, obj([hw(wife, 4)]), Peg, "Tables!D31").
+user:data(People, obj([acity]), Boston, "Tables!C18").
+
+user:known(People, obj([sib(Dennis, Mary)]), false, failure).
+
+user:making_table([hw]).
+
+user:parm(maintenance_message, done).
+user:parm(explain, off).
+user:parm(step, off).
+
+
+BudgetRules:know(obj([test]), _X1, "Sheet1!H6", [obj([test]) = _X1]).
+BudgetRules:know(obj([problem(_X1, _X2, _X3)]), 'Below budget income', "Sheet1!H7", [obj([problem(_X1, _X2, _X3)]) = 'Below budget income']).
+BudgetRules:know(obj([problem(_X1, _X2, _X3)]), 'Less than last year', "Sheet1!H8", [obj([problem(_X1, _X2, _X3)]) = 'Less than last year']).
+BudgetRules:know(obj([problem(_X1, _X2, _X3)]), 'Took a loss', "Sheet1!H9", [obj([problem(_X1, _X2, _X3)]) = 'Took a loss']).
+BudgetRules:know(obj([analysis]), _X1, "Sheet1!H10", [obj([analysis]) = _X1]).
+BudgetRules:know(obj([problems]), _X1, "Sheet1!H11", [obj([problems]) = _X1]).
+
+BudgetRules:rule("Sheet1!H6", [obj([test]) = _X1]) :- 
+    explain(rule("Sheet1!H6", [obj([test]) = _X1]), BudgetRules, "Sheet1!H6"),
+    true,
+    evallist([RANGE(vector(_X2, om(BudgetRules, obj([region(West), pl(_X2, Profit, 'Year Total')])), _X3)) = _X1]).
+BudgetRules:rule("Sheet1!H7", [obj([problem(_X1, _X2, _X3)]) = 'Below budget income']) :- 
+    explain(rule("Sheet1!H7", [obj([problem(_X1, _X2, _X3)]) = 'Below budget income']), BudgetRules, "Sheet1!H7"),
+    Find(BudgetRules, obj([region(_X1), pl(_X3, 'Budget Income', _X2)]), _X4),
+    Find(BudgetRules, obj([region(_X1), pl(_X3, 'Actual Income', _X2)]), _X5),
+    test(>, _X4, _X5),
+    evallist('[]').
+BudgetRules:rule("Sheet1!H8", [obj([problem(_X1, _X2, _X3)]) = 'Less than last year']) :- 
+    explain(rule("Sheet1!H8", [obj([problem(_X1, _X2, _X3)]) = 'Less than last year']), BudgetRules, "Sheet1!H8"),
+    Find(BudgetRules, obj([region(_X1), pl(_X3, 'Actual Income', _X2)]), _X4),
+    Find(BudgetRules, obj([region(_X1), pl(_X5, 'Actual Income', _X2)]), _X6),
+    test(<, _X4, _X6),
+    true,
+    eval(_X3 - 1, _X7),
+    test(=, _X5, _X7),
+    evallist('[]').
+BudgetRules:rule("Sheet1!H9", [obj([problem(_X1, _X2, _X3)]) = 'Took a loss']) :- 
+    explain(rule("Sheet1!H9", [obj([problem(_X1, _X2, _X3)]) = 'Took a loss']), BudgetRules, "Sheet1!H9"),
+    Find(BudgetRules, obj([region(_X1), pl(_X3, 'Actual Income', _X2)]), _X4),
+    Find(BudgetRules, obj([region(_X1), pl(_X3, 'Actual Outgo', _X2)]), _X5),
+    test(<, _X4, _X5),
+    evallist('[]').
+BudgetRules:rule("Sheet1!H10", [obj([analysis]) = _X1]) :- 
+    explain(rule("Sheet1!H10", [obj([analysis]) = _X1]), BudgetRules, "Sheet1!H10"),
+    true,
+    evallist([findall([_X2, _X3], ((finda(BudgetRules, obj([problem(_X4, _X5, _X6)]), _X7) ',' true ',' test(=, _X7, _X3)) ',' true ',' eval(RANGE(Find(BudgetRules, obj([region(_X4), pl(_X6, Profit, _X5)]), _X8)), _X9) ',' test(=, _X2, _X9))) = _X1]).
+BudgetRules:rule("Sheet1!H11", [obj([problems]) = _X1]) :- 
+    explain(rule("Sheet1!H11", [obj([problems]) = _X1]), BudgetRules, "Sheet1!H11"),
+    true,
+    evallist([sort(findall([_X2, _X3, _X4, _X5], (finda(BudgetRules, obj([problem(_X2, _X4, _X3)]), _X6) ',' true ',' test(=, _X6, _X5)))) = _X1]).
+
+People:know(obj([dedication]), "Dedicated to Mary, the next birthday girl", "Tables!F3", [obj([dedication]) = "Dedicated to Mary, the next birthday girl"]).
+People:know(obj([sib(_X1, _X2)]), true, "Tables!F11", [obj([sib(_X1, _X2)]) = true]).
+People:know(obj([sib(_X1, _X2)]), true, "Tables!F12", [obj([sib(_X1, _X2)]) = true]).
+People:know(obj([sibs]), _X1, "Tables!F13", [obj([sibs]) = _X1]).
+People:know(obj([sibs(_X1)]), _X2, "Tables!F14", [obj([sibs(_X1)]) = _X2]).
+People:know(obj([spouse(_X1)]), _X2, "Tables!F16", [obj([spouse(_X1)]) = _X2]).
+People:know(obj([spouse(_X1)]), _X2, "Tables!F17", [obj([spouse(_X1)]) = _X2]).
+People:know(obj([spouse(_X1)]), none, "Tables!F18", [obj([spouse(_X1)]) = none]).
+People:know(obj([spouse(_X1, _X2)]), true, "Tables!F20", [obj([spouse(_X1, _X2)]) = true]).
+People:know(obj([spice]), _X1, "Tables!F21", [obj([spice]) = _X1]).
+People:know(obj([city(_X1)]), _X2, "Tables!F23", [obj([city(_X1)]) = _X2]).
+People:know(obj([age(_X1)]), _X2, "Tables!F25", [obj([age(_X1)]) = _X2]).
+People:know(obj([birthday(_X1)]), _X2, "Tables!F27", [obj([birthday(_X1)]) = _X2]).
+People:know(obj([birthday(_X1)]), _X2, "Tables!F31", [obj([birthday(_X1)]) = _X2]).
+People:know(obj([birthdays]), _X1, "Tables!F35", [obj([birthdays]) = _X1]).
+People:know(obj([next_birthday]), _X1, "Tables!F36", [obj([next_birthday]) = _X1]).
+People:know(obj([BirthdayGirl]), _X1, "Tables!F40", [obj([BirthdayGirl]) = _X1]).
+People:know(obj([BirthdayCell]), _X1, "Tables!F41", [obj([BirthdayCell]) = _X1]).
+People:know(obj([MothersRange]), _X1, "Tables!F42", [obj([MothersRange]) = _X1]).
+People:know(obj([ages]), _X1, "Tables!F44", [obj([ages]) = _X1]).
+People:know(obj([oldest]), _X1, "Tables!F45", [obj([oldest]) = _X1]).
+People:know(obj([youngest]), _X1, "Tables!F46", [obj([youngest]) = _X1]).
+People:know(obj([ParentCol]), _X1, "Tables!F48", [obj([ParentCol]) = _X1]).
+People:know(obj([ParentRow]), _X1, "Tables!F49", [obj([ParentRow]) = _X1]).
+
+People:rule("Tables!F3", [obj([dedication]) = "Dedicated to Mary, the next birthday girl"]) :- 
+    explain(rule("Tables!F3", [obj([dedication]) = "Dedicated to Mary, the next birthday girl"]), People, "Tables!F3"),
+    true,
+    evallist('[]').
+People:rule("Tables!F11", [obj([sib(_X1, _X2)]) = true]) :- 
+    explain(rule("Tables!F11", [obj([sib(_X1, _X2)]) = true]), People, "Tables!F11"),
+    Find(People, obj([mf(_X1, Mother)]), _X3),
+    Find(People, obj([mf(_X2, Mother)]), _X4),
+    test(=, _X3, _X4),
+    true,
+    true,
+    test(\=, _X1, _X2),
+    evallist('[]').
+People:rule("Tables!F12", [obj([sib(_X1, _X2)]) = true]) :- 
+    explain(rule("Tables!F12", [obj([sib(_X1, _X2)]) = true]), People, "Tables!F12"),
+    Find(People, obj([mf(_X1, Father)]), _X3),
+    Find(People, obj([mf(_X2, Father)]), _X4),
+    test(=, _X3, _X4),
+    true,
+    true,
+    test(\=, _X1, _X2),
+    evallist('[]').
+People:rule("Tables!F13", [obj([sibs]) = _X1]) :- 
+    explain(rule("Tables!F13", [obj([sibs]) = _X1]), People, "Tables!F13"),
+    true,
+    evallist([findall([_X2, _X3], finda(People, obj([sib(_X2, _X3)]), true)) = _X1]).
+People:rule("Tables!F14", [obj([sibs(_X1)]) = _X2]) :- 
+    explain(rule("Tables!F14", [obj([sibs(_X1)]) = _X2]), People, "Tables!F14"),
+    true,
+    evallist([findall(_X3, finda(People, obj([sib(_X1, _X3)]), true)) = _X2]).
+People:rule("Tables!F16", [obj([spouse(_X1)]) = _X2]) :- 
+    explain(rule("Tables!F16", [obj([spouse(_X1)]) = _X2]), People, "Tables!F16"),
+    Find(People, obj([hw(husband, _X3)]), _X4),
+    true,
+    test(=, _X4, _X1),
+    Find(People, obj([hw(wife, _X3)]), _X5),
+    true,
+    test(=, _X5, _X2),
+    evallist('[]').
+People:rule("Tables!F17", [obj([spouse(_X1)]) = _X2]) :- 
+    explain(rule("Tables!F17", [obj([spouse(_X1)]) = _X2]), People, "Tables!F17"),
+    Find(People, obj([hw(wife, _X3)]), _X4),
+    true,
+    test(=, _X4, _X1),
+    Find(People, obj([hw(husband, _X3)]), _X5),
+    true,
+    test(=, _X5, _X2),
+    evallist('[]').
+People:rule("Tables!F18", [obj([spouse(_X1)]) = none]) :- 
+    explain(rule("Tables!F18", [obj([spouse(_X1)]) = none]), People, "Tables!F18"),
+    true,
+    evallist('[]').
+People:rule("Tables!F20", [obj([spouse(_X1, _X2)]) = true]) :- 
+    explain(rule("Tables!F20", [obj([spouse(_X1, _X2)]) = true]), People, "Tables!F20"),
+    vector(_X3, om(People, obj([hw(_X3, _X4)])), _X5),
+    true,
+    test(=, _X5, [_X1, _X2]),
+    evallist('[]').
+People:rule("Tables!F21", [obj([spice]) = _X1]) :- 
+    explain(rule("Tables!F21", [obj([spice]) = _X1]), People, "Tables!F21"),
+    true,
+    evallist([findall([_X2, _X3], finda(People, obj([spouse(_X2, _X3)]), true)) = _X1]).
+People:rule("Tables!F23", [obj([city(_X1)]) = _X2]) :- 
+    explain(rule("Tables!F23", [obj([city(_X1)]) = _X2]), People, "Tables!F23"),
+    true,
+    evallist([Find(People, obj([cities(_X1)]), _X3) = _X2]).
+People:rule("Tables!F25", [obj([age(_X1)]) = _X2]) :- 
+    explain(rule("Tables!F25", [obj([age(_X1)]) = _X2]), People, "Tables!F25"),
+    true,
+    evallist([special(today) - Find(People, obj([mf(_X1, BirthDate)]), _X3) = _X2]).
+People:rule("Tables!F27", [obj([birthday(_X1)]) = _X2]) :- 
+    explain(rule("Tables!F27", [obj([birthday(_X1)]) = _X2]), People, "Tables!F27"),
+    Find(People, obj([mf(_X1, BirthDate)]), _X3),
+    eval(datetime(_X4, _X5, _X6, 0, 0, 0), _X7),
+    test(=, _X3, _X7),
+    true,
+    eval(YEAR(special(today)), _X8),
+    test(=, _X9, _X8),
+    eval(datetime(_X9, _X5, _X6, 0, 0, 0), _X10),
+    eval(special(today), _X11),
+    test(>=, _X10, _X11),
+    evallist([datetime(_X9, _X5, _X6, 0, 0, 0) = _X2]).
+People:rule("Tables!F31", [obj([birthday(_X1)]) = _X2]) :- 
+    explain(rule("Tables!F31", [obj([birthday(_X1)]) = _X2]), People, "Tables!F31"),
+    Find(People, obj([mf(_X1, BirthDate)]), _X3),
+    eval(datetime(_X4, _X5, _X6, 0, 0, 0), _X7),
+    test(=, _X3, _X7),
+    true,
+    eval(YEAR(special(today)) + 1, _X8),
+    test(=, _X9, _X8),
+    evallist([datetime(_X9, _X5, _X6, 0, 0, 0) = _X2]).
+People:rule("Tables!F35", [obj([birthdays]) = _X1]) :- 
+    explain(rule("Tables!F35", [obj([birthdays]) = _X1]), People, "Tables!F35"),
+    true,
+    evallist([sort(findall([_X2, _X3], (finda(People, obj([birthday(_X3)]), _X4) ',' true ',' test(=, _X4, _X2)))) = _X1]).
+People:rule("Tables!F36", [obj([next_birthday]) = _X1]) :- 
+    explain(rule("Tables!F36", [obj([next_birthday]) = _X1]), People, "Tables!F36"),
+    eval(FIRST(Find(People, obj([birthdays]), _X2)), _X3),
+    true,
+    test(=, _X3, [_X4, _X5]),
+    true,
+    eval(WEEKDAY(_X4), _X6),
+    test(=, _X7, _X6),
+    evallist([_X5 & " on " & _X7 & " the " & _X4 = _X1]).
+People:rule("Tables!F40", [obj([BirthdayGirl]) = _X1]) :- 
+    explain(rule("Tables!F40", [obj([BirthdayGirl]) = _X1]), People, "Tables!F40"),
+    eval(FIRST(Find(People, obj([birthdays]), _X2)), _X3),
+    true,
+    test(=, _X3, [_X4, _X1]),
+    evallist('[]').
+People:rule("Tables!F41", [obj([BirthdayCell]) = _X1]) :- 
+    explain(rule("Tables!F41", [obj([BirthdayCell]) = _X1]), People, "Tables!F41"),
+    true,
+    eval(Find(People, obj([BirthdayGirl]), _X2), _X3),
+    test(=, _X4, _X3),
+    evallist([RANGE(vector(_X5, om(People, obj([mf(_X4, _X5)])), _X6)) = _X1]).
+People:rule("Tables!F42", [obj([MothersRange]) = _X1]) :- 
+    explain(rule("Tables!F42", [obj([MothersRange]) = _X1]), People, "Tables!F42"),
+    true,
+    evallist([RANGE(vector(_X2, om(People, obj([mf(_X2, Mother)])), _X3)) = _X1]).
+People:rule("Tables!F44", [obj([ages]) = _X1]) :- 
+    explain(rule("Tables!F44", [obj([ages]) = _X1]), People, "Tables!F44"),
+    true,
+    evallist([sort(findall([_X2, _X3], (finda(People, obj([age(_X3)]), _X4) ',' true ',' test(=, _X4, _X2)))) = _X1]).
+People:rule("Tables!F45", [obj([oldest]) = _X1]) :- 
+    explain(rule("Tables!F45", [obj([oldest]) = _X1]), People, "Tables!F45"),
+    eval(last(Find(People, obj([ages]), _X2)), _X3),
+    true,
+    test(=, _X3, [_X4, _X5]),
+    evallist([_X5 & " at " & _X4 = _X1]).
+People:rule("Tables!F46", [obj([youngest]) = _X1]) :- 
+    explain(rule("Tables!F46", [obj([youngest]) = _X1]), People, "Tables!F46"),
+    eval(FIRST(Find(People, obj([ages]), _X2)), _X3),
+    true,
+    test(=, _X3, [_X4, _X5]),
+    evallist([_X5 & " at " & _X4 = _X1]).
+People:rule("Tables!F48", [obj([ParentCol]) = _X1]) :- 
+    explain(rule("Tables!F48", [obj([ParentCol]) = _X1]), People, "Tables!F48"),
+    Find(People, obj([column]), _X2),
+    true,
+    test(=, _X2, _X3),
+    evallist([RANGE(vector(_X4, om(People, obj([mf(_X4, _X3)])), _X5)) = _X1]).
+People:rule("Tables!F49", [obj([ParentRow]) = _X1]) :- 
+    explain(rule("Tables!F49", [obj([ParentRow]) = _X1]), People, "Tables!F49"),
+    Find(People, obj([row]), _X2),
+    true,
+    test(=, _X2, _X3),
+    evallist([RANGE(vector(_X4, om(People, obj([mf(_X3, _X4)])), _X5)) = _X1]).

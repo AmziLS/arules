@@ -1,0 +1,187 @@
+:- set_prolog_flag(vba, on).
+:- indexed data(1,1,0,0,0).
+:- indexed known(1,1,0,0,0).
+:- op(1200, xfx, When).
+:- op(1100, xfy, Or).
+:- op(1000, xfy, And).
+:- op(600, xfy, In).
+:- op(500, xfy, &).
+:- op(50, xf, days).
+:- op(50, xf, months).
+:- op(50, xf, weeks).
+:- op(50, xf, years).
+:- op(50, xf, hours).
+:- op(50, xf, mins).
+:- op(50, xf, secs).
+arulesxl_user_license(`000016-0A5J2X-U166G6-MHVW6V-Z5HCJU-MMERV8-6E8MTB-AG4E9E-XDVWN9-89EUM0`).
+:- module(CompRules).
+
+know(OTV, '[]', 13000, 'Sheet1!F2', [obj([OTV]) = 13000]).
+know(RevAttainment, '[]', 272244, 'Sheet1!F3', [obj([RevAttainment]) = 272244]).
+know(RevQuota, '[]', 100000, 'Sheet1!F4', [obj([RevQuota]) = 100000]).
+know(CRAttainment, '[]', 99, 'Sheet1!F5', [obj([CRAttainment]) = 99]).
+know(MIC, '[]', _X1, 'Sheet1!F6', [obj([MIC]) = _X1]).
+know(Component1, '[]', _X1, 'Sheet1!F7', [obj([Component1]) = _X1]).
+know(Component2, '[]', _X1, 'Sheet1!F8', [obj([Component2]) = _X1]).
+know(Level1Floor, '[]', 0, 'Sheet1!F9', [obj([Level1Floor]) = 0]).
+know(Level1Ceiling, '[]', _X1, 'Sheet1!F10', [obj([Level1Ceiling]) = _X1]).
+know(Level2Floor, '[]', _X1, 'Sheet1!F11', [obj([Level2Floor]) = _X1]).
+know(Level2Ceiling, '[]', _X1, 'Sheet1!F12', [obj([Level2Ceiling]) = _X1]).
+know(Level3Floor, '[]', _X1, 'Sheet1!F13', [obj([Level3Floor]) = _X1]).
+know(Level3Ceiling, '[]', _X1, 'Sheet1!F14', [obj([Level3Ceiling]) = _X1]).
+know(Level4Floor, '[]', _X1, 'Sheet1!F15', [obj([Level4Floor]) = _X1]).
+know(Level4Ceiling, '[]', 9999999, 'Sheet1!F16', [obj([Level4Ceiling]) = 9999999]).
+know(Level1Payout, '[]', _X1, 'Sheet1!F17', [obj([Level1Payout]) = _X1]).
+know(Level2Payout, '[]', _X1, 'Sheet1!F18', [obj([Level2Payout]) = _X1]).
+know(Level3Payout, '[]', _X1, 'Sheet1!F19', [obj([Level3Payout]) = _X1]).
+know(Level1CommRate, '[]', _X1, 'Sheet1!F20', [obj([Level1CommRate]) = _X1]).
+know(Level2CommRate, '[]', _X1, 'Sheet1!F21', [obj([Level2CommRate]) = _X1]).
+know(Level3CommRate, '[]', _X1, 'Sheet1!F22', [obj([Level3CommRate]) = _X1]).
+know(Level4CommRate, '[]', _X1, 'Sheet1!F23', [obj([Level4CommRate]) = _X1]).
+know(Level1Comm, '[]', 0, 'Sheet1!F24', [obj([Level1Comm]) = 0]).
+know(Level2Comm, '[]', 0, 'Sheet1!F25', [obj([Level2Comm]) = 0]).
+know(Level3Comm, '[]', 0, 'Sheet1!F26', [obj([Level3Comm]) = 0]).
+know(Level4Comm, '[]', 0, 'Sheet1!F27', [obj([Level4Comm]) = 0]).
+know(Level1Comm, '[]', _X1, 'Sheet1!F28', [obj([Level1Comm]) = _X1]).
+know(Level2Comm, '[]', _X1, 'Sheet1!F29', [obj([Level2Comm]) = _X1]).
+know(Level3Comm, '[]', _X1, 'Sheet1!F30', [obj([Level3Comm]) = _X1]).
+know(Level4Comm, '[]', _X1, 'Sheet1!F31', [obj([Level4Comm]) = _X1]).
+know(Level2CRComm, '[]', 0, 'Sheet1!F32', [obj([Level2CRComm]) = 0, obj([Level3CRComm]) = 0]).
+know(Level3CRComm, '[]', 0, 'Sheet1!F32', [obj([Level2CRComm]) = 0, obj([Level3CRComm]) = 0]).
+know(Level2CRComm, '[]', _X1, 'Sheet1!F33', [obj([Level2CRComm]) = _X1]).
+know(Level2CRComm, '[]', _X1, 'Sheet1!F34', [obj([Level2CRComm]) = _X1, obj([Level3CRComm]) = 0]).
+know(Level3CRComm, '[]', 0, 'Sheet1!F34', [obj([Level2CRComm]) = _X1, obj([Level3CRComm]) = 0]).
+know(Level3CRComm, '[]', _X1, 'Sheet1!F35', [obj([Level3CRComm]) = _X1]).
+know(TotalComm, '[]', _X1, 'Sheet1!F36', [obj([TotalComm]) = _X1]).
+
+rule('Sheet1!F2', [obj([OTV]) = 13000]) :- 
+    true,
+    evallist('[]').
+rule('Sheet1!F3', [obj([RevAttainment]) = 272244]) :- 
+    true,
+    evallist('[]').
+rule('Sheet1!F4', [obj([RevQuota]) = 100000]) :- 
+    true,
+    evallist('[]').
+rule('Sheet1!F5', [obj([CRAttainment]) = 99]) :- 
+    true,
+    evallist('[]').
+rule('Sheet1!F6', [obj([MIC]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([OTV]), _X2)/12 = _X1]).
+rule('Sheet1!F7', [obj([Component1]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([MIC]), _X2)*0.7 = _X1]).
+rule('Sheet1!F8', [obj([Component2]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([MIC]), _X2)*0.3 = _X1]).
+rule('Sheet1!F9', [obj([Level1Floor]) = 0]) :- 
+    true,
+    evallist('[]').
+rule('Sheet1!F10', [obj([Level1Ceiling]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([RevQuota]), _X2)*0.7 = _X1]).
+rule('Sheet1!F11', [obj([Level2Floor]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([Level1Ceiling]), _X2) = _X1]).
+rule('Sheet1!F12', [obj([Level2Ceiling]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([RevQuota]), _X2) = _X1]).
+rule('Sheet1!F13', [obj([Level3Floor]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([Level2Ceiling]), _X2) + 1 = _X1]).
+rule('Sheet1!F14', [obj([Level3Ceiling]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([Level2Ceiling]), _X2)*1.15 = _X1]).
+rule('Sheet1!F15', [obj([Level4Floor]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([Level3Ceiling]), _X2) + 1 = _X1]).
+rule('Sheet1!F16', [obj([Level4Ceiling]) = 9999999]) :- 
+    true,
+    evallist('[]').
+rule('Sheet1!F17', [obj([Level1Payout]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([Component1]), _X2)*0.67 = _X1]).
+rule('Sheet1!F18', [obj([Level2Payout]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([Component1]), _X2) - Find(CompRules, obj([Level1Payout]), _X3) = _X1]).
+rule('Sheet1!F19', [obj([Level3Payout]) = _X1]) :- 
+    true,
+    evallist([(Find(CompRules, obj([Level3Ceiling]), _X2) - Find(CompRules, obj([Level2Ceiling]), _X3))*Find(CompRules, obj([Level3CommRate]), _X4) = _X1]).
+rule('Sheet1!F20', [obj([Level1CommRate]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([Level1Payout]), _X2)/Find(CompRules, obj([Level1Ceiling]), _X3) = _X1]).
+rule('Sheet1!F21', [obj([Level2CommRate]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([Level2Payout]), _X2)/(Find(CompRules, obj([Level2Ceiling]), _X3) - Find(CompRules, obj([Level1Ceiling]), _X4)) = _X1]).
+rule('Sheet1!F22', [obj([Level3CommRate]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([Level2CommRate]), _X2)*1.5 = _X1]).
+rule('Sheet1!F23', [obj([Level4CommRate]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([Level2CommRate]), _X2)*2 = _X1]).
+rule('Sheet1!F24', [obj([Level1Comm]) = 0]) :- 
+    eval(Find(CompRules, obj([RevAttainment]), _X1), _X2),
+    eval(Find(CompRules, obj([Level1Ceiling]), _X3), _X4),
+    test(<, _X2, _X4),
+    evallist('[]').
+rule('Sheet1!F25', [obj([Level2Comm]) = 0]) :- 
+    eval(Find(CompRules, obj([RevAttainment]), _X1), _X2),
+    eval(Find(CompRules, obj([Level2Floor]), _X3), _X4),
+    test(<, _X2, _X4),
+    evallist('[]').
+rule('Sheet1!F26', [obj([Level3Comm]) = 0]) :- 
+    eval(Find(CompRules, obj([RevAttainment]), _X1), _X2),
+    eval(Find(CompRules, obj([Level3Floor]), _X3), _X4),
+    test(<, _X2, _X4),
+    evallist('[]').
+rule('Sheet1!F27', [obj([Level4Comm]) = 0]) :- 
+    eval(Find(CompRules, obj([RevAttainment]), _X1), _X2),
+    eval(Find(CompRules, obj([Level4Floor]), _X3), _X4),
+    test(<, _X2, _X4),
+    evallist('[]').
+rule('Sheet1!F28', [obj([Level1Comm]) = _X1]) :- 
+    eval(Find(CompRules, obj([RevAttainment]), _X2), _X3),
+    eval(Find(CompRules, obj([Level1Ceiling]), _X4), _X5),
+    test(>=, _X3, _X5),
+    evallist([Find(CompRules, obj([Level1Payout]), _X6) = _X1]).
+rule('Sheet1!F29', [obj([Level2Comm]) = _X1]) :- 
+    eval(Find(CompRules, obj([RevAttainment]), _X2), _X3),
+    eval(Find(CompRules, obj([Level2Ceiling]), _X4), _X5),
+    test(>=, _X3, _X5),
+    evallist([Find(CompRules, obj([Level2Payout]), _X6) = _X1]).
+rule('Sheet1!F30', [obj([Level3Comm]) = _X1]) :- 
+    eval(Find(CompRules, obj([RevAttainment]), _X2), _X3),
+    eval(Find(CompRules, obj([Level3Ceiling]), _X4), _X5),
+    test(>=, _X3, _X5),
+    evallist([Find(CompRules, obj([Level3Payout]), _X6) = _X1]).
+rule('Sheet1!F31', [obj([Level4Comm]) = _X1]) :- 
+    true,
+    evallist([(Find(CompRules, obj([RevAttainment]), _X2) - Find(CompRules, obj([Level3Ceiling]), _X3))*Find(CompRules, obj([Level4CommRate]), _X4) = _X1]).
+rule('Sheet1!F32', [obj([Level2CRComm]) = 0, obj([Level3CRComm]) = 0]) :- 
+    eval(Find(CompRules, obj([CRAttainment]), _X1), _X2),
+    true,
+    test(=<, _X2, 70),
+    evallist('[]').
+rule('Sheet1!F33', [obj([Level2CRComm]) = _X1]) :- 
+    eval(Find(CompRules, obj([CRAttainment]), _X2), _X3),
+    true,
+    test(>, _X3, 100),
+    evallist([Find(CompRules, obj([Component2]), _X4) = _X1]).
+rule('Sheet1!F34', [obj([Level2CRComm]) = _X1, obj([Level3CRComm]) = 0]) :- 
+    eval(Find(CompRules, obj([CRAttainment]), _X2), _X3),
+    true,
+    test(>, _X3, 70),
+    eval(Find(CompRules, obj([CRAttainment]), _X4), _X5),
+    true,
+    test(=<, _X5, 100),
+    evallist([Find(CompRules, obj([Component2]), _X6)*Find(CompRules, obj([CRAttainment]), _X7)/100 = _X1]).
+rule('Sheet1!F35', [obj([Level3CRComm]) = _X1]) :- 
+    eval(Find(CompRules, obj([CRAttainment]), _X2), _X3),
+    true,
+    test(>, _X3, 100),
+    evallist([Find(CompRules, obj([Component2]), _X4)*5*(Find(CompRules, obj([CRAttainment]), _X5) - 100)/100 = _X1]).
+rule('Sheet1!F36', [obj([TotalComm]) = _X1]) :- 
+    true,
+    evallist([Find(CompRules, obj([Level1Comm]), _X2) + Find(CompRules, obj([Level2Comm]), _X3) + Find(CompRules, obj([Level3Comm]), _X4) + Find(CompRules, obj([Level4Comm]), _X5) + Find(CompRules, obj([Level2CRComm]), _X6) + Find(CompRules, obj([Level3CRComm]), _X7) = _X1]).
+:- end_module(CompRules).

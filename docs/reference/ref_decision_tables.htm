@@ -1,0 +1,172 @@
+<html><!-- #BeginTemplate "/Templates/arulesxl.dwt" --><!-- DW6 -->
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="../arulesxl.css" />
+<!-- #BeginEditable "doctitle" -->
+<title>Reference - Decision Tables</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1><!-- #BeginEditable "head" -->Reference <!-- #EndEditable --></h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="../images/logo.gif" width="150" height="115" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+<p><font size="-1"><b><a href="../index.htm" target=_top>Top</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../install.htm">Installation</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../introduction.htm">Introduction</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../samples.htm">Samples</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="../tutorial.htm">Tutorial</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../reference.htm">Reference</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../release_notes.htm">Release Notes</a></b></font></p>
+<hr>
+<!-- #BeginEditable "body" --> 
+<h2><a name="decision_tables"></a>Decision Tables</h2>
+<p> 
+  <!amzi_index=Decision Tables; Table; *>
+  Rules can be expressed as decision tables. This tablular format is easier to 
+  use for rules that fit a regular format. For example this table returns the 
+  pricing rate of a phone call:</p>
+<blockquote>
+<p><b>Table rate </b></p>
+<table border="1" cellpadding="1" cellspacing="0">
+  <tr>
+    <td bordercolor="#000099" bgcolor="#C6FFFF"><pre><b>weekend</b></pre></td>
+    <td bordercolor="#000099" bgcolor="#C6FFFF"><pre><b>daytime</b></pre></td>
+    <td bordercolor="#000099" bgcolor="#C6FFFF"><pre><b>rate</b></pre></td>
+  </tr>
+  <tr>
+    <td valign="middle" bordercolor="#000099" bgcolor="#C6FFFF"><pre>&quot;yes&quot;</pre></td>
+    <td valign="middle" bordercolor="#000099" bgcolor="#C6FFFF"><pre>*</pre></td>
+    <td valign="middle" bordercolor="#000099" bgcolor="#C6FFFF"><pre>0.05</pre>
+      </td>
+  </tr>
+  <tr>
+    <td valign="middle" bordercolor="#000099" bgcolor="#C6FFFF"><pre>&quot;no&quot;</pre></td>
+    <td valign="middle" bordercolor="#000099" bgcolor="#C6FFFF"><pre>&quot;no&quot;</pre></td>
+    <td valign="middle" bordercolor="#000099" bgcolor="#C6FFFF"><pre>0.09</pre>
+      </td>
+  </tr>
+  <tr>
+    <td valign="middle" bordercolor="#000099" bgcolor="#C6FFFF"><pre>&quot;no&quot;</pre></td>
+    <td valign="middle" bordercolor="#000099" bgcolor="#C6FFFF"><pre>&quot;yes&quot;</pre></td>
+    <td valign="middle" bordercolor="#000099" bgcolor="#C6FFFF"><pre>0.12</pre>
+      </td>
+  </tr>
+</table>
+</blockquote>
+<p>The table is equivalent to these rules:</p>
+<pre>rate = 0.05 WHEN weekend = &quot;yes&quot;
+rate = 0.09 WHEN weekend = &quot;no&quot; AND daytime = &quot;no&quot;
+rate = 0.12 WHEN weekend = &quot;no&quot; AND daytime = &quot;yes&quot;</pre>
+<p>Note, the * as a value in a table means that property can have any value, hence that fact is omitted from the rule. </p>
+<h3><a name="format"></a>Format</h3>
+<p>
+  <!amzi_index=Conditions; Expressions>
+Decision tables are included in rule sets. They:</p>
+<ul>
+  <li>Start with 'Table' followed by the list of the output facts (separated 
+    by spaces) for the table.</li>
+  <li>Have one row of column headers, each of which is a fact name.</li>
+  <li>The output facts mentioned in the 'Table' statement must appear has 
+    headers. Any number of additional input facts can appear as well.</li>
+  <li>There can be any number of data rows.</li>
+  <li>For input columns, the data must be a value, an expression that evaluates 
+    to a value, and can optionally contain the comparison operators: &gt; &lt; 
+    &gt;= &lt;= AND OR NOT.</li>
+  <li>For output columns the data must a value or an expression that evaluates 
+    to a value. That value will be assigned to the output fact if that row 
+    meets the criteria specified in the input columns.</li>
+  <li>End with a blank row.</li>
+  <li>If the table does not fill the columns in the rule set, then it must be 
+    bordered by blank cells on the right edge as well.</li>
+</ul>
+<p>ARulesXL will draw a border around the table. This lets your verify that it has been defined properly. </p>
+<p>Here are some examples of valid expressions in an input column. See the <i>Decision 
+  Table.xls</i> sample for more examples.</p>
+<blockquote><table border="1" cellpadding="1" cellspacing="0">
+  <tr>
+    <td bordercolor="#000099" bgcolor="#C6FFFF">
+      <pre><b>value</b></pre></td>
+    </tr>
+  <tr>
+    <td bordercolor="#000099" bgcolor="#C6FFFF">
+      <pre>&gt; 800 AND &lt; 1800</pre></td>
+    </tr>
+  <tr>
+    <td bordercolor="#000099" bgcolor="#C6FFFF">
+      <pre>&lt;= 800 OR &gt;= 1800</pre></td>
+    </tr>
+  <tr>
+    <td bordercolor="#000099" bgcolor="#C6FFFF">
+      <pre>MEMBER( myarray )
+</pre></td>
+    </tr>
+  
+  
+</table>
+</blockquote>
+<p>Any condition that can be used on the right side of a WHEN clause in a rule 
+  can be used in a decision table input column, however, the name of the column 
+  fact is implied. The above conditions would be written in rules as:</p>
+<pre>WHEN value &gt; 800 AND value &lt; 1800<br>WHEN value &lt;= 800 OR value &gt;= 1800<br>WHEN value = MEMBER( myarray)</pre>
+<h3><a name="mixing_rules_and_decision_tables"></a>Mixing Rules and Decision Tables    </h3>
+<p>
+  <!amzi_index=Mixing Rules and Decision Tables; Reasoning>
+A very powerful feature of ARulesXL is that you can mix rules and decision tables. This lets you specify the orderly values in a decision table and handle the special cases in rules. For example:</p>
+<blockquote>
+<p><b>Table weekend </b></p>
+<table border="1" cellpadding="1" cellspacing="0">
+  <tr>
+    <td bordercolor="#000099" bgcolor="#C6FFFF"><pre><b>day</b></pre></td>
+    <td bordercolor="#000099" bgcolor="#C6FFFF"><pre><b>weekend</b></pre></td>
+    </tr>
+  <tr>
+    <td bordercolor="#000099" bgcolor="#C6FFFF"><pre>Saturday</pre></td>
+    <td bordercolor="#000099" bgcolor="#C6FFFF"><pre>&quot;yes&quot;</pre></td>
+    </tr>
+  <tr>
+    <td bordercolor="#000099" bgcolor="#C6FFFF"><pre>Sunday</pre></td>
+    <td bordercolor="#000099" bgcolor="#C6FFFF"><pre>&quot;yes&quot;</pre></td>
+    </tr>
+  <tr>
+    <td bordercolor="#000099" bgcolor="#C6FFFF"><pre>MEMBER( weekdays )</pre></td>
+    <td bordercolor="#000099" bgcolor="#C6FFFF"><pre>&quot;no&quot;</pre></td>
+    </tr>
+</table>
+</blockquote>
+<p>The above table returns weekend = &quot;yes&quot; for every day but Saturday and Sunday. However, suppose you want Friday evenings after 6pm to be the weekend rate. You could add another column with the time, or you could add these rules to handle the special case:</p>
+<pre>weekdays = [&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;]
+weekend = &quot;yes&quot; WHEN day = &quot;Friday&quot; and time &gt;= 1800
+weekend = &quot;no&quot; WHEN day = &quot;Friday&quot; and time &lt; 1800</pre>
+<p>When you issue this query:</p>
+<pre>=RQuery(RateTable, &quot;FIND rate WHEN day = &quot;Friday&quot; and time = 1902&quot;)  </pre>
+<p>First, the reasoning engine will look in the weekend table. When it is unable 
+  to match Friday with any row in day, then it looks at the rules. There it finds 
+  the two rules for Friday based on time. </p>
+<p>You can have any number of decision tables and rules in a single rule set.</p>
+<h3><a name="copying_pasting_table_data"></a>Copying and Pasting Table Data  </h3>
+<p>
+<!amzi_index=Copying; Pasting; New Rule Set; Remove Rule Set>If you want to create your decision tables by copying and pasting data from other sources, you need to do this in one of two ways:</p>
+<ul>
+  <li>Instead of using <b>ARulesXL | New Rule Set...,</b> type in your rule set name in the top cell and copy/paste your table headers and data underneath. When you have it all set, select the cell range containing the rule set name and all your tables and rules then use <b>ARulesXL | New Rule Set...</b>; the name of the rule set will already match the one you have entered and the cell range will be your selection. Just click 'OK'.<br>
+    <br>
+  </li>
+  <li>If you already have a rule set, you can click in your rule set and use <b>ARulesXL | Remove Rule Set</b>. This does not delete the contents of your rule set, but just converts it to plain text. From there you can insert your table headers and data as needed. When you are done select all the cells to be in the rule set, and use <b>ARulesXL | New Rule Set...</b> to recreate the rule set. </li>
+</ul>
+<p>&nbsp;</p>
+<!-- #EndEditable --> 
+<hr>
+<table width=100%>
+<tr>
+<td>
+<img src="../images/logo_very_small.gif">
+</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-7 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2>
+</td>
+</tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

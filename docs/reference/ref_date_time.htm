@@ -1,0 +1,80 @@
+<html><!-- #BeginTemplate "/Templates/arulesxl.dwt" --><!-- DW6 -->
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="../arulesxl.css" />
+<!-- #BeginEditable "doctitle" -->
+<title>Reference - Using Dates and Times in Rules</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1><!-- #BeginEditable "head" -->Reference<!-- #EndEditable --></h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="../images/logo.gif" width="150" height="115" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+<p><font size="-1"><b><a href="../index.htm" target=_top>Top</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../install.htm">Installation</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../introduction.htm">Introduction</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../samples.htm">Samples</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="../tutorial.htm">Tutorial</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../reference.htm">Reference</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../release_notes.htm">Release Notes</a></b></font></p>
+<hr>
+<!-- #BeginEditable "body" --> 
+<h2><a name="date_time"></a>Using Dates &amp; Times in Rules </h2>
+
+<p>
+  <!amzi_index=DATE(); DATETIME(); years; months; days; hours; minutes; seconds; TODAY(); NOW()>
+  Dates are expressed in a rule as either <code>DATE(Year, Month, Day) </code>or <code>DATETIME(Year, Month, Day, Hour, Minute, Second)</code>. When Excel dates 
+  or datetimes are input to a rule set, they are automatically converted to the 
+  rule set syntax.</p>
+<p><i>Note that times, without a date, in Excel spreadsheets are not recognized 
+  by VBA as dates, and don't get automatically converted when input to a rule 
+  set. </i></p>
+<p>Date/time intervals are represented as expressions using the terms: year(s), 
+  month(s), day(s), hour(s), minute(s), second(s). </p>
+<p>Examples:</p>
+<pre>cutoff_date = DATE(1988, 8, 28)<b>
+</b>change = DATETIME(2000, 2, 16, 13, 30, 0)
+age_limit = 16 years 6 months<b>
+</b>time_limit = 1 hour 30 minutes</pre>
+<p>Internally, time intervals are represented by the structure <code>ERA(Years, 
+  Months, Days, Hours, Minutes, Seconds)</code>. You won't need this directly, 
+  but may see it in debugging output.</p>
+<p><i>Be careful with negative quantities when subtracting date/time intervals. 
+  An expression with year(s), month(s) etc. is treated as a unit, so a leading 
+  minus applies to all the units. So <code>TODAY() - 25 years - 1 day</code> is 
+  treated as <code>TODAY() - (25 years - 1 day)</code>. Use of explicit parentheses 
+  is recommend in these cases.</i></p>
+<p>Date/times and intervals can be used in expressions in rules. Two special functions 
+  can also be used:</p>
+<ul>
+  <li>TODAY() &#8212; the current date</li>
+  <li>NOW() &#8212; the current date and time</li>
+</ul>
+<p>Examples of date/times in rules:</p>
+<pre>license = Student WHEN age > 16 years 6 months<b>
+</b>expiration_date = start_date + 9 months<b>
+</b>age = TODAY() - birthday
+</pre>
+<p>There are also a number of <a href="ref_rule_functions.htm#datetime">date and time functions</a> that can be used in rules, for example DAY(), WEEKDAY(), MONTH() and YEAR(). </p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="100%" scope="col"><h4><a href="ref_date_time.htm" target="_blank">Open in New Window to Print</a></h4></th>
+  </tr>
+</table>
+<!-- #EndEditable --> 
+<hr>
+<table width=100%>
+<tr>
+<td>
+<img src="../images/logo_very_small.gif">
+</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-7 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2>
+</td>
+</tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

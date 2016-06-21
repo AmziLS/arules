@@ -1,0 +1,4 @@
+Starting Trace
+2006/11/22  7:44:59
+QUERY RateTable:  FIND .rate WHEN .weekend = 
+error;;;;

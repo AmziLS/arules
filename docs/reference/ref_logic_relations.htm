@@ -1,0 +1,181 @@
+<html><!-- #BeginTemplate "/Templates/arulesxl.dwt" --><!-- DW6 -->
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="../arulesxl.css" />
+<!-- #BeginEditable "doctitle" -->
+<title>Reference - Using Logic Relations for Advanced Pattern Matching</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1><!-- #BeginEditable "head" -->Reference<!-- #EndEditable --></h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="../images/logo.gif" width="150" height="115" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+<p><font size="-1"><b><a href="../index.htm" target=_top>Top</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../install.htm">Installation</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../introduction.htm">Introduction</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../samples.htm">Samples</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="../tutorial.htm">Tutorial</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../reference.htm">Reference</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../release_notes.htm">Release Notes</a></b></font></p>
+<hr>
+<!-- #BeginEditable "body" --> 
+<h2><a name="logic_relation"></a>Using Logic Relations for Advanced Pattern Matching </h2>
+
+<p> 
+  <!amzi_index=Logic Relations; Predicates; Recursion; Lists; Pattern Matching Variables>
+  In addition to setting fact values, rules can specify logical relationships. 
+  Logical relationships are, in general, more abstract than other types of rules, 
+  which makes them powerful but a bit more challenging to master.</p>
+<p>A logic relationship is specified:</p>
+<blockquote>
+  <p>name{ arg1, arg2, ..., argN } WHEN conditions</p>
+  <blockquote>
+    <p>name &#8212; the name of the logic relation</p>
+    <p>arg1, arg2, ... argN &#8212; the values involved in the relation.</p>
+    <p>conditions &#8212; the conditions under which the relation is true. The conditions 
+      are optional.</p>
+  </blockquote>
+</blockquote>
+<p>Note that syntactically logic relations are distinguished from facts 
+  by the use of curly braces {} instead of parentheses () or brackets []. </p>
+<p>For example, here are some relations that might be involved in genealogical 
+  trees:</p>
+<pre>parent{ &quot;Dan&quot;, &quot;Russell&quot; }
+parent{ &quot;Dan&quot;, &quot;Carol&quot; }
+parent{ &quot;Ralph&quot;, &quot;Dennis&quot; }
+parent{ &quot;Mary&quot;, &quot;Dan&quot; }
+parent{ &quot;Mary&quot;, &quot;Ralph&quot; }
+parent{ &quot;Carol&quot;, &quot;Jean&quot; }
+parent{ &quot;Carol&quot;, &quot;Michael&quot; }</pre>
+<p>Each of these states the parent relation between two people, so Dan is the 
+  parent of Russell.</p>
+<p>Typically, logic relations use pattern-matching variables to express general 
+  relationships. For example, this relation can be used to express a sibling (brother/sister) 
+  relationship:</p>
+<pre>sibling{ ?x, ?y } WHEN parent{ ?p, ?x } AND parent{ ?p, ?y } AND ?x &lt;&gt; ?y</pre>
+<p>It says the <code>?x</code> and <code>?y</code> are siblings when they both 
+  have the same parent, <code>?p</code>. The last condition prevents the relation 
+  for being true of a person with them self.</p>
+<p>Each of these logical relations can be used in other rules. So these two rules 
+  might also be in the rule set with the above relations:</p>
+<pre>parent = ?p WHEN parent{ ?p, person }
+sibling = ?s WHEN sibling{ ?s, person}</pre>
+<p>They might be queried like this:</p>
+<pre>FIND parent AND sibling WHEN person = &quot;Carol&quot;</pre>
+<p>The result of the query would be: [&quot;Dan&quot;, &quot;Russell&quot;]</p>
+<p>Relations can refer to other relations. So the cousin relation will be true 
+  between two people when their parents are siblings:</p>
+<pre>cousin{ ?x, ?y } WHEN parent{ ?px, ?x } AND parent{ ?py, ?y } AND sibling{ ?px, ?py }</pre>
+<p>Logical relations are often used with FINDALL() to find an array or list of 
+  values. The following rule will find all of the cousins of a person:</p>
+<pre>cousins = FINDALL( ?c, cousin{ ?c, person } )</pre>
+<p>The query:</p>
+<pre>FIND cousins WHEN person = &quot;Dennis&quot;</pre>
+<p>yields [&quot;Russell&quot;, &quot;Carol&quot;]</p>
+<h3><a name="recursion"></a>Recursion</h3>
+<p>
+  <!amzi_index=Recursion>
+  Logic relations can recursively refer to themselves. Recursive logic relations 
+  have at least two rules. The first one specifies the simple case, and the others 
+  define the recursive cases. For example the ancestor relation can be defined 
+  recursively as:</p>
+<ul>
+  <li>A person is an ancestor of another person when that person is a parent 
+    (simple).</li>
+  <li>A person is an ancestor of another person when he/she is the ancestor of 
+    that person's parent.</li>
+</ul>
+<p>In logic relations:</p>
+<pre>ancestor{ ?a, ?x } WHEN parent{ ?a, ?x }
+ancestor{ ?a, ?x } WHEN parent{ ?y, ?x } AND ancestor{ ?a, ?y }
+</pre>
+<p>This can be used with FINDALL to find all of someone's ancestors:</p>
+<pre>ancestors = FINDALL( ?a, ancestor{ ?a, person } )</pre>
+<h3><a name="lists"></a>Lists</h3>
+<p>
+  <!amzi_index=Lists; Head; Tail>
+  Lists are represented with square brackets. ex. <code>[1,2,3,4]</code>, <code>[&quot;apples&quot;, 
+  &quot;pears&quot;, &quot;bike&quot;, &quot;skates&quot;]</code></p>
+<p>A special syntax is used to refer to a list in two parts:</p>
+<ul>
+  <li>the first element of the list, called the <b>head</b> and</li>
+  <li>a list of the remaining elements in the list, called the <b>tail</b>.</li>
+</ul>
+<p>It is <code>[ ?head | ?tail ]</code></p>
+<p>The head of [1,2,3,4] is 1, and the tail is [2,3,4].</p>
+<p>The symbol <code>[]</code> is used to represent an empty list.</p>
+<p>These two syntactic elements can be used in recursive logic relations to apply 
+  a transformation to each element of a list. For example, supposed we wanted 
+  to double each number in a list of numbers.</p>
+<p>The logic relation double would be used to express the relation between one 
+  list and a list of doubled values. The recursive rules are:</p>
+<ul>
+  <li>An empty list is already the double of another empty list.</li>
+  <li>The head of the doubled list is 2 * the head of the input list, and the 
+    tail of the doubled list is in the double relation with the tail of the input 
+    list. (In other words, double the first element and recursively double the 
+    rest.)</li>
+</ul>
+<pre>double{ [], [] }
+double{ [?x | ?xs], [?xx | ?xxs] } WHEN ?xx = 2 * ?x AND double{ ?xs, ?xxs }</pre>
+<p>This can be used by the following rule and query:</p>
+<pre>double = ?d WHEN double{input, ?d }</pre>
+<pre>FIND double WHEN input = [1,2,3,4]</pre>
+<p>The answer will be: [2,4,6,8]</p>
+<p>Sometimes it is necessary to create a new list from an old one based on other 
+  rules in a rule set. Consider these facts and rules in a rule set:</p>
+<pre>fruit[&quot;pear&quot;]
+fruit[&quot;apple&quot;]
+vegetable[&quot;corn&quot;]
+edible[?x] WHEN fruit[?x] OR vegetable[?x]</pre>
+<p>Then a recursive predicate could be written to pick just the edible items from 
+  a list. It would have three rules:</p>
+<ul>
+  <li>The relation holds between two empty lists (this terminates the recursion),</li>
+  <li>The head of the output list is the same as that of the input list when the 
+    head is edible, and recurse on the tail.</li>
+  <li>The head of the input list is dropped when it is not edible, and the recursion 
+    continues with the tail.</li>
+</ul>
+<pre>edibles{ [], [] }
+edibles{ [?x | ?xs], [?x | ?ys] } WHEN edible[ ?x ] AND edibles{ ?xs, ?ys }
+edibles{ [?x | ?xs], ?ys } WHEN NOT edible[ ?x ] AND edibles{ ?xs, ?ys }
+</pre>
+<p>This rule and query can be used to pick off the edible items from a list:</p>
+<pre>edibles = ?e WHEN edibles{ input, ?e }</pre>
+<pre>FIND edibles WHEN input = [&quot;corn&quot;, &quot;apple&quot;, &quot;bike&quot;, &quot;toaster&quot;, &quot;pear&quot;]</pre>
+<p>The answer will be: [&quot;corn&quot;, &quot;apple&quot;, &quot;pear&quot;]</p>
+<h3><a name="not_using_logic_relations"></a>Not Using Logic Relations</h3>
+<p>
+  <!amzi_index=FINDALL(); MEMBER()>
+  For most applications, it is not necessary to use recursive logic relations. 
+  For example, the list of edibles above could also have been generated using 
+  the MEMBER() function to pick elements from a list and FINDALL() to gather all 
+  the results:</p>
+<pre>edibles = FINDALL( ?e, ( ?e = MEMBER( input ) AND edible[?e] ) )</pre>
+<p>The doubles could have also been found the same way:</p>
+<pre>doubles = FINDALL( ?d, ( ?x = MEMBER( input ) AND ?d = 2 * ?x ) )</pre>
+<p>When the list transformations are more complex, however, then the added power 
+  of recursive logic relations becomes more necessary.</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="100%" scope="col"><h4><a href="ref_logic_relations.htm" target="_blank">Open in New Window to Print</a></h4></th>
+  </tr>
+</table>
+<!-- #EndEditable --> 
+<hr>
+<table width=100%>
+<tr>
+<td>
+<img src="../images/logo_very_small.gif">
+</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-7 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2>
+</td>
+</tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

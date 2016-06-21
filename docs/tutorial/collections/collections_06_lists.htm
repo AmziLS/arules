@@ -1,0 +1,90 @@
+<html><!-- #BeginTemplate "/Templates/tutorial_collections.dwt" --><!-- DW6 -->
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="../../arulesxl.css" />
+<!-- #BeginEditable "doctitle" -->
+
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1><!-- #BeginEditable "head" -->Lists and COLLECT()<!-- #EndEditable --></h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="../../images/logo.gif" width="150" height="115" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+<p><font size="-1"><b><a href="../../tutorial.htm" target=_top>Tutorial Index</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="collections_01-02_rules_decision_tables.htm" target=_top>Rules &amp; Decision Tables</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="collections_03_column_queries.htm" target=_top>Column Queries</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="collections_04_property_arrays.htm" target=_top>Arrays</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="collections_05_data_tables.htm">Tables &amp; Pattern Matching</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="collections_06_lists.htm" target=_top>Lists</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="collections_07_vba.htm" target=_top>VBA</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="collections_08_modules.htm" target=_top>Multiple Rule Sets</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="collections_09_array_queries.htm" target=_top>Array Queries</a></b></font></p>
+<hr>
+<!-- #BeginEditable "body" --> 
+<h3><a name="loans_06_lists"></a>loans_06_lists.xls</h3>
+<p>Rather than adding columns to the worksheet input data, the application might 
+  require separate reporting of all the loans a particular investor can accept. 
+  For <var>Ace</var>, this would be loans 101, 104, 105, 108, 110 and 112.</p>
+<p>Lists are represented in ARulesXL with square brackets, so the resaleable loans 
+  for <var>Ace</var> would be: <var>[101, 104, 105, 108, 110, 112]</var>.</p>
+<p>Lists are generated in ARulesXL using the <var>COLLECT</var> statement. Here 
+  is our application requirement:</p>
+<blockquote> 
+  <p><i>For a given investor, find all the loan ids of loans that can be resold 
+    to that investor.</i></p>
+</blockquote>
+<p>And here is how it is expressed in ARulesXL using <var>COLLECT</var> to loop 
+  through all the loans looking for the resaleable ones:</p>
+<pre>Resaleable[ ?investor ] = COLLECT ?id FOREACH ?id = INDEX( loans, 1 ) WHERE Resell[?investor, ?id] = yes</pre>
+<p>For <var>Resaleable['Ace']</var>, this will create the list <var>[101, 104, 
+  105, 108, 110, 112]</var> as shown in the screen shot. <var>COLLECT</var> and 
+  the <var>INDEX()</var> function are explained in more detail below.</p>
+<p><img src="images/collections_06_lists.gif" width="1074" height="714"><br>
+  <cite>loans_06_lists.xls</cite> </p>
+<p>The syntax of <var>COLLECT</var> is:</p>
+<pre>COLLECT item(s) FOREACH loop variable(s) WHERE condition(s)</pre>
+<ul>
+  <li><em>item(s)</em> - The variable(s) output from each pass through the loop. 
+    Multiple output variables can be put in a list <var>[?x, ?y]</var>, so the 
+    output will be a list of lists.</li>
+  <li><em>loop variable(s)</em> - The variables that control the loop and how 
+    they are generated. Multiple generator phrases can be separated by <var>AND</var> 
+    and enclosed in parenthesis.</li>
+  <li><em>condition(s)</em> - The conditions and other goals used to set 
+    the output variable values. Multiple conditions can be enclosed in parenthesis 
+    and contain any of the syntax allowed in rule conditions.</li>
+</ul>
+<p><var>COLLECT</var> can also be entered as a function with three arguments:</p>
+<pre>COLLECT( item(s), loop variable(s), condition(s) )</pre>
+<p>This is useful when other ARulesXL list processing functions are to be applied 
+  to the list. For example, the <var>SORT()</var> function might used to sort 
+  the list output from <var>COLLECT()</var>.</p>
+<p>The values of the loop variables can be set in a variety of ways. In this case 
+  the values are the row indices of the input table <var>loans</var>. The <var>INDEX()</var> 
+  function can be used to generate all of the index values from a table. The syntax 
+  is:</p>
+<pre>INDEX( table, index )</pre>
+<ul>
+  <li><em>table</em> - The table name</li>
+  <li><em>index</em> - The index. For two-dimensional tables 1 is the 
+    row index and 2 is the column index. Tables can have more than two dimensions.</li>
+</ul>
+<p>So in the example <var>INDEX( loans, 1 )</var> will generate the values 101, 
+  102, 103, ..., 115. If column indices were needed, <var>INDEX( loans, 2 )</var> 
+  would generate the values AMOUNT, FICO, LTV, Occupancy, and Rate.</p>
+<p>&nbsp;</p>
+<!-- #EndEditable --> 
+<hr>
+<table width=100%>
+<tr>
+<td>
+<img src="../../images/logo_very_small.gif">
+</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-7 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2>
+</td>
+</tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

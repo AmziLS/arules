@@ -1,0 +1,167 @@
+<html><!-- #BeginTemplate "/Templates/tutorial.dwt" --><!-- DW6 -->
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="../arulesxl.css" />
+<!-- #BeginEditable "doctitle" -->
+<title>Tutorial - Using Tables, Arrays, Lists, Facts &amp; Variables</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1><!-- #BeginEditable "head" -->Tutorial<br>
+      <font size="4">Using Tables, Arrays, Lists, Facts &amp; Variables</font>   <!-- #EndEditable --></h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="../images/logo.gif" width="150" height="115" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+<p><font size="-1"><b><a href="../index.htm" target=_top>Top</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../index_install.htm" target=_top>Installation</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../index_intro.htm" target=_top>Introduction</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../samples.htm">Samples</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="../index_tutor.htm" target=_top>Tutorial</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../index_ref.htm" target=_top>Reference</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../release_notes.htm" target=_top>Release Notes</a></b></font></p>
+<hr>
+<!-- #BeginEditable "body" --> 
+<h2><a name="tables"></a>Using Tables, Arrays and Lists</h2>
+<p> 
+  <!amzi_index=Tables; RTable()>
+  Fact names in ARulesXL can be indexed by names or numbers in square brackets 
+  to represent lists and arrays, for example <code>revenues[1]</code> or <code>data[Q1, 
+  Expenses]</code>. You can have as many dimensions as you need. Indexed facts 
+  are also used to load data tables into a rule set. Consider the <i>Arrays &amp; 
+  Lists</i> worksheet in <i>Techniques Basic.xls</i>:</p>
+<p align="center"><img src="../images/Example%20Tables.gif" width="771" height="255"></p>
+<p>The function <code>RArray()</code> allows you to load a single dimension array 
+  (called a list) or multi-dimensional arrays. In this example, two arrays are 
+  loaded, the Income Statement by Quarter and just the Revenues row. The parameters 
+  to <code>RArray()</code> are:</p>
+<ol>
+  <li>The name of the fact in the rule set.</li>
+  <li>If the table has row headings.</li>
+  <li>If the table has column headings.</li>
+  <li>If the table is a list (vector), e.g. it has one dimension.</li>
+</ol>
+<p>The first <code>RArray()</code> loads an array named <code>data</code> with 
+  two indices. The row and column headings come from the table itself, so values 
+  can be referred to as:</p>
+<pre>data[Revenues, Q2]<br>data[Income, Q4]</pre>
+<p>The second <code>RArray()</code> loads a list of numbers named <code>revenues</code> 
+  without any headings. Values in this list are referred to as:</p>
+<pre>revenues[1]
+revenues[2]</pre>
+<p>The queries illustrate various ways of looking at the data and the use of some 
+  functions that are useful when using arrays and lists. These functions are:</p>
+<ul>
+  <li>SORT() simply sorts a list from lowest to highest.</li>
+  <li>FIRST() returns the first item in a list. (LAST() returns the last item).</li>
+</ul>
+<p>The <i>Techniques Advanced.xls</i> spreadsheet illustrates additional capabilities 
+  with arrays, lists and rule variables (see below).</p>
+<h2><a name="object_property_rules"></a>Multiple Fact Rules</h2>
+<p> 
+  <!amzi_index=Facts, Multiple; Fact Rules; Facts>
+  The rules so far have dealt with single facts. Multiple facts can be used as 
+  well. Assume we had two types of objects to price, gizmos and widgets. We could 
+  then write the rules like:</p>
+<pre>Gizmo<b>.</b>UnitPrice = 10 when Gizmo<b>.</b>Quantity &lt; Gizmo<b>.</b>DiscountQuantity
+Widget<b>.</b>UnitPrice = 10 when Widget<b>.</b>Quantity &lt; Widget<b>.</b>DiscountQuantity</pre>
+<p>There can be any number of properties associated with a property, for example 
+  one might need to refer to: <code>Gizmo<b>.</b>Order<b>.</b>Date</code></p>
+<p>Facts can also be indexed by one or more arguments. The arguments are enclosed 
+  in square brackets and separated by commas.</p>
+<p>The screen shot below shows a version of the pricing application that includes 
+  gizmos and widgets as arguments of a <code>Part</code> property, and also a 
+  rule to compute the total price.</p>
+<p align="center"><img src="../images/Example%20Price%20Rules.gif" width="846" height="360"></p>
+<h2><a name="pattern_matching_variables"></a>Pattern Matching Variables</h2>
+<p> 
+  <!amzi_index=Pattern Matching Variables; Variables, Pattern Matching>
+  Pattern matching variables can be used create a single rule pattern that replaces 
+  many rules. A variable is signified by an initial question mark, for example, 
+  <code>?x</code>.</p>
+<p>In the screen shot above, the rules for UnitPrice of gizmos are the same as 
+  those for widgets. Using a variable, the first four rules can be replaced with 
+  two rules:</p>
+<pre>Part[?x, UnitPrice] = 10 when Part[?x, Quantity] &lt; Part[?x, DiscountQuantity]
+Part[?x, UnitPrice] = 8 when Part[?x, Quantity] &gt;= Part[?x, DiscountQuantity]</pre>
+<p>Notice that the names of variables apply only to a single rule. The <code>?x</code> 
+  variable in the first rule above is used for the pattern in that rule; the <code>?x</code> 
+  variable in the second rule is a different variable and has nothing to do with 
+  the <code>?x</code> in the first rule.</p>
+<p>The rules with variables can be seen at work in the following screen shot.</p>
+<p align="center"><img src="../images/Example%20Price%20Variables.gif" width="888" height="556"></p>
+<h3><a name="how_it_works"></a>How it Works</h3>
+<p> 
+  <!amzi_index=Reasoning Engine; Rule Set Execution Demonstrated>
+  Using the screen shot above as an example, here is what happens when the query 
+  in cell C13 is executed:</p>
+<ol>
+  <li><code>Part[gizmo, quantity]</code> is set to 22, from cell A13</li>
+  <li><code>Part[widget, quantity]</code> is set to 5, from cell B13</li>
+  <li>The first (and only in this case) rule that can be used to find <code>Order.Price</code> 
+    is considered, A6.</li>
+  <li>Rule A6 needs <code>part[gizmo, quantity]</code> and <code>part[widget, 
+    quantity]</code>, both of which are already known, and also needs <code>part[gizmo, 
+    unitprice]</code> and <code>part[widget, unitprice]</code> which are not known.</li>
+  <li>Rule A6 then sends out a sub query to find the value of <code>part[gizmo, 
+    unitprice]</code>.</li>
+  <li>Rule A1, the first of two rules that can be used for <code>part[gizmo, unitprice]</code> 
+    is considered, and the rule variable <code>?x</code> is temporarily set to 
+    gizmo for the sake of the rule.</li>
+  <li>With <code>?x</code> set to gizmo, rule A1 then needs to find <code>part[gizmo, 
+    quantity]</code> and <code>part[gizmo, discountquantity]</code>, both of which 
+    are known as 22 and 15 respectively. Because 22 is not less than 15, the condition 
+    fails and rule A1 is said to have failed.</li>
+  <li>Rule A2, the next rule that can be used to find <code>part[gizmo, unitprice]</code> 
+    is then considered. The <code>?x</code> rule variable in the second rule is 
+    temporarily set to gizmo. The condition of rule A2 succeeds, so now <code>part[gizmo, 
+    unitprice]</code> is known to be 8.</li>
+  <li>This brings us back to A6 which next sends out a subquery for <code>part[widget, 
+    unitprice]</code>.</li>
+  <li>Rule A1 is again the first choice, only this time <code>?x</code> is temporarily 
+    set to widget. Picking up <code>part[widget, quantity]</code> and <code>part[widget, 
+    discountquantity]</code>, the condition succeeds, so A1 is said to succeed 
+    and <code>part[widget, unitprice]</code> is known to be 10.</li>
+  <li>Now A6 has all the data it needs to perform the calculation to get <code>order.price</code> 
+    and return the answer to the query.</li>
+</ol>
+<p>Notice that the rules used for a query are dynamically determined based on 
+  the values of the inputs. This is what makes it possible to specify the rules 
+  in a declarative, natural manner. The underlying software which determines which 
+  rules to use and when is called the reasoning engine.</p>
+<p>The trace feature can be used to watch the reasoning process.</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <th width="50%" scope="col"> 
+      <div align="left"> 
+        <h3><a href="tutor_formulas.htm">Previous</a></h3>
+      </div>
+    </th>
+    <th width="50%" scope="col"> 
+      <div align="right"> 
+        <h3><a href="tutor_runtime.htm">Next</a></h3>
+      </div>
+    </th>
+  </tr>
+  <tr> 
+    <th colspan="2" scope="col"> 
+      <h4><a href="tutor_tables_variables.htm" target="_blank">Open in New Window 
+        to Print</a></h4>
+    </th>
+  </tr>
+</table>
+<!-- #EndEditable --> 
+<hr>
+<table width=100%>
+<tr>
+<td>
+<img src="../images/logo_very_small.gif">
+</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-7 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2>
+</td>
+</tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

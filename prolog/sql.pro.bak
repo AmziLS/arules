@@ -1,0 +1,166 @@
+%---------------------------------------------------------------
+% SQL Connectivity
+%
+
+:- import(list).
+:- import(date_time).
+:- import(aodbc).
+:- include('opdefs.pro').
+
+/*  loaded in the .xla
+sql_load_driver(?type) :-
+   get_parm(sql_driver_loaded(?type), true),
+   !.
+sql_load_driver(MySQL) :-
+   loadlsx('ar_mysql.lsx'),
+   set_parm(sql_driver_loaded(MySQL), true).
+*/
+
+sql_parm(type, ?db, ?type) :- find(system, obj([database(?db),type]), ?type).
+sql_parm(user, ?db, ?user) :- find(system, obj([database(?db),user]), ?user).
+sql_parm(password, ?db, ?password) :- find(system, obj([database(?db),password]), ?password).
+sql_parm(host, ?db, ?host) :- find(system, obj([database(?db),host]), ?host).
+sql_parm(port, ?db, ?port) :- find(system, obj([database(?db),port]), ?port).
+
+sql_connect(?db) :-
+   get_parm(sql_connected(?db), true),
+   !.
+sql_connect(?db) :-
+   sql_parm(type, ?db, ?type),
+%   sql_load_driver(?type),  % loaded in the .xla
+   sql_type_check(?type),
+   sql_type_connect(?type, ?db).
+
+sql_type_check(MySQL) :-
+   predicate_property(mysql_init/2, extended),
+   !.
+sql_type_check(MySQL) :-
+   throw(`Cannot load MySQL library; make sure ar_mysqlrt.dll and libmySQL.dll are on your system PATH`).
+sql_type_check(_) :- !.
+
+sql_type_connect(MySQL, ?db) :-
+   catch(sql_parm(host, ?db, ?host), _, fail),
+   !,
+   catch(sql_parm(port, ?db, ?port), _, ?port = 0),
+   sql_parm(user, ?db, ?user),
+   sql_parm(password, ?db, ?pw),
+   call(mysql_init(?user, ?pw, ?host, ?port)),
+   mysql_connect(?db),
+   set_parm(sql_connected(?db), true).
+sql_type_connect(MySQL, ?db) :-
+   catch(sql_parm(host, ?db, ?host), _, fail),
+   !,
+   ( sql_parm(port, ?db, ?port) ; ?port = 0 ),
+   sql_parm(user, ?db, ?user),
+   sql_parm(password, ?db, ?pw),
+   call(mysql_init(?user, ?pw, ?host, ?port)),
+   mysql_connect(?db),
+   set_parm(db_connected(?db), true).
+sql_type_connect(MySQL, ?db) :-
+   sql_parm(user, ?db, ?user),
+   sql_parm(password, ?db, ?pw),
+   call(mysql_init(?user, ?pw)),
+   mysql_connect(?db),
+   set_parm(sql_connected(?db), true),
+   !.
+   
+sql_query(?db, ?sql, ?table) :-
+   sql_connect(?db),
+   sql_parm(type, ?db, ?type),
+   sql_type_query(?type, ?sql, ?table).
+
+sql_type_query(MySQL, ?sql, ?table) :-
+   mysql_query(?sql, [_| ?table], [string, number]).
+
+%--------------------------------------------------------
+% These are the support predicates needed to make
+% mysql_query work.
+%
+
+mysql_query(?SQL, ?ROWS) :-
+   mysql_query(?SQL, ?ROWS, []).
+   
+mysql_query(?SQL, ?ROWS, ?TYPES) :-
+  mysql_reverse_query(?SQL, ?RevROWS),
+  reverse_rows(?RevROWS, ?TYPES, [], ?ROWS).
+
+reverse_rows([?HEADERS], _, ?ROWS, [?HEADERS| ?ROWS]) :-
+  !.
+reverse_rows([?RR|?RRs], ?TYPES, ?SoFar, ?ROWS) :-
+  type_conversions(?RR, ?TYPES, ?R),
+  !,
+  reverse_rows(?RRs, ?TYPES, [?R| ?SoFar], ?ROWS).
+  
+type_conversions(?ROW, [], ?ROW) :-
+  !.
+type_conversions([?S| ?Ss], [?Type| ?Types], [?T| ?Ts]) :-
+  type_convert(?Type, ?S, ?T),
+  !,
+  type_conversions(?Ss, ?Types, ?Ts).
+
+type_convert(atom, ?S, ?T) :- string_atom(?S, ?T), !.
+type_convert(string, ?S, ?S) :- !.
+type_convert(number, ?S, ?T) :- string_number(?S, ?T), !.
+type_convert(a, ?S, ?T) :- string_atom(?S, ?T), !.
+type_convert(s, ?S, ?S) :- !.
+type_convert(n, ?S, ?T) :- string_number(?S, ?T), !.
+type_convert(_, ?S, ?S).
+
+% The answer is a list of lists, with the first list
+% the headers and the other lists the rows.  Write them
+% on successive lines.
+
+answer_report([]) :-
+  nl, nl, !.
+answer_report([?X| ?Z]) :-
+  writeq(?X),
+  nl,
+  answer_report(?Z).
+
+% Take an input list and create an SQL text string.
+
+build_sql(?List, ?Text) :-
+   sql_stringize(?List, ?StringList),
+   stringlist_concat(?StringList, ?Text).
+
+% stringize/2 converts a list of terms to a list of
+% strings/atoms that can be concatenated using
+% stringlist_concat.  Note the addition of the `'`
+% for text as the result is intended for use in SQL.
+
+sql_stringize([], []) :-
+   !.
+sql_stringize([value(?X)| ?Xs], [`'`, ?X, `'`| ?Ss]) :-  % quote text
+   (atom(?X); string(?X)),
+   !,
+   sql_stringize(?Xs, ?Ss).
+sql_stringize([value(?X)| ?Xs], [?S| ?Ss]) :-   % numbers as is
+   number(?X),
+   string_term(?S, ?X),
+   !,
+   sql_stringize(?Xs, ?Ss).
+sql_stringize([value(?X)| ?Xs], [`'`, ?S, `'`| ?Ss]) :-  % quote whatever else
+   string_term(?S, ?X),
+   !,
+   sql_stringize(?Xs, ?Ss).
+sql_stringize([?X| ?Xs], [?X| ?Ss]) :-
+   (string(?X); atom(?X)),
+   !,
+   sql_stringize(?Xs, ?Ss).
+sql_stringize([?X| ?Xs], [?S| ?Ss]) :-
+   string_term(?S, ?X),
+   !,
+   sql_stringize(?Xs, ?Ss).
+  
+
+%------------------------------------
+% sql tests
+
+dbtest :-
+   mysql_init(`root`, `katoollie`),
+   mysql_connect(`gene`),
+   mysql_query(`SELECT * from people`, ?rows),
+   write(?rows), nl, nl,
+   mysql_query(`SELECT name, midname from people where surname = 'fox'`, ?rows2),
+   write(?rows2), nl,
+   mysql_close.

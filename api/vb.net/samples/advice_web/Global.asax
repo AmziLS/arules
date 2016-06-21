@@ -1,0 +1,1 @@
+<%@ Application Inherits="advice.Global" Language="VB" %>

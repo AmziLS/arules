@@ -1,0 +1,376 @@
+<html><!-- #BeginTemplate "/Templates/arulesxl.dwt" --><!-- DW6 -->
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="arulesxl.css" />
+<!-- #BeginEditable "doctitle" --> 
+<title>Release Notes</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1><!-- #BeginEditable "head" --><a name="release_notes"></a>Release Notes 
+        <!-- #EndEditable --></h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="images/logo.gif" width="150" height="115" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+<p><font size="-1"><b><a href="index.htm" target=_top>Top</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="install.htm">Installation</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="introduction.htm">Introduction</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="samples.htm">Samples</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="tutorial.htm">Tutorial</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="reference.htm">Reference</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="release_notes.htm">Release Notes</a></b></font></p>
+<hr>
+<!-- #BeginEditable "body" -->
+<h2>4-0-3</h2>
+<p>Minor bug fixes and documentation on how to work around the Microsoft Office RefEdit induced bug that produces error messages such as "compile error in hidden module".</p>
+<h2>4-0-2</h2>
+<p>Unlimited free runtime distribution is included with this release. The 3-0-x need for a separate licensed runtime has been eliminated. All of the ARulesXL files can be used as they are for the runtime. They allow full use of any spreadsheets with rules on them, but they do not allow the creation and modification of rules. A full licensed version is required for that.</p>
+<p>Enterprise site licensing is included in 4-0-2. This allows everyone in a given enterprise to download and use the full Professional edition.</p>
+<h2>3-0-3</h2>
+<p><b>DAYS_BETWEEN(?start_date, ?end_date) -</b> This new function returns the 
+  number of days between to dates. This is different from using the arithmetic 
+  operator, -, which returns an interval in years, months and days.</p>
+  <h2>3-0-0</h2>
+
+<h2>3-0-2</h2>
+<p><b>Documentation -</b> The documentation has caught up with the code.</p>
+  <h2>3-0-0</h2>
+<p><b>Syntax &amp; Terminology -</b> The term 'properties' and dot notation caused 
+  some confusion, so we've changed the term and the notation. Properties are now 
+  called 'facts' and are represented as before but without the leading dot. To 
+  avoid ambiguity with values, values now have to be quoted, either with single 
+  or double quotes.</p>
+<p>So a rule like this:</p>
+<p>.status = approved WHEN .rating = good AND .input[balance] &gt; 1000</p>
+<p>Now becomes:</p>
+<p>status = &quot;approved&quot; WHEN rating = &quot;good&quot; AND input['balance'] 
+  &gt; 1000</p>
+<p>An automatic converter is included in the 3x release which, in most cases, 
+  will make all of the necessary changes. There are a few corner cases that will 
+  need hand conversion, and they will be easy to find because of errors generated.</p>
+<p>These are the known cases requiring hand translation:</p>
+<ul>
+  <li>Rules that use a math symbol as a value need to have the symbol quoted by 
+    hand. <code>.data = *</code> becomes<code> data = &quot;*&quot;</code>.</li>
+  <li>Non rule set values in cells read by RArray() that contain ARulesXL lists 
+    need to have the items quoted. <code>[MMR, DTaP]</code> becomes <code>['MMR', 
+    'DTaP']</code>.</li>
+  <li>Any VBA code that is calling ARulesXL also needs to be hand edited.</li>
+  <li>Any host language calls to ARulesXL need to be hand edited.</li>
+  <li>RQuery()s in arrays (array queries) need the query hand translated.</li>
+</ul>
+<p><b>Cut &amp; Paste Bug Fix -</b> The changing borders around rule sets indicating 
+  edit mode or not caused cut and paste to fail. So the automatic rule set borders 
+  have been eliminated and cut and paste now works.</p>
+<p><b>Rule Set Editting and Loading Change</b> - The cut &amp; paste bug was caused 
+  by the automatic formatting and loading of rule sets based on mouse movements. 
+  Rule sets are now in edit mode as before, but are not automatically reloaded 
+  when the mouse clicks outside of a rule set. The ARulesXL menu, and right mouse 
+  button both have choices for loading all or just the changed rule sets.</p>
+<p><b>RTable() name changed to RArray() -</b> RTable() has been changed to RArray() 
+  which better captures the flavor of accessing a range of cells with both row 
+  and column headers. It is planned to have a new function named RTable() which 
+  is used when a range of cells is to be treated more like a database table.</p>
+<p>Variable Date Intervals - Expressions such 3 years + 4 days used to require 
+  integers. Variables are now allowed, but you still cannot use full expressions. 
+  So to add 14 days for each scheduled visit:</p>
+<p>VisitDate[?n] = StartDate + ?x days WHEN ?x = 14 * ?n</p>
+<h2>2-0-6</h2>
+<p><b>Performance -</b> Rule sets are now loaded in a fraction of the time from 
+  prior releases. </p>
+<h2>2-0-6</h2>
+<p><b>Performance -</b> Rule sets are now loaded in a fraction of the time from 
+  prior releases. </p>
+<p><b>Tutorials - </b>Added a quick tour and a full tutorial on using tables and 
+  collections.</p>
+<p><b>SQL -</b> Connections can now be made to remote servers by specifying the 
+  host name and port. </p>
+<h2>2-0-5</h2>
+<p><b>New Functions - </b> (see docs for details)</p>
+<ul>
+  <li><b>COLLECT</b> - Basic looping function for creating collections using a 
+    looping variable and test conditions.</li>
+  <li><b>INDEX</b> - Generates looping variables from the indices of tables or 
+    properties with arguments. </li>
+  <li><b>SUM</b> - Totals the values in a collection of numbers. </li>
+  <li><b>REMOVE_DUPLICATES</b> - Removes the duplicates from a collection, keeping 
+    the first instance of each. </li>
+  <li><b>Extend/MODL Runtime - </b>Added QueryToDouble/LongVector functions to 
+    return an array of answers.</li>
+</ul>
+<h2>2-0-4</h2>
+<p><b>VBA Runtime - </b>Added the VBARQuery, VBARQueryMore and VBARArrayQuery 
+  functions accidentally left out of 2.0.3.</p>
+<h2>2-0-3</h2>
+<p><b>Decision Tables - </b>Decision tables can now be represented directly in 
+  rule sets as tables. See documentation and samples for details.</p>
+<p><b>ARulesXL API Additions</b> (See the API Manual for details). </p>
+<ul>
+  <li><b>Excel Runtime Add-In</b> - Allows the distribution of spreadsheets with 
+    rule sets to other users who can run and optionally view the rules, but is 
+    not able to modify them.</li>
+  <li><b>VBA Runtime</b> - Documents the functions available from Excel VBA for 
+    querying rule sets from commands and macros with ARulesXL installed. </li>
+  <li><b>VBA/VB6 Runtime</b> - Documents the ARulesXL API for calling querying 
+    rule sets from any VBA or VB6 application. </li>
+</ul>
+<p><b>Reasoning Engine Changes</b> - In 1.0, rule sets were reloaded when ever 
+  an RQuery() was executed that used the rule set.&nbsp; So they sat quietly until 
+  needed. In 2.0 the rule sets are all loaded automatically when the spreadsheet 
+  is opened, which causes some delay on opening (in the status window you can 
+  see which rule sets are loading.)<BR>
+  <BR>
+  If there are any syntax errors they are flagged in red with the comments.<BR>
+  <BR>
+  Also in 2.0 we recognize when a rule set is being editted and provide immediate 
+  feedback on rules that have errors.&nbsp; When you click out side of a rule 
+  set, then the rule set is loaded.&nbsp; RQuery() no longer triggers a load.<BR>
+</p>
+<h2>2-0-2</h2>
+<p><b></b>Many ease of use enhancements, documentation, help links and samples 
+  clean-ups. </p>
+<h2>2-0-1</h2>
+<p><b>Incompatible Rule Function Changes - </b>The functions NEXT(), PRIOR() and 
+  ITEM_AT() have been changed to have the list as the first parameter for consistency 
+  with the rest of the list/array functions. </p>
+<p><b>Spreadsheet Function Changes -</b> Renamed LoadRules() to RXLDependency(). 
+  Existing spreadsheets that call LoadRules() will continue to work properly.</p>
+<p><b>Excel Command Changes</b> - Removed 'Selection to Rule Set' and 'Rule Set 
+  to Range', in lieu of new, improved 'New Rule Set'. Also removed 'Rename' in 
+  lieu of changing the cells directly on the spreadsheet. Renamed 'Delete Rule 
+  Set' to 'Remove Rule Set' and changed its action to convert the rule set contents 
+  into plain text. Added ''Support Forum'. </p>
+<p><b>Excel Cell Menu</b> - Added the most useful commands onto Excel's cell menu 
+  (reached by right-clicking on a cell). </p>
+<h2>2-0-0-Pre-Release</h2>
+<p><b>Trace Command Completed - </b>The new 'Trace' facility is complete and is 
+  documented in both the Tutorial and Reference. </p>
+<p><b>New Runtime and Edition -</b> The ARulesXL runtime for VB, C#, Delphi, Java, 
+  Web Servers, Extend is now separate from the Excel Add-In. The Runtime API and 
+  Export command are now a feature of the 'Professional Edition'. </p>
+<h2>1-01-27-Beta Test</h2>
+<p><b>Debugger Removed; Start of New Trace Facility Added -</b> The 'Debug' command 
+  has been removed and replaced with 'Trace'. </p>
+<p><em>Set Functions -</em> Functions that treat lists/arrays as sets are now 
+  available. These include: SET, UNION, INTERSECTION, DIFFERENCE, and IS_SUBSET. 
+  See documentation for details.</p>
+<p><em>Array/List Functions -</em> Some new functions that work on lists (arrays) 
+  are now available. These include: APPEND, CONCATENATE and REVERSE. See documentation 
+  for details. 
+<h2>1-01-21-Beta Test</h2>
+<p><em>Reasoning changes -</em> The reasoning algorithm has been modified slightly 
+  to better catch undefined objects during FINDALL()s. This might cause some new 
+  error messages in programs that worked before with unknown objects.</p>
+<p><em>QUIT()</em> - A new function that throws an error message of your choice.</p>
+<p><em>call_stack -</em> A new special value that has a string representing the 
+  call stack of rules used to reach the point where it is referred to. Useful 
+  for diagnosis.</p>
+<h2>1-01-20-Beta Test</h2>
+<p><em>EVALUATE -</em> An ARulesXL function that lets you construct a call to 
+  an Excel function from within a rule set.</p>
+<p><em>Other Functions</em> - A number of additional beta functions have been 
+  documented. These include: COUNT(), DEBUGPRINT(), EXISTS(), ITEM_AT(), MSGBOX(), 
+  NEXT(), ONETIME(), PERMUTE(), and PRIOR(). See the Reference documentation for 
+  details.</p>
+<p><em>ARulesXL API -</em> An API is now available for testing that allows ARulesXL 
+  rule sets to be exported and called from other application contexts, such as 
+  .NET, Java, Delphi and C++.</p>
+<p><em>EZTax -</em> A new sample shows how to build intelligent form applications 
+  using ARulesXL. The U.S. Tax form, 1040EZ is used for the sample.</p>
+<p><em>SQL -</em> An SQL command is available for extracting data from SQL data 
+  sources. For the beta release, only MySQL is supported, but more generic support 
+  for relational data sources is planned. Contact technical support if you are 
+  interested in testing this feature.</p>
+<h2>1-01-12-Beta Test</h2>
+<p><em>RQuery( QueryCell, ... ) -</em> The first argument to RQuery() was either 
+  a rule set or a cell with an =LoadRules() function call. The first argument 
+  can now refer to another cell with an RQuery() function call. When this is done, 
+  the dependent query does NOT cause the reasoning engine to forget what it learned 
+  in the last call. In other words, the inputs and results from the first query 
+  are still valid for queries dependent on that query. This is a performance enhancement 
+  for applications that have multiple queries that share the same set of inputs. 
+<p><em>Logic Relations -</em> ARulesXL supports logic relations that can be intermixed 
+  with normal property rules. Logic relations support recursion which can be used 
+  for rules that manipulate each of the elements of lists or arrays. 
+<p><em>Samples -</em> Two new samples are included which illustrate the use of 
+  RArray(), arrays, lists, FINDALL() and logic relations. One is <i>Budget Analysis</i> 
+  - which annotates a profit loss worksheet, and the other is <i>Order Configuration</i> 
+  - which creates a product configuration based on customer needs. 
+<p>The samples are now directly available from the ARulesXL menu. 
+<p><em>VBA Calls -</em> The ability to call RQuery from VBA is supported in a 
+  preliminary way in this release. This feature is under development and not yet 
+  documented, but the <i>Budget Analysis</i> sample can be used as an example 
+  to see how it is used. Calling RQuery() from VBA allows you to use the results 
+  to update cells on a worksheet; as opposed to a cell function which can only 
+  change the value in that cell. 
+<p>The function calls and syntax of the VBA calls might change by the final release, 
+  but the ideas are here for those wishing to experiment with this feature. 
+<p><em>RANGE() -</em> When RArray() is used to input data from a worksheet, the 
+  original cells are remembered. The RANGE() function gets that range, allowing 
+  you to annotate cells. This is what the <i>Budget Analysis</i> sample does. 
+<h2>1-01-05-Beta Test</h2>
+<p><em>Syntax Changes -</em> Some optional changes to ARulesXL syntax have been 
+  made for readability. These changes will become the documented preference, but 
+  the old syntax will still be supported. 
+<ul>
+  <li>A leading period is required for all property specifications. This eliminates 
+    the uncertainty of when a leading period is necessary and is not. Example: 
+    <code><b>.</b>call<b>.</b>rate = 7</code> This will require code changes.</li>
+  <li>A colon (:) can be used, and is preferred, instead of an exclamation mark 
+    (!) to separate a rule set specification from a property. Example: <code><b>.</b>order<b>.</b>price 
+    = <b>.</b>order<b>.</b>quantity * ?part<b>:.</b>unitprice WHEN ?part = <b>.</b>part</code>  </li>
+</ul>
+<p> <em>RArray()</em> - RArray() is an ARulesXL function that can be used inside 
+  a rule set to bring an Excel table into an ARulesXL array. Multiple tables can 
+  be brought in create multidimensional ARulesXL arrays. The use of pattern-matching 
+  variables allows the writing of general rules that search for patterns in data 
+  in a spreadsheet. 
+<p>RArray() is also a better alternative to RInput() for bringing data into a 
+  rule set. 
+<p><em>RCell() -</em> RCell() is an ARulesXL function that brings a single cell 
+  into a data value. It replaces RRef() for getting single data cells into a rule 
+  set. 
+<p><em>FINDALL()</em> - FINDALL() is a rule function that can be used with pattern 
+  matching variables to create arrays intended for output in an RQuery array function. 
+<p><em>MEMBER()</em> -Finds all the elements in a list, usually for processing 
+  in a FINDALL() statement. 
+<p><em>SORT()</em> - SORT() is a rule function that can be used to sort ARulesXL 
+  arrays. 
+<p><em>Budget Analysis.xls</em> - tables.xls is a new sample that illustrates 
+  the use of the above features for spreadsheet analysis and for configuration. 
+<p><em>Best Practices for Large Rule Sets</em> - The use of LoadRules outside 
+  of a rule set is described as a way to optimize performance of spreadsheets 
+  with many rules and many queries using those rules. 
+<p><em>Logical Relation Rules</em> - Logical relation rules can be used to describe 
+  relationships and implement recursive definitions. They are useful in situations 
+  such as product configuration where a part contains a part, which contains a 
+  part, etc. 
+<p><em>Leading periods for objects/properties</em> - Leading periods are not required 
+  for objects separated from properties with periods, however, this causes some 
+  confusion. So leading periods are now accepted for both properties and object/properties. 
+<p><em>International Support</em> - International support is now provided. The 
+  first language supported, besides English, is French. 
+<h2>1-01-04-Beta Test</h2>
+<p><em>RQuery() & debug argument bug fix</em> - RQuery() and Debug were inconsistent 
+  in the handling of optional arguments. They both now allow any range expression 
+  or formula to be included as an argument. For example, <code>RQuery(Rules, &quot;Find 
+  .x when .y = _1&quot;, Sum(E1:E3)/2)</code>. 
+<h2>1-0</h2>
+<p><em>Array Results</em> - RQuery can now ask for multiple properties in a <code>Find</code>, 
+  and the results will be return in an array of cells. This requires using the 
+  Excel array function feature: first select the number of horizontal cells to 
+  be in the array, next, with all cells still selected, enter the query, and hit 
+  Ctrl-Shift-Enter. The Find syntax is like &quot;Find .this and .that and .something_else&quot;.</p>
+<p><em>Multiple Facts in Rules</em> - Rules can now set multiple properties in 
+  a single rule. For example: <code>.color = red and .price = 3 when ....</code></p>
+<p><em>New Techniques Spreadsheet</em> - The sample, Techniques Basic.xls, is 
+  a full introduction on the use of ARulesXL, with each worksheet presenting a 
+  different concept. It is intended to complement the tutorial in this documentation.</p>
+<h2>0-16</h2>
+<p><em>LoadRules()</em> - The old <code>RuleSet()</code> function has been renamed 
+  <code>LoadRules()</code> to more accurately reflect what it does. Further, <code>=LoadRules()</code> 
+  can now be entered in a rule set directly, thus enabling a cleaner way to express 
+  interrelated rule sets.</p>
+<p><em>Inheritance - </em>Rule sets can now inherit from other rule sets, so if 
+  a property isn't found in the current rule set, the super class rule set is 
+  used instead. A rule set can have multiple super classes, and there is no limit 
+  on the number of levels of nesting of rule sets.</p>
+<p><em>Date/Time - </em>Symbolic manipulation of date/time values is now supported, 
+  so that expressions such as <code>.date + 3 months</code> can be used in rules 
+  and conditions. The rule date/time values map directly to Excel's date formats.</p>
+<p><em>Input Ranges - </em>A rule set can have an function that maps the variables 
+  in a rule set to a range of cells.</p>
+<p><em>Variable Rule Sets - </em>A logical variable can be used for a rule set 
+  name, making it easy to have a rule set dynamically call other rule sets based 
+  on an input value.</p>
+<h2>0-09</h2>
+<p><em>Rule Sets - </em>Tools for creating, deleting, syntax checking, and debugging 
+  rule sets are now on the ARulesXL main menu. With this change, rule sets are 
+  more formally defined, first as an Excel variable referring to the range of 
+  cells of the rule set, and second as an item in an Excel variable that maintains 
+  an array of rule set names. Using the tools to create/delete rule sets is important, 
+  so that these structures can be maintained.</p>
+<p><em>Debugging - </em>The debugger is greatly improved, with a window showing 
+  the steps of execution as well as color coding of the rules to indicate which 
+  rules are used and which aren't. The debugger works from any cell with a valid 
+  RQuery() formula in it.</p>
+<p><em>Document Assembly -</em> The formulas that can be used in rules have been 
+  expanded to include the &amp; operand for string concatenation. This makes it 
+  possible to build document assembly applications, where a series of rules each 
+  works on different parts of a final document.</p>
+<p><em>Error Messages -</em> Error messages now appear in the appropriate cells 
+  instead of as pop ups.</p>
+<h2>0-06</h2>
+<p><em>Rule Sets - </em>Rules are no longer added individually, but rather as 
+  parts of rule sets. The rule sets allow for modular development of rules, and 
+  also eliminate the need to provide IDs for individual rules. The rule sets are 
+  easily manipulated as Excel lists.</p>
+<p><em>New Rules -</em> There are three levels of rule syntax of increasing representational 
+  capability. They can be freely intermixed.</p>
+<ul>
+  <li>The first is the same property = value rules of the first beta release, 
+    although properties are now distinguished by a leading period. <code><b>.</b>rate 
+    = 0.05 when ...</code> Also, text values no longer have to be quoted unless 
+    they contain embedded blanks.</li>
+  <li>The second provides object/property representation, of any level of complexity. 
+    <code>call<b>.</b>rate = 0.05 when ...</code> The syntax mirrors VBA syntax.</li>
+  <li>The third is logic rules, expressing logical relationships with pattern-matching 
+    variables indicated by a leading '?'. <code>weekend(?day, true) when member(?day, 
+    [Sunday, Saturday])</code> </li>
+</ul>
+<p><em>Debugging Aids - </em>Three new diagnostic aids have been added.</p>
+<ul>
+  <li>Better messages for rule syntax errors are provided whenever a rule set 
+    is used. Also a <code>refresh</code> menu item analyzes a rule set and color 
+    codes rules with syntax errors and adds notes containing descriptions of the 
+    error.</li>
+  <li>Better runtime error messages are provided for failed queries, which might 
+    fail due to query syntax errors or errors in the rule logic. The result of 
+    the query is a descriptive message when the query fails.</li>
+  <li>An explanation feature provides a step-by-step walk through the rules as 
+    a query is answered. It shows which rules come into play and when (colored 
+    green), and which were tried but not used (colored red). A full list of all 
+    the derived facts and the source of the information (rule, input, asked) is 
+    provided when the query is finished.</li>
+</ul>
+<h2>0-05</h2>
+<p>Hopefully fixed recalculation bug that would cause erratic behavior or even 
+  crashes after rule set editing. If problems persist in this area, please report 
+  them.</p>
+<p>Eliminated the restriction of 4 optional variable arguments on RAdd and RQuery. 
+  Any number are allowed now.</p>
+<p>Eliminated the need to put single quotes around the replacement tokens, such 
+  as <code>_1</code>, in RAdd and RQuery when the tokens would be replaced by 
+  cells with text values. Quotes are still, as always, needed around text values, 
+  but when doing the replacement, quotes are added automatically for text values. 
+  The only time quotes are needed on replacement tokens are for values that are 
+  numbers intended to be used as text.</p>
+<p>Added tutorial to the documentation.</p>
+<h2>0-04</h2>
+<p>Added index and formatting to documentation, improved Introduction.</p>
+<h2>0-03</h2>
+<p>The incorrect prompts for values that sometimes appeared when a worksheet was 
+  opened no longer appear. The Control Panel is accessible from menu items.</p>
+<h2>0-02</h2>
+<p>Slight repackaging of distribution, and update on install directions to use 
+  Program Files/.../OfficeNN/Library for the ARulesXL XLA, rather than the addins 
+  folder. This small change makes it possible to move spreadsheets from one machine 
+  to another.</p>
+<h2>0-01</h2>
+<p>Initial release supporting &quot;property, value&quot; rules and queries.</p>
+<!-- #EndEditable --> 
+<hr>
+<table width=100%>
+<tr>
+<td>
+<img src="images/logo_very_small.gif">
+</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-7 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2>
+</td>
+</tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

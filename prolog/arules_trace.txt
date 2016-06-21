@@ -1,0 +1,448 @@
+Starting Trace
+2006/10/3  17:36:52
+QUERY r59:  FIND .problems
+Find;r59; .problems;?;
+  Try;;;;rule(h22)
+    FINDALL;;;;
+    Find;r59; .problem[?H5735,?H5739,?H5737 ];?;
+      Try;;;;rule(h8)
+      Data;r59; .region[West].pl[2005,'actual income',Q1 ];160;
+      Data;r59; .region[West].pl[2005,'actual outgo',Q1 ];90;
+        Test;;;160 < 90;
+        No;;;160 < 90;
+      Data;r59; .region[West].pl[2005,'actual income',Q2 ];155;
+      Data;r59; .region[West].pl[2005,'actual outgo',Q2 ];95;
+        Test;;;155 < 95;
+        No;;;155 < 95;
+      Data;r59; .region[West].pl[2005,'actual income',Q3 ];90;
+      Data;r59; .region[West].pl[2005,'actual outgo',Q3 ];110;
+        Test;;;90 < 110;
+        Yes;;;90 < 110;
+      Succeed;;;;rule(h8)
+    Found;r59; .problem[West,Q3,2005 ];'Took a loss';rule(h8)
+      Test;;;'Took a loss' = ?H5741;
+      Yes;;;'Took a loss' = 'Took a loss';
+      Retest;;;'Took a loss' = 'Took a loss';
+      No;;;'Took a loss' = 'Took a loss';
+      Retry;;;;rule(h8)
+        Retest;;;90 < 110;
+        No;;;90 < 110;
+      Data;r59; .region[West].pl[2005,'actual income',Q4 ];177;
+      Data;r59; .region[West].pl[2005,'actual outgo',Q4 ];135;
+        Test;;;177 < 135;
+        No;;;177 < 135;
+      Data;r59; .region[West].pl[2005,'actual income','Year Total' ];582;
+      Data;r59; .region[West].pl[2005,'actual outgo','Year Total' ];430;
+        Test;;;582 < 430;
+        No;;;582 < 430;
+      Data;r59; .region[East].pl[2005,'actual income',Q1 ];140;
+      Data;r59; .region[East].pl[2005,'actual outgo',Q1 ];90;
+        Test;;;140 < 90;
+        No;;;140 < 90;
+      Data;r59; .region[East].pl[2005,'actual income',Q2 ];130;
+      Data;r59; .region[East].pl[2005,'actual outgo',Q2 ];95;
+        Test;;;130 < 95;
+        No;;;130 < 95;
+      Data;r59; .region[East].pl[2005,'actual income',Q3 ];200;
+      Data;r59; .region[East].pl[2005,'actual outgo',Q3 ];99;
+        Test;;;200 < 99;
+        No;;;200 < 99;
+      Data;r59; .region[East].pl[2005,'actual income',Q4 ];166;
+      Data;r59; .region[East].pl[2005,'actual outgo',Q4 ];135;
+        Test;;;166 < 135;
+        No;;;166 < 135;
+      Data;r59; .region[East].pl[2005,'actual income','Year Total' ];636;
+      Data;r59; .region[East].pl[2005,'actual outgo','Year Total' ];419;
+        Test;;;636 < 419;
+        No;;;636 < 419;
+      Data;r59; .region[West].pl[2004,'actual income',Q1 ];150;
+      Data;r59; .region[West].pl[2004,'actual outgo',Q1 ];90;
+        Test;;;150 < 90;
+        No;;;150 < 90;
+      Data;r59; .region[West].pl[2004,'actual income',Q2 ];145;
+      Data;r59; .region[West].pl[2004,'actual outgo',Q2 ];95;
+        Test;;;145 < 95;
+        No;;;145 < 95;
+      Data;r59; .region[West].pl[2004,'actual income',Q3 ];120;
+      Data;r59; .region[West].pl[2004,'actual outgo',Q3 ];110;
+        Test;;;120 < 110;
+        No;;;120 < 110;
+      Data;r59; .region[West].pl[2004,'actual income',Q4 ];130;
+      Data;r59; .region[West].pl[2004,'actual outgo',Q4 ];90;
+        Test;;;130 < 90;
+        No;;;130 < 90;
+      Data;r59; .region[West].pl[2004,'actual income','Year Total' ];545;
+      Data;r59; .region[West].pl[2004,'actual outgo','Year Total' ];385;
+        Test;;;545 < 385;
+        No;;;545 < 385;
+      Data;r59; .region[East].pl[2004,'actual income',Q1 ];150;
+      Data;r59; .region[East].pl[2004,'actual outgo',Q1 ];90;
+        Test;;;150 < 90;
+        No;;;150 < 90;
+      Data;r59; .region[East].pl[2004,'actual income',Q2 ];130;
+      Data;r59; .region[East].pl[2004,'actual outgo',Q2 ];200;
+        Test;;;130 < 200;
+        Yes;;;130 < 200;
+      Succeed;;;;rule(h8)
+    Found;r59; .problem[East,Q2,2004 ];'Took a loss';rule(h8)
+      Test;;;'Took a loss' = ?H5741;
+      Yes;;;'Took a loss' = 'Took a loss';
+      Retest;;;'Took a loss' = 'Took a loss';
+      No;;;'Took a loss' = 'Took a loss';
+      Retry;;;;rule(h8)
+        Retest;;;130 < 200;
+        No;;;130 < 200;
+      Data;r59; .region[East].pl[2004,'actual income',Q3 ];667;
+      Data;r59; .region[East].pl[2004,'actual outgo',Q3 ];110;
+        Test;;;667 < 110;
+        No;;;667 < 110;
+      Data;r59; .region[East].pl[2004,'actual income',Q4 ];165;
+      Data;r59; .region[East].pl[2004,'actual outgo',Q4 ];135;
+        Test;;;165 < 135;
+        No;;;165 < 135;
+      Data;r59; .region[East].pl[2004,'actual income','Year Total' ];1112;
+      Data;r59; .region[East].pl[2004,'actual outgo','Year Total' ];535;
+        Test;;;1112 < 535;
+        No;;;1112 < 535;
+      Find;r59; .region[?H5735].pl[?H5737,'actual income',?H5739 ];?;
+      Fail;;;;rule(h8)
+      Try;;;;rule(h11)
+      Data;r59; .region[West].pl[2005,'actual income',Q1 ];160;
+      Data;r59; .region[West].pl[2005,'actual income',Q1 ];160;
+        Test;;;160 < 160;
+        No;;;160 < 160;
+      Data;r59; .region[West].pl[2004,'actual income',Q1 ];150;
+        Test;;;160 < 150;
+        No;;;160 < 150;
+      Find;r59; .region[West].pl[?H11604,'actual income',Q1 ];?;
+      Data;r59; .region[West].pl[2005,'actual income',Q2 ];155;
+      Data;r59; .region[West].pl[2005,'actual income',Q2 ];155;
+        Test;;;155 < 155;
+        No;;;155 < 155;
+      Data;r59; .region[West].pl[2004,'actual income',Q2 ];145;
+        Test;;;155 < 145;
+        No;;;155 < 145;
+      Find;r59; .region[West].pl[?H11604,'actual income',Q2 ];?;
+      Data;r59; .region[West].pl[2005,'actual income',Q3 ];90;
+      Data;r59; .region[West].pl[2005,'actual income',Q3 ];90;
+        Test;;;90 < 90;
+        No;;;90 < 90;
+      Data;r59; .region[West].pl[2004,'actual income',Q3 ];120;
+        Test;;;90 < 120;
+        Yes;;;90 < 120;
+        Test;;;2004 = 2004;
+        Yes;;;2004 = 2004;
+      Succeed;;;;rule(h11)
+      Retry;;;;rule(h11)
+        Retest;;;2004 = 2004;
+        No;;;2004 = 2004;
+        Retest;;;90 < 120;
+        No;;;90 < 120;
+      Find;r59; .region[West].pl[?H11604,'actual income',Q3 ];?;
+      Data;r59; .region[West].pl[2005,'actual income',Q4 ];177;
+      Data;r59; .region[West].pl[2005,'actual income',Q4 ];177;
+        Test;;;177 < 177;
+        No;;;177 < 177;
+      Data;r59; .region[West].pl[2004,'actual income',Q4 ];130;
+        Test;;;177 < 130;
+        No;;;177 < 130;
+      Find;r59; .region[West].pl[?H11604,'actual income',Q4 ];?;
+      Data;r59; .region[West].pl[2005,'actual income','Year Total' ];582;
+      Data;r59; .region[West].pl[2005,'actual income','Year Total' ];582;
+        Test;;;582 < 582;
+        No;;;582 < 582;
+      Data;r59; .region[West].pl[2004,'actual income','Year Total' ];545;
+        Test;;;582 < 545;
+        No;;;582 < 545;
+      Find;r59; .region[West].pl[?H11604,'actual income','Year Total' ];?;
+      Data;r59; .region[East].pl[2005,'actual income',Q1 ];140;
+      Data;r59; .region[East].pl[2005,'actual income',Q1 ];140;
+        Test;;;140 < 140;
+        No;;;140 < 140;
+      Data;r59; .region[East].pl[2004,'actual income',Q1 ];150;
+        Test;;;140 < 150;
+        Yes;;;140 < 150;
+        Test;;;2004 = 2004;
+        Yes;;;2004 = 2004;
+      Succeed;;;;rule(h11)
+    Found;r59; .problem[East,Q1,2005 ];'Less than last year';rule(h11)
+      Test;;;'Less than last year' = ?H5741;
+      Yes;;;'Less than last year' = 'Less than last year';
+      Retest;;;'Less than last year' = 'Less than last year';
+      No;;;'Less than last year' = 'Less than last year';
+      Retry;;;;rule(h11)
+        Retest;;;2004 = 2004;
+        No;;;2004 = 2004;
+        Retest;;;140 < 150;
+        No;;;140 < 150;
+      Find;r59; .region[East].pl[?H11604,'actual income',Q1 ];?;
+      Data;r59; .region[East].pl[2005,'actual income',Q2 ];130;
+      Data;r59; .region[East].pl[2005,'actual income',Q2 ];130;
+        Test;;;130 < 130;
+        No;;;130 < 130;
+      Data;r59; .region[East].pl[2004,'actual income',Q2 ];130;
+        Test;;;130 < 130;
+        No;;;130 < 130;
+      Find;r59; .region[East].pl[?H11604,'actual income',Q2 ];?;
+      Data;r59; .region[East].pl[2005,'actual income',Q3 ];200;
+      Data;r59; .region[East].pl[2005,'actual income',Q3 ];200;
+        Test;;;200 < 200;
+        No;;;200 < 200;
+      Data;r59; .region[East].pl[2004,'actual income',Q3 ];667;
+        Test;;;200 < 667;
+        Yes;;;200 < 667;
+        Test;;;2004 = 2004;
+        Yes;;;2004 = 2004;
+      Succeed;;;;rule(h11)
+    Found;r59; .problem[East,Q3,2005 ];'Less than last year';rule(h11)
+      Test;;;'Less than last year' = ?H5741;
+      Yes;;;'Less than last year' = 'Less than last year';
+      Retest;;;'Less than last year' = 'Less than last year';
+      No;;;'Less than last year' = 'Less than last year';
+      Retry;;;;rule(h11)
+        Retest;;;2004 = 2004;
+        No;;;2004 = 2004;
+        Retest;;;200 < 667;
+        No;;;200 < 667;
+      Find;r59; .region[East].pl[?H11604,'actual income',Q3 ];?;
+      Data;r59; .region[East].pl[2005,'actual income',Q4 ];166;
+      Data;r59; .region[East].pl[2005,'actual income',Q4 ];166;
+        Test;;;166 < 166;
+        No;;;166 < 166;
+      Data;r59; .region[East].pl[2004,'actual income',Q4 ];165;
+        Test;;;166 < 165;
+        No;;;166 < 165;
+      Find;r59; .region[East].pl[?H11604,'actual income',Q4 ];?;
+      Data;r59; .region[East].pl[2005,'actual income','Year Total' ];636;
+      Data;r59; .region[East].pl[2005,'actual income','Year Total' ];636;
+        Test;;;636 < 636;
+        No;;;636 < 636;
+      Data;r59; .region[East].pl[2004,'actual income','Year Total' ];1112;
+        Test;;;636 < 1112;
+        Yes;;;636 < 1112;
+        Test;;;2004 = 2004;
+        Yes;;;2004 = 2004;
+      Succeed;;;;rule(h11)
+    Found;r59; .problem[East,'Year Total',2005 ];'Less than last year';rule(h11)
+      Test;;;'Less than last year' = ?H5741;
+      Yes;;;'Less than last year' = 'Less than last year';
+      Retest;;;'Less than last year' = 'Less than last year';
+      No;;;'Less than last year' = 'Less than last year';
+      Retry;;;;rule(h11)
+        Retest;;;2004 = 2004;
+        No;;;2004 = 2004;
+        Retest;;;636 < 1112;
+        No;;;636 < 1112;
+      Find;r59; .region[East].pl[?H11604,'actual income','Year Total' ];?;
+      Data;r59; .region[West].pl[2004,'actual income',Q1 ];150;
+      Data;r59; .region[West].pl[2005,'actual income',Q1 ];160;
+        Test;;;150 < 160;
+        Yes;;;150 < 160;
+        Test;;;2005 = 2003;
+        No;;;2005 = 2003;
+        Retest;;;150 < 160;
+        No;;;150 < 160;
+      Data;r59; .region[West].pl[2004,'actual income',Q1 ];150;
+        Test;;;150 < 150;
+        No;;;150 < 150;
+      Find;r59; .region[West].pl[?H11604,'actual income',Q1 ];?;
+      Data;r59; .region[West].pl[2004,'actual income',Q2 ];145;
+      Data;r59; .region[West].pl[2005,'actual income',Q2 ];155;
+        Test;;;145 < 155;
+        Yes;;;145 < 155;
+        Test;;;2005 = 2003;
+        No;;;2005 = 2003;
+        Retest;;;145 < 155;
+        No;;;145 < 155;
+      Data;r59; .region[West].pl[2004,'actual income',Q2 ];145;
+        Test;;;145 < 145;
+        No;;;145 < 145;
+      Find;r59; .region[West].pl[?H11604,'actual income',Q2 ];?;
+      Data;r59; .region[West].pl[2004,'actual income',Q3 ];120;
+      Data;r59; .region[West].pl[2005,'actual income',Q3 ];90;
+        Test;;;120 < 90;
+        No;;;120 < 90;
+      Data;r59; .region[West].pl[2004,'actual income',Q3 ];120;
+        Test;;;120 < 120;
+        No;;;120 < 120;
+      Find;r59; .region[West].pl[?H11604,'actual income',Q3 ];?;
+      Data;r59; .region[West].pl[2004,'actual income',Q4 ];130;
+      Data;r59; .region[West].pl[2005,'actual income',Q4 ];177;
+        Test;;;130 < 177;
+        Yes;;;130 < 177;
+        Test;;;2005 = 2003;
+        No;;;2005 = 2003;
+        Retest;;;130 < 177;
+        No;;;130 < 177;
+      Data;r59; .region[West].pl[2004,'actual income',Q4 ];130;
+        Test;;;130 < 130;
+        No;;;130 < 130;
+      Find;r59; .region[West].pl[?H11604,'actual income',Q4 ];?;
+      Data;r59; .region[West].pl[2004,'actual income','Year Total' ];545;
+      Data;r59; .region[West].pl[2005,'actual income','Year Total' ];582;
+        Test;;;545 < 582;
+        Yes;;;545 < 582;
+        Test;;;2005 = 2003;
+        No;;;2005 = 2003;
+        Retest;;;545 < 582;
+        No;;;545 < 582;
+      Data;r59; .region[West].pl[2004,'actual income','Year Total' ];545;
+        Test;;;545 < 545;
+        No;;;545 < 545;
+      Find;r59; .region[West].pl[?H11604,'actual income','Year Total' ];?;
+      Data;r59; .region[East].pl[2004,'actual income',Q1 ];150;
+      Data;r59; .region[East].pl[2005,'actual income',Q1 ];140;
+        Test;;;150 < 140;
+        No;;;150 < 140;
+      Data;r59; .region[East].pl[2004,'actual income',Q1 ];150;
+        Test;;;150 < 150;
+        No;;;150 < 150;
+      Find;r59; .region[East].pl[?H11604,'actual income',Q1 ];?;
+      Data;r59; .region[East].pl[2004,'actual income',Q2 ];130;
+      Data;r59; .region[East].pl[2005,'actual income',Q2 ];130;
+        Test;;;130 < 130;
+        No;;;130 < 130;
+      Data;r59; .region[East].pl[2004,'actual income',Q2 ];130;
+        Test;;;130 < 130;
+        No;;;130 < 130;
+      Find;r59; .region[East].pl[?H11604,'actual income',Q2 ];?;
+      Data;r59; .region[East].pl[2004,'actual income',Q3 ];667;
+      Data;r59; .region[East].pl[2005,'actual income',Q3 ];200;
+        Test;;;667 < 200;
+        No;;;667 < 200;
+      Data;r59; .region[East].pl[2004,'actual income',Q3 ];667;
+        Test;;;667 < 667;
+        No;;;667 < 667;
+      Find;r59; .region[East].pl[?H11604,'actual income',Q3 ];?;
+      Data;r59; .region[East].pl[2004,'actual income',Q4 ];165;
+      Data;r59; .region[East].pl[2005,'actual income',Q4 ];166;
+        Test;;;165 < 166;
+        Yes;;;165 < 166;
+        Test;;;2005 = 2003;
+        No;;;2005 = 2003;
+        Retest;;;165 < 166;
+        No;;;165 < 166;
+      Data;r59; .region[East].pl[2004,'actual income',Q4 ];165;
+        Test;;;165 < 165;
+        No;;;165 < 165;
+      Find;r59; .region[East].pl[?H11604,'actual income',Q4 ];?;
+      Data;r59; .region[East].pl[2004,'actual income','Year Total' ];1112;
+      Data;r59; .region[East].pl[2005,'actual income','Year Total' ];636;
+        Test;;;1112 < 636;
+        No;;;1112 < 636;
+      Data;r59; .region[East].pl[2004,'actual income','Year Total' ];1112;
+        Test;;;1112 < 1112;
+        No;;;1112 < 1112;
+      Find;r59; .region[East].pl[?H11604,'actual income','Year Total' ];?;
+      Find;r59; .region[?H5735].pl[?H5737,'actual income',?H5739 ];?;
+      Fail;;;;rule(h11)
+      Try;;;;rule(h14)
+      Data;r59; .region[West].pl[2005,'budget income',Q1 ];100;
+      Data;r59; .region[West].pl[2005,'actual income',Q1 ];160;
+        Test;;;100 > 160;
+        No;;;100 > 160;
+      Data;r59; .region[West].pl[2005,'budget income',Q2 ];120;
+      Data;r59; .region[West].pl[2005,'actual income',Q2 ];155;
+        Test;;;120 > 155;
+        No;;;120 > 155;
+      Data;r59; .region[West].pl[2005,'budget income',Q3 ];140;
+      Data;r59; .region[West].pl[2005,'actual income',Q3 ];90;
+        Test;;;140 > 90;
+        Yes;;;140 > 90;
+      Succeed;;;;rule(h14)
+      Retry;;;;rule(h14)
+        Retest;;;140 > 90;
+        No;;;140 > 90;
+      Data;r59; .region[West].pl[2005,'budget income',Q4 ];160;
+      Data;r59; .region[West].pl[2005,'actual income',Q4 ];177;
+        Test;;;160 > 177;
+        No;;;160 > 177;
+      Data;r59; .region[West].pl[2005,'budget income','Year Total' ];520;
+      Data;r59; .region[West].pl[2005,'actual income','Year Total' ];582;
+        Test;;;520 > 582;
+        No;;;520 > 582;
+      Data;r59; .region[East].pl[2005,'budget income',Q1 ];110;
+      Data;r59; .region[East].pl[2005,'actual income',Q1 ];140;
+        Test;;;110 > 140;
+        No;;;110 > 140;
+      Data;r59; .region[East].pl[2005,'budget income',Q2 ];120;
+      Data;r59; .region[East].pl[2005,'actual income',Q2 ];130;
+        Test;;;120 > 130;
+        No;;;120 > 130;
+      Data;r59; .region[East].pl[2005,'budget income',Q3 ];140;
+      Data;r59; .region[East].pl[2005,'actual income',Q3 ];200;
+        Test;;;140 > 200;
+        No;;;140 > 200;
+      Data;r59; .region[East].pl[2005,'budget income',Q4 ];160;
+      Data;r59; .region[East].pl[2005,'actual income',Q4 ];166;
+        Test;;;160 > 166;
+        No;;;160 > 166;
+      Data;r59; .region[East].pl[2005,'budget income','Year Total' ];530;
+      Data;r59; .region[East].pl[2005,'actual income','Year Total' ];636;
+        Test;;;530 > 636;
+        No;;;530 > 636;
+      Data;r59; .region[West].pl[2004,'budget income',Q1 ];160;
+      Data;r59; .region[West].pl[2004,'actual income',Q1 ];150;
+        Test;;;160 > 150;
+        Yes;;;160 > 150;
+      Succeed;;;;rule(h14)
+    Found;r59; .problem[West,Q1,2004 ];'Below budget income';rule(h14)
+      Test;;;'Below budget income' = ?H5741;
+      Yes;;;'Below budget income' = 'Below budget income';
+      Retest;;;'Below budget income' = 'Below budget income';
+      No;;;'Below budget income' = 'Below budget income';
+      Retry;;;;rule(h14)
+        Retest;;;160 > 150;
+        No;;;160 > 150;
+      Data;r59; .region[West].pl[2004,'budget income',Q2 ];120;
+      Data;r59; .region[West].pl[2004,'actual income',Q2 ];145;
+        Test;;;120 > 145;
+        No;;;120 > 145;
+      Data;r59; .region[West].pl[2004,'budget income',Q3 ];110;
+      Data;r59; .region[West].pl[2004,'actual income',Q3 ];120;
+        Test;;;110 > 120;
+        No;;;110 > 120;
+      Data;r59; .region[West].pl[2004,'budget income',Q4 ];120;
+      Data;r59; .region[West].pl[2004,'actual income',Q4 ];130;
+        Test;;;120 > 130;
+        No;;;120 > 130;
+      Data;r59; .region[West].pl[2004,'budget income','Year Total' ];510;
+      Data;r59; .region[West].pl[2004,'actual income','Year Total' ];545;
+        Test;;;510 > 545;
+        No;;;510 > 545;
+      Data;r59; .region[East].pl[2004,'budget income',Q1 ];100;
+      Data;r59; .region[East].pl[2004,'actual income',Q1 ];150;
+        Test;;;100 > 150;
+        No;;;100 > 150;
+      Data;r59; .region[East].pl[2004,'budget income',Q2 ];120;
+      Data;r59; .region[East].pl[2004,'actual income',Q2 ];130;
+        Test;;;120 > 130;
+        No;;;120 > 130;
+      Data;r59; .region[East].pl[2004,'budget income',Q3 ];140;
+      Data;r59; .region[East].pl[2004,'actual income',Q3 ];667;
+        Test;;;140 > 667;
+        No;;;140 > 667;
+      Data;r59; .region[East].pl[2004,'budget income',Q4 ];160;
+      Data;r59; .region[East].pl[2004,'actual income',Q4 ];165;
+        Test;;;160 > 165;
+        No;;;160 > 165;
+      Data;r59; .region[East].pl[2004,'budget income','Year Total' ];520;
+      Data;r59; .region[East].pl[2004,'actual income','Year Total' ];1112;
+        Test;;;520 > 1112;
+        No;;;520 > 1112;
+      Find;r59; .region[?H5735].pl[?H5737,'budget income',?H5739 ];?;
+      Fail;;;;rule(h14)
+    foundall;;;[[West, 2005, Q3, 'Took a loss']
+[East, 2004, Q2, 'Took a loss']
+[East, 2005, Q1, 'Less than last year']
+[East, 2005, Q3, 'Less than last year']
+[East, 2005, 'Year Total', 'Less than last year']
+[West, 2004, Q1, 'Below budget income']];
+  Succeed;;;;rule(h22)
+Found;r59; .problems;[[East, 2004, Q2, 'Took a loss']
+[East, 2005, Q1, 'Less than last year']
+[East, 2005, Q3, 'Less than last year']
+[East, 2005, 'Year Total', 'Less than last year']
+[West, 2004, Q1, 'Below budget income']
+[West, 2005, Q3, 'Took a loss']];rule(h22)
+arules_trace_done

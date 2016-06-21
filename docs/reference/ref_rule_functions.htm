@@ -1,0 +1,190 @@
+<html><!-- #BeginTemplate "/Templates/arulesxl.dwt" --><!-- DW6 -->
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="../arulesxl.css" />
+<!-- #BeginEditable "doctitle" -->
+<title>Reference - Rule Functions</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1><!-- #BeginEditable "head" -->Reference<!-- #EndEditable --></h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="../images/logo.gif" width="150" height="115" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+<p><font size="-1"><b><a href="../index.htm" target=_top>Top</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../install.htm">Installation</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../introduction.htm">Introduction</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../samples.htm">Samples</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="../tutorial.htm">Tutorial</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../reference.htm">Reference</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../release_notes.htm">Release Notes</a></b></font></p>
+<hr>
+<!-- #BeginEditable "body" --> 
+<h2><a name="functions"></a>Rule Functions</h2>
+<p>These are functions that can be used in rules.</p>
+<p><i>Some functions can only be used in rule sets running from Excel worksheets 
+  (the normal case), but will not work if exported for use in other environments, 
+  although in some cases (such as ASK and MSGBOX) support can be provided for 
+  those environments. Ask technical support for details on specific functions.</i></p>
+<h3><a name="general"></a>General</h3>
+<blockquote>
+  <p><b>
+    <!amzi_index=ASK(); DEBUGPRINT(); EVALUATE(); EXISTS(); IS_KNOWN(); IS_RULESET(); MSGBOX(); ONETIME(); QUIT(); RANGE()>
+    ASK( prompt )* </b>&mdash; Displays an input box and returns the value the user 
+    entered. <i>(Not for export to non-Excel environments.)</i></p>
+  <p><b>ASK( prompt, title, default ) </b>&mdash; Displays an input box and returns 
+    the value the user entered, and uses the specified title and default value 
+    in the displayed input box. <i>(Not for export to non-Excel environments.)</i></p>
+  <p><b>DEBUGPRINT( string ) </b>&mdash; For use when developing VBA code for use with 
+    ARulesXL. The argument is displayed in the VBA Immediate window. <i>(Not for 
+      export to non-Excel environments.)</i></p>
+  <p><b>EVALUATE( string_excel_function ) </b>&mdash; The argument is a string representing 
+    an Excel function call. It can be dynamically created using the ARulesXL string 
+    concatenation operator. The return value is whatever the Excel function returns. 
+    Note that this feature can also be used to call user defined functions written 
+    in VBA, allowing for ARulesXL rules to get data from VBA. <i>(Not for export 
+      to non-Excel environments.)</i></p>
+  <p><b>EXISTS( property ) </b>&mdash; Returns true if there is a definition, 
+    either as data or as a rule, for the fact. Otherwise returns false.</p>
+  <p><b>IS_KNOWN( property ) </b>&mdash; Returns true if the value for the 
+    fact is already known, otherwise returns false. This can be used 
+    to determine if a fact value was input from a query or not.</p>
+  <p><b>IS_RULESET( name ) </b>&mdash; Returns true if the name is a rule set. </p>
+  <p><b>MSGBOX( string ) </b>&mdash; Displays a message box with the string as a message. <i>(Not for export to non-Excel environments.)</i></p>
+  <p><b>ONETIME( goal ) </b>&mdash; Calls the goal just once. This is useful within 
+    FINDALL for pattern-matching rules that only need to be called once.</p>
+  <p><b>QUIT( message ) </b>&mdash; Ends whatever query was happening with a message 
+    of your choice, which will appear as an error message result for the query..</p>
+  <p><b>RANGE( property ) </b>&mdash; For the fact that originated 
+    from an RArray() or RCell(), returns the spreadsheet cell, or list of cells 
+    where that property was loaded from the spreadsheet. <i>(Not for export 
+      to non-Excel environments.)</i></p>
+</blockquote>
+<h3><a name="arraysandlists"></a>Arrays &amp; Lists</h3>
+<p>
+  <!amzi_index=AFTER(); APPEND(); BEFORE(); CONCATENATE(); COUNT(); FINDALL(); FIRST(); ITEM_AT(); LAST(); MEMBER(); NEXT(); PERMUTE(); PRIOR(); RANGE(); REVERSE(); SORT()>
+  Arrays and lists are the same, and are both represented 
+  as: [element1, element2, ..., elementN]</p>
+<blockquote>
+  <p><b>AFTER( list, value ) </b>&mdash; Returns the value after specified value in 
+    a sorted array or list. The specified value does not have to exist in the list. For example, AFTER(.names, &quot;M&quot;) will return the next name in the listing starting with M, or if there are none, the name after M in the alphabet. <i>Use NEXT for non-sorted lists.</i></p>
+  <p><b>APPEND( list, list ) </b>&mdash; Appends the second list to the first, and returns 
+    the results.</p>
+  <p><b>BEFORE( list, value ) </b>&mdash; Returns the value before the specified value 
+    in a sorted array or list. The specified value does not have to exist in the 
+    list. For example, BEFORE(.names, &quot;M&quot;) will return the prior name 
+    in the listing starting with L, or if there are none, the name before M in 
+    the alphabet. <i>Use PRIOR for non-sorted lists.</i></p>
+  <p><b>COLLECT variable FOREACH generator WHERE test &mdash; </b>The basic looping 
+    function that can be specified as a statement or as a function (see next entry). 
+    It creates a collection of instances of the variable. The loop is driven by 
+    the generator function, and for each pass through the loop the test is applied 
+    to see what the value of the variable is. Example:</p>
+  <pre>items = [car, train, lion, tiger, boat].
+is_animal[?x] = &quot;true&quot; WHEN ?x = member( [lion, tiger, bear] ).
+animals = COLLECT ?x FOREACH ?x = MEMBER( items ) WHERE is_animal[?x] = true</pre>
+  <p><b>COLLECT( variable, generator, test ) &mdash; </b> COLLECT in a function 
+    form so it can be nested in other list functions: ex. SORT( COLLECT( ?item, 
+    ?item = MEMBER( items ), is_ok[?item] ) )</p>
+  <p><b>CONCATENATE( list_of_lists) </b>&mdash; Concatenates a list of lists into a 
+    single list. ex. CONCATENATE( [ [1,2], [3,4], [5,6] ] ) = [1, 2, 3, 4, 5, 
+    6] </p>
+  <p><b>COUNT( list ) </b>&mdash; Returns the number of elements i the list. </p>
+  <p><b>FINDALL( variable, criteria ) </b>&mdash; Finds all the values in an array or 
+    list that meet the specified criteria. </p>
+  <p><b>FIRST( list ) </b>&mdash; Returns the first value in the array.</p>
+  <p><b>INDEX( property, argument ) </b>&mdash; Can be used as a generator for COLLECT(). It 
+    generates each index for the given property. This is useful for getting row 
+    or column headings from tables read in using RArray(), or from arrays of facts 
+    in rules that have arguments.</p>
+  <pre>cost[widget] = 3
+cost[gizmo] = 4
+cost[thing] = 5
+order = [thing, gizmo]
+total_cost = SUM( COLLECT( ?cost, ?item = INDEX(cost, 1), (?item = MEMBER( order ) AND ?cost = cost[?item] ) ) )</pre>
+  <p><i>This example would be better using MEMBER( order ) as a generator, but 
+    it wouldn't have illustrated the use of INDEX() or compound conditions in 
+    the test.</i></p>
+  <p><b>ITEM_AT( list, offset ) </b>&mdash; Returns the item at the 'offset' position 
+    in the list. </p>
+  <p><b>LAST( list ) </b>&mdash; Returns the last value in the array. </p>
+  <p><b>MEMBER( list ) </b>&mdash; Returns a member of a list. It is intended for use 
+    in findall, returning all of the members of a list for processing in the findall.</p>
+  <p><b>NEXT( list, item ) </b>&mdash; Returns the next item in the list, after the 
+    specified item. <i>If the list is sorted, use AFTER instead.</i></p>
+  <p><b>PERMUTE( list ) </b>&mdash; Returns a permutation of the list. When used in 
+    a FINDALL, will return all of the permutations of a list.</p>
+  <p><b>PRIOR( list, item) </b>&mdash; Returns the prior item in the list, after the 
+    specified item. <i>If the list is sorted, use BEFORE instead.</i></p>
+  <p><b>RANGE( table_element ) </b>&mdash; Returns the cell or range from which a table 
+    element was taken using RArray(). Intended for use from VBA to allow the annotation 
+    of worksheets.</p>
+  <p><b>REVERSE( list ) </b>&mdash; Returns a reversed copy of the list. </p>
+  <p><b>REMOVE_DUPLICATES( list ) </b>&mdash; Returns a copy of the list with duplicates removed. </p>
+  <p><b>SORT( list ) </b>&mdash; Returns a sorted copy of the list. </p>
+  <p><b>SUM( number_list ) </b>&mdash; Returns the sum of the numbers in the list. </p>
+</blockquote>
+<h3><a name="sets"></a>Sets</h3>
+<p>
+  <!amzi_index=SET(); UNION(); INTERSECTION(); DIFFERENCE(); IS_SUBSET()>
+A set is a sorted list without duplicates.</p>
+<blockquote>
+  <p><b>SET( list ) </b>&mdash; Converts the list to a set, that is a list which is 
+    sorted with no duplicates, and returns that set.</p>
+  <p><b>UNION( list, list ) </b>&mdash; Returns the union of the two lists, which 
+    is the set of all elements that are in either list. For example: UNION([ a, b, c], 
+    [b, c, d]) = [ a, b, c, d]</p>
+  <p><b>INTERSECTION( list, list ) </b>&mdash; Returns the intersection of the two 
+    lists, which is the set of all elements that are in both lists. For example: INTERSECTION( 
+    [a, b, c], [b, c, d]) = [ b, c ].</p>
+  <p><b>DIFFERENCE( list, list ) </b>&mdash; Returns the difference of the two lists, 
+    which is the set of all elements that are in the first list but not in the 
+    second. For example: DIFFERENCE( [a, b, c], [b, c, d] ) = [ a ].</p>
+  <p><b>IS_SUBSET( list, list ) </b>&mdash; Returns true if the first list is a subset 
+    of the second. ex. IS_SUBSET( [a, b, c], [b, c, d] ) = false.</p>
+</blockquote>
+<h3><a name="datetime"></a>Date/Time</h3>
+<p>
+  <!amzi_index=DAY(); MONTH(); WEEKEDAY(); YEAR(), MAKE_DATE(); MAKE_DATETIME()>
+See the section on <a href="ref_date_time.htm">Using Dates and Times in Rules</a> for more details. </p>
+<blockquote>
+  <p><b>DAY( date ) </b>&mdash; Returns the day number when date is a valid date.</p>
+  <p><b>DAYS_BETWEEN( start_date, end_date ) </b>&mdash; Returns the number of 
+    days between the two dates. Note that this is different than the result from 
+    using the arithmetic operator, -, which returns an interval with years, months 
+    and days.</p>
+  <p><b>MAKE_DATE( year, month, day ) </b>&mdash; Creates a date fact with the specified date. </p>
+  <p><b>MAKE_DATETIME( year, month, day, hour, minute, second ) </b>&mdash; Creates a date fact with the specified date and time. </p>
+  <p><b>MONTH( date ) </b>&mdash; Returns the month number when date is a valid date.</p>
+  <p><b>WEEKDAY( date ) </b>&mdash; Returns the week day name (Sunday, Monday, ...) 
+    when date is a valid date.</p>
+  <p><b>YEAR( date ) </b>&mdash; Returns the year when date is a valid date.</p>
+</blockquote>
+<h3><a name="arithmetic"></a>Arithmetic</h3>
+<blockquote>
+  <p><b>
+    <!amzi_index=MAXIMUM(); MINIMUM()>
+  MAXIMUM( list ) </b>&mdash; Returns the largest value in the list.</p>
+  <p><b>MINIMUM( list ) </b>&mdash; Returns the smallest value in the list.</p>
+</blockquote>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="100%" scope="col"><h4><a href="ref_rule_functions.htm" target="_blank">Open in New Window to Print</a></h4></th>
+  </tr>
+</table>
+<!-- #EndEditable --> 
+<hr>
+<table width=100%>
+<tr>
+<td>
+<img src="../images/logo_very_small.gif">
+</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-7 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2>
+</td>
+</tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

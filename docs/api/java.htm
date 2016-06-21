@@ -1,0 +1,106 @@
+<html><!-- #BeginTemplate "/Templates/api.dwt" --><!-- DW6 -->
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="../arulesxl.css" />
+<!-- #BeginEditable "doctitle" -->
+<title>Java/JSP/Servlet Interface</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1><!-- #BeginEditable "head" -->Java/JSP/Servlet Interface <!-- #EndEditable --><br><font size=4>Professional Edition</font></h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="../images/logo.gif" width="150" height="115" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+<!-- #BeginEditable "body" --> 
+<h2><a name="installation"></a>Installation</h2>
+<p><b>
+  <!amzi_index=Java;arulesjni;ARulesLogicServer;ARulesLSException>
+</b>The Java interface can be used to build both web-based and stand-alone applications. It  consists of 9 files. The first 5 files are in the arulesxl\api\bin_redist directory. The last 4 files are in the arulesxl\api\java directory.</p>
+<ul>
+  <li>arulesrt.cfg &#8212; The ARulesXL engine configuration file.</li>
+  <li>arulesrt.dll, ar_mysqlrt.lsx, ar_osutilsrt.lsx, arulesrt.xpl &#8212;The ARulesXL engine.</li>
+  <li>amzi.arulesxl.ARulesXL.java  &#8212; The ARulesXL class and its methods in package amzi.arulesxl. </li>
+  <li>arulesjni.dll, amzi.ls.ARulesLogicServer.java, amzi.ls.ARulesLSException.java  &#8212; The Java classes and Java interface library that provide the Amzi! Logic Server interface to the ARulesXL engine (arulesrt.dll).</li>
+</ul>
+<p>To use the Java interface you need to:</p>
+<ol>
+  <li>Import amzi.arulesxl.ARulesXL into your application source code.</li>
+  <li>Add the ...api\java directory to your CLASSPATH (this varies by Java IDE). </li>
+  <li>Put arulesrt.dll, ar_mysqlrt.lsx, ar_osutilsrt.lsx and arulesjni.dll  in a directory where Java can find them (usually on your system PATH). </li>
+  <li>Put arulesrt.xpl and arulesrt.cfg in your application directory. </li>
+</ol>
+<h2><a name="apiadditionsandchanges"></a>API Additions  &amp; Changes </h2>
+<p>Java method names start with a lowercase letter. </p>
+<h3><a name="QueryRulesToStringList"></a>QueryRulesToStringList</h3>
+<p><b>
+  <!amzi_index=QueryRulesToStringList()>
+Description:</b></p>
+<p>Vector queryRulesToStringList(String ruleset, String query) throws Exception</p>
+<DL>
+  <DT>ruleset   
+  <DD>The name of the ruleset 
+  <DT>query   
+  <DD> The query to run in the same format as is used for <a href="../reference.htm#RQuery">RQuery()</a>
+  <DT>    
+</DL>
+<p><B>Remarks:</B> </p>
+<BLOCKQUOTE>
+  <p>Queries the named ruleset and returns the result as a Vector where each element in the vector is an array of Strings. </p>
+</BLOCKQUOTE>
+<p><B>Return Value:</B> </p>
+<BLOCKQUOTE>
+  <p>The result of the query as a Java Vector where each element is a Java String[].</p>
+  <p>Throws an exception   on failure. </p>
+</BLOCKQUOTE>
+<p><B>Example:</B> </p>
+<UL>
+  <PRE>out.println(&quot;&lt;hr&gt;&lt;h2&gt;&lt;font color=blue&gt;Vaccination Retrospective Analysis&lt;/font&gt;&lt;/h2&gt;&quot;);<br>Vector history = arxl.queryRulesToStringList(&quot;vaclogic&quot;, &quot;FIND history&quot;);<br>out.println(&quot;&lt;p&gt;&lt;table border=1 cellpadding=2&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&lt;font color=navy&gt;Vaccination&lt;/font&gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;&lt;font color=navy&gt;Dose&lt;/font&gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;&lt;font color=navy&gt;Date Given&lt;/font&gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;&lt;font color=navy&gt;Status&lt;/font&gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;&lt;font color=navy&gt;Comment&lt;/font&gt;&lt;/b&gt;&lt;/b&gt;&lt;td&gt;&lt;b&gt;&lt;font color=navy&gt;Age Given&lt;/font&gt;&lt;/b&gt;&lt;/td&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&quot;);<br>for (i = 0 ; i &lt; history.size() ; i++) {<br>	out.println(&quot;&lt;tr&gt;&quot;);<br>	if (!(history.elementAt(i) instanceof String)) {<br>		String[] row = (String[]) history.elementAt(i);<br>		for (j = 0 ; j &lt; row.length ; j++) {<br>			if (row[j] == null || row[j].length() == 0)<br>				out.println(&quot;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&quot;);<br>			else<br>				out.println(&quot;&lt;td&gt;&quot; + row[j] + &quot;&lt;/td&gt;&quot;);<br>		}<br>	}<br>	out.println(&quot;&lt;/tr&gt;&quot;);<br>}<br>out.println(&quot;&lt;/table&gt;&lt;/p&gt;&quot;);  </PRE>
+</UL>
+<h2><a name="usingtheamzilogicserver"></a>Using the Amzi! Logic Server </h2>
+<p>The method <b>GetLS()</b> returns a LogicServer object that you can use with any of the  Logic Server methods as documented in the Amzi! Logic Server Reference Guide. </p>
+<h2><a name="advicesample"></a>Advice Samples</h2>
+<p>There are two samples that use the 'Product Advice.xls' sample. One is a standalone Java application. The other is a Java servlet. They have the same inputs and outputs. </p>
+<h3><a name="standalone_java"></a>Java Application </h3>
+<h4><a name="buildingthesample"></a>Building the Sample</h4>
+<p>First install the Java interface as outlined <a href="#installation">above</a>. Then:</p>
+<OL>
+  <LI>Open the 'Product Advice.xls' spreadsheet sample and select ARulesXL | Export from the main menu to export a file named 'advice.axl'.   
+  <li>Copy advice.axl, arulesrt.xpl and arulesrt.cfg to the sample subdirectory. </li>
+  <li> Edit 'Advice.java' and change the value of SAMPLE_DIR to correspond to your system. To compile:</li>
+</OL>
+<pre>javac Advice.java</pre>
+<h4><a name="runningthesample"></a>Running the Sample</h4>
+<p>To run the sample:</p>
+<pre>java Advice</pre>
+<p>Enter a value for swing speed, optionally select other choices from the pull-down menus and press 'Go'.      </p>
+<h3><a name="java_servlet"></a>Java Servlet </h3>
+<h4><a name="buildingthesample"></a>Building the Sample</h4>
+<p>First install the Java interface as outlined <a href="#installation">above</a>. You must configure your server (e.g. Tomcat) so it can find the amzi.* classes at runtime. Then edit 'AdviceServlet.java' and change the value of ARULES_DIR and FORM_URL to correspond to your system. Put advice.axl and the rest of the <a href="#installation">install files</a> in ARULES_DIR. To compile:</p>
+<pre>javac AdviceServlet.java  </pre>
+<h4><a name="runningthesample"></a>Running the Sample</h4>
+<p>A sample web.xml file is provided in the WEB-INF directory. Running the servlet depends on your environment, but in general, a URL of this form is used (assuming the servlet is installed in a directory named 'advice':</p>
+<pre>http://localhost:8080/advice/AdviceServlet </pre>
+<p>Enter a value for swing speed, optionally select other choices from the pull-down menus and press 'Go'. </p>
+<p>&nbsp;</p>
+<!-- #EndEditable --> 
+<hr>
+<table width=100%>
+<tr>
+<td>
+<img src="../images/logo_very_small.gif">
+</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-7 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2>
+</td>
+</tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

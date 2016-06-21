@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>Tables, Collections, Variables and Loops</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../../white_paper.css" rel="stylesheet" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h1>Tables, Collections, Variables and Loops</h1>
+<p>There are many applications that require applying rules over a collection of 
+  a data.</p>
+<p>For these samples the data will be an Excel table with information about home 
+  mortgage loans that are available for resale to large investors. These investors 
+  have different criteria for deciding which loans they can purchase. </p>
+<p><img src="images/resell_basic_architecture.gif" width="484" height="304"><br>
+  <font size="-1"><b>Basic Architecture for Samples</b></font></p>
+<p>The input table of loans contains a Loan #, Amount, values for the criteria 
+  FICO and LTV, whether it's owner occupied or not and the percentage rate of 
+  the loan.</p>
+<p><img src="images/available_loans.gif" width="632" height="176"><br>
+  <font size="-1"><b>Input properties of loans</b></font></p>
+<p>The criteria for deciding whether to accept a loan for resale depends on the 
+  FICO and LTV values and the occupancy of the home. 
+  A typical rule might be:</p>
+<blockquote>
+  <p><code>Resell = &quot;yes&quot; WHEN FICO &gt; 720 AND LTV &gt; 90 </code></p>
+</blockquote>
+<p>A variety of approaches to this application are presented below, each introducing 
+  and explaining different concepts in ARulesXL. Click on the images to visit 
+  the chapters.</p>
+
+<table width="75%" border="1" cellpadding="3">
+  <tr>
+    <td> 
+      <p>1<br><a href="collections_01-02_rules_decision_tables.htm"><img src="images/collections_01_shrunk.gif" width="158" height="60" border="0"></a><br>
+        Facts, rules, decision tables and queries for evaluating resaleability 
+        of a single loan.</p>
+    </td>
+    <td> 
+      <p>2<br><a href="collections_03_column_queries.htm"><img src="images/collections_03_shrunk.gif" width="141" height="100" border="0"></a><br>
+        Adding an output column of queries to the input data table.</p>
+      </td>
+    <td>
+      <p>3<br><a href="collections_04_property_arrays.htm"><img src="images/collections_04_shrunk.gif" width="125" height="100" border="0"></a><br>
+        Using fact arrays to allow different resale criteria for different 
+        investors.</p>
+    </td>
+  </tr>
+  <tr>
+    <td> 
+      <p>4<br><a href="collections_05_data_tables.htm"><img src="images/collections_05_shrunk.gif" border="0"></a><br>
+        Using RArray() and pattern-matching rules to process the data directly.</p>
+    </td>
+    <td> 
+      <p>5<br><a href="collections_06_lists.htm"><img src="images/collections_06_shrunk.gif" width="149" height="100" border="0"></a><br>
+        Using COLLECT() to create lists of resaleable loan ids for each investor.</p>
+    </td>
+    <td> 
+      <p>6<br><a href="collections_07_vba.htm"><img src="images/collections_07_shrunk.gif" width="163" height="100" border="0"></a><br>
+        Using VBA to highlight resaleable loans directly in the input table.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>7<br><a href="collections_08_modules.htm"><img src="images/collections_08_shrunk.gif" width="177" height="100" border="0"></a><br>
+      Using modular rulesets to better separate investor rules.</p></td>
+    <td>
+      <p>8<br><a href="collections_09_array_queries.htm"><img src="images/collections_09_shrunk.gif" width="188" height="100" border="0"></a><br>
+      Using array queries to create output tables.</p></td>
+    <td><p>&nbsp;</p></td>
+  </tr>
+</table>
+<p>Click on the images to visit the chapters.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body>
+</html>

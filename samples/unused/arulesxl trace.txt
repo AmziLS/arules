@@ -1,0 +1,5 @@
+Starting Trace
+2006/10/9  12:26:19
+QUERY abc:  FIND .a WHEN .d = 4 and .e = 3
+Find;abc; .a;?;
+  Try;;;;rule(Sheet1!A2)

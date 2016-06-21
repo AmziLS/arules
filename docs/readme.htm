@@ -1,0 +1,76 @@
+<html>
+<!-- DW6 -->
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="docs/arulesxl.css" />
+
+<title>ARulesXL</title>
+ 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1>Getting Started </h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="docs/images/logo.gif" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+ 
+<h2>Installing the ARulesXL Add-in</h2>
+<p>After installation start Excel. It should startup normally with the addition of an 'ARulesXL' menu.</p>
+<p>If you do not see the menu item, select Tools | Add-Ins from the Excel menu and make sure the 'ArulesXL' box appears on the list of add-ins and is checked.</p>
+<p>If ARulesXL does not appear on the list of add-ins, perhaps it was installed into another version of Excel on your PC. If that is not the case, <a href="http://www.arulesxl.com/company/contact.htm">contact us for assistance</a>.</p>
+<h2>Using the Runtime</h2>
+<p>You can use the runtime whether or not you have a license.</p>
+<p>Start Excel and open the sample Loan Approval.xls. It's in the ARulesXL install directory which defaults to: Program Files/amzi/ARulesXL/Samples.</p>
+<p>You can type inputs into the green cells. Change the credit rating from 700 to 600. Notice that the status in the blue output cells below now says the credit score is too low and the loan is denied. Change the credit rating to a number greater than 700 and it's approved.</p>
+<p>You can experiment with the other input fields as well, and read the rules on the right. But notice that if you try to edit the rules, you are prevented. That's because you can't change the rules in runtime only mode.</p>
+<h2>Activating your ARulesXL License</h2>
+<p>To activate the software, open the Start menu, select ARulesXL and run 'activate'. It will ask for your name for an individual license, or your organization's name for an enterprise license, and the reference number of the sale. You will most likely see that you have activated the software succesfully, but you might also find that a key is to be e-mailed to you instead. Once you receive it, you can run 'activate' again and enter the key directly in the dialog box.</p>
+<h2>Getting Started Step-by-Step </h2>
+<ol>
+  <li>Start Excel</li>
+  <li>Rules must be part of a rule set. To create a rule set, select a range of cells, A1:A4, then select ARulesXL | New... enter PriceRules and click OK.</li>
+  <li>A1 will have the name PriceRules. Type these rules into the cells A2 and A3:
+    <blockquote>
+	  UnitPrice = 5 WHEN Quantity &lt; 10 <br>
+    UnitPrice = 3 WHEN Quantity &gt;= 10	  </blockquote>
+  </li>
+  <li>    Now you have a simple rule set that is ready to be queried. Select cell A6, outside of the rule set, and enter:    </li>
+  <blockquote>
+    = RQuery(PriceRules, &quot;FIND UnitPrice when Quantity = 12&quot; )<br>
+  The value of the cell should be 3  </blockquote>
+  <li>What if you want to use a value from another cell in your query? To do this, in cell A5 enter the value 5.</li>
+  <li>Change A6 to:  = RQuery(PriceRules, &quot;FIND UnitPrice whenQuantity = _1 &quot;, A5)<br>
+  The value of the cell should be 5 </li>
+</ol>
+<h2>Using ARulesXL </h2>
+<p>After installation   you should have a new 'ARulesXL' menu under your 'start' programs. This menu has entries for the tutorial spreadsheets, documentation and sample spreadsheets. We recommend you start by:</p>
+<ul>
+  <li>Reading the <a href="docs/index_intro.htm">Introduction to Rule Technology</a></li>
+  <li>Following the <a href="docs/index_tutor.htm">ARulesXL Tutorial</a></li>
+  <li>Look at the sample spreadsheets 'Techniques Basic.xls' and 'Techniques Advanced.xls' for insights into writing rules. To open these samples select 'Samples' from the ARulesXL menu in Excel or on the Windows Start Menu. </li>
+</ul>
+<p>If you have questions or problems please visit <a href="http://www.arulesxl.com/company/contact.htm">contact 
+  us</a> or visit our <a href="http://forum.arulesxl.com">user forum</a>. </p>
+<h2>Uninstalling ARulesXL</h2>
+<p>To remove ARulesXL, first close Excel.</p>
+<p>Then, on your Windows Start Menu open the 'Control Panel' and 
+  select 'Add/Remove Programs'. Highlight ARulesXL and click 'Remove'.</p>
+<p>You should uninstall the old version of ARulesXL before installing a new one.</p>
+<p>If you are getting an error message about not finding ARulesXL.xla or arules.dll, in Excel, select Tools | Add-Ins. Then uncheck the box next to 'ARulesXL' and click OK. </p>
+<hr>
+<table width=100%>
+<tr>
+<td>&nbsp;</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-9 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2></td>
+</tr>
+</table>
+</body>
+</html>

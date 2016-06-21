@@ -1,0 +1,189 @@
+<html><!-- #BeginTemplate "/Templates/arulesxl.dwt" --><!-- DW6 -->
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="arulesxl.css" />
+<!-- #BeginEditable "doctitle" --> 
+<title>Introduction</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1><!-- #BeginEditable "head" -->Introduction<!-- #EndEditable --></h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="images/logo.gif" width="150" height="115" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+<p><font size="-1"><b><a href="index.htm" target=_top>Top</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="install.htm">Installation</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="introduction.htm">Introduction</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="samples.htm">Samples</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="tutorial.htm">Tutorial</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="reference.htm">Reference</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="release_notes.htm">Release Notes</a></b></font></p>
+<hr>
+<!-- #BeginEditable "body" --> 
+<p> 
+  <!amzi_index=Introduction>
+  Spreadsheets with their intuitive interface and internal calculation engine 
+  are excellent tools for numerical analysis.</p>
+<p>Rule-based systems with their logical rules and reasoning engine are excellent 
+  tools for decision support applications.</p>
+<p>Integrated, the two technologies provide a powerful tool for implementing the 
+  next generation of what CIO magazine (October 2004) calls Automated Decision 
+  Systems or Smart Business Rules Engineering.</p>
+<p>This section describes:</p>
+<ul>
+  <li><a href="#rule_technology">Rule Technology</a></li>
+  <li><a href="#integrated_dependencies">Integrated Dependencies</a></li>
+  <li><a href="#pricing_example">Pricing Example</a></li>
+  <li><a href="#loan_approval_example">Loan Approval Example</a></li>
+  <li><a href="#applications">More Applications</a> </li>
+</ul>
+<p>For a visual quick tour of ARulesXL, see <a href="tutorial/quick_tour/quick_tour.htm">A 
+  Quick Tour of the ARulesXL Excel Environment</a>. </p>
+<h2><a name="rule_technology"></a>Rule Technology</h2>
+<p> 
+  <!amzi_index=Rule Technology; Rules>
+  Decision making criteria are often written as rules. Listed below are some rules 
+  that might be used to determine the rate of a phone call based on the time and 
+  day of the call.</p>
+<pre>Rate = 0.05 WHEN Weekend<b>
+</b>Rate = 0.07 WHEN Weekday and Evening<b>
+</b>Rate = 0.10 WHEN Weekday and Daytime<b>
+</b>Weekend WHEN Day = &quot;Saturday&quot; or Day = &quot;Sunday&quot;<b>
+</b>Weekday WHEN not Weekend<b>
+</b>Evening WHEN Time &gt; 2000<b>
+</b>Daytime WHEN not Evening
+</pre>
+<p>Rules such as these do not imply any particular method of use, but rather express 
+  logical relationships between conditions and conclusions. They are intended 
+  to react dynamically to various inputs, in this case the day and time of a phone 
+  call, rather than in a pre-determined manner.</p>
+<p> A rule engine allows rules to be expressed declaratively, as above. It accepts 
+  rules as logical assertions, without procedural implications, and, much like 
+  a database engine, supports user queries against the rule base as shown in the 
+  figure.</p>
+<p align="center"><img src="images/rule_engine_queries.gif" width="648" height="205" border="0"></p>
+<p>Without a rule engine, a developer would have to impose structure on the rules 
+  using a combination of tables and if-then-else functions to get the desired 
+  behavior. In the process, the declarative clearness of the original specifications 
+  is lost, the spreadsheet becomes error-prone and difficult to maintain, and 
+  direct verification of the rules by domain experts is next to impossible.</p>
+<p> The advantages, then, of a rule engine are: 
+<ul>
+  <li>Rules are coded almost directly as naturally expressed,</li>
+  <li>Initial coding of the rules is easier,</li>
+  <li>Maintenance of the rules is much easier,</li>
+  <li>Errors in the code are drastically reduced, and</li>
+  <li>Domain experts can readily verify the rules as correct.</li>
+</ul>
+<p>The more complex the rule set, the more the advantages hold true and at a certain 
+  level of complexity, a rule engine becomes the only viable alternative.</p>
+<p>On the other hand, rule engines are not well-suited for computational and numerical 
+  analysis. So, for example an application requiring both decision making rules 
+  and computational analysis would not fit well if coded entirely in either a 
+  spreadsheet or a rule-based tool. Thus the desire to integrate the two technologies.</p>
+<h2><a name="integrated_dependencies"></a>Integrated Dependencies</h2>
+<p> 
+  <!amzi_index=Rules; Cells; Recalculation; Dependencies; Inferencing; Integration>
+  A rule engine requires two interfaces:</p>
+<ul>
+  <li>One for defining and maintaining a collection of rules, or rule base; and</li>
+  <li>One for querying the rule base, providing input data as needed and retrieving 
+    results.</li>
+</ul>
+<h3><a name="common_spreadsheet_interface"></a>Common Spreadsheet Interface</h3>
+<p>ARulesXL implements both of these interfaces in the spreadsheet, so that rule 
+  definition and rule queries are both performed using the familiar cell grid 
+  interface, as shown in the following figure.</p>
+<p align="center"><img src="images/integration_architecture.gif" width="240" height="175" border="0"></p>
+<p>Because the definitions and queries are in spreadsheet cells, they can include 
+  references to other spreadsheet cells so that they become part of the spreadsheet's 
+  dependency graphs used for automatic recalculation.</p>
+<h3><a name="linked_dependencies"></a>Linked Dependencies</h3>
+<p> 
+  <!amzi_index=Linked Dependencies; Dependencies>
+  The following spreadsheet illustrates how cells can be linked to rules, and 
+  rules to cells. Excel's dependency arrows are turned on to show the links.</p>
+<p align=center><img src="images/Basic%20Price%20Rules.gif" width="541" height="282"></p>
+<p>The ARulesXL rule set has two rules that determine unit price based on the 
+  quantity ordered. The rules pick up the quantity needed to qualify for a discount 
+  from cell <var>D2</var>.</p>
+<p>Cell <var>D14</var> queries the rule set using as input the quantity ordered, 
+  which is in <var>D12</var>. The query can be seen in the function window.</p>
+<p>Because of the linked dependencies, if any rule changes, then the price in 
+  <var>D14</var> will be recalculated. If the discount quantity in <var>D2</var> 
+  changes, the rules change, and price is recalculated. If the quantity ordered 
+  changes, then the price is recalculated as well.</p>
+<p>This feature allows for tight integration between spreadsheet calculation and 
+  rule inferencing, thus enabling applications to be easily divided into those 
+  parts that are best suited for numerical analysis and those best suited for 
+  decision rules. </p>
+<h2><a name="pricing_example"></a>Pricing Example</h2>
+<p> 
+  <!amzi_index=Pricing Example; Example, Pricing>
+  The following screen shot shows a more complex example of the integration between 
+  a spreadsheet and rules for pricing phone calls. The rules are slightly more 
+  complex than those presented earlier, but should be readily understandable simply 
+  by reading the spreadsheet.</p>
+<p align="center"><img src="images/Product%20Pricing.gif" width="915" height="357"></p>
+<p>Notice that the rules in F3:F18 are dependent on spreadsheet cells. Whenever 
+  any of those cells change, the rules are automatically updated.</p>
+<p>Notice that the queries are also dependent on other cells, so that when the 
+  data changes, the queries are automatically updated.</p>
+<h2><a name="loan_approval_example"></a>Loan Approval Example</h2>
+<p> 
+  <!amzi_index=Loan Approval Example; Example, Loan Approval>
+  The following screen shot shows a loan approval sample. In this case the spreadsheet 
+  has input data about a loan application and then runs the rules to see if the 
+  loan is approved, and if not, what the reasons for rejection are.</p>
+<p>As with the pricing example, the rules should be easy to understand simply 
+  by reading the spreadsheet.</p>
+<p align="center"><img src="images/Loan%20Approval.gif" width="1214" height="490"></p>
+<p>In this example, a number of rules map input variables directly to cells, rather 
+  than having those cells be input in the queries.</p>
+<p>Also notice that the queries ask for different values from the rules, some 
+  asking for overall approval and others asking for the status of intermediate 
+  steps to report back on the spreadsheet.</p>
+<h2><a name="applications"></a>More Applications for Rules </h2>
+<p> 
+  <!amzi_index=Spreadsheet Applications>
+  The availability of rules in a spreadsheet makes spreadsheets a viable tool 
+  for business process automation and decision support. Applications such as:</p>
+<ul>
+  <li> taxes, </li>
+  <li>human resources, </li>
+  <li>benefits, </li>
+  <li>work flow, </li>
+  <li>pricing, </li>
+  <li>underwriting, </li>
+  <li>loan approval,</li>
+  <li> legal advice and </li>
+  <li>configuration </li>
+</ul>
+<p>all become viable spreadsheet applications.</p>
+<p>Easily readable rules in spreadsheets makes it possible for the experts in 
+  each domain to code and maintain the rules. For example, the marketing experts 
+  in pricing can maintain the pricing rules, and the product configuration experts 
+  can maintain the product configuration rules.</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <th width="100%" scope="col"> 
+      <h4><a href="introduction.htm" target="_blank">Open in New Window to Print</a></h4>
+    </th>
+  </tr>
+</table>
+<!-- #EndEditable --> 
+<hr>
+<table width=100%>
+<tr>
+<td>
+<img src="images/logo_very_small.gif">
+</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-7 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2>
+</td>
+</tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

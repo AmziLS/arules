@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost/advice/", "http://localhost/advice", "{0271B090-A7FA-4345-8A1A-0ECAEDCA1FAC}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/advice"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\inetpub\wwwroot\advice\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\advice\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/advice"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\inetpub\wwwroot\advice\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\advice\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\..\..\inetpub\wwwroot\advice\"
+		DefaultWebSiteLanguage = "Visual Basic"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0271B090-A7FA-4345-8A1A-0ECAEDCA1FAC}.Debug|.NET.ActiveCfg = Debug|.NET
+		{0271B090-A7FA-4345-8A1A-0ECAEDCA1FAC}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,86 @@
+<html><!-- #BeginTemplate "/Templates/tutorial.dwt" --><!-- DW6 -->
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="../arulesxl.css" />
+<!-- #BeginEditable "doctitle" -->
+<title>Tutorial - Using Decision Tables</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1><!-- #BeginEditable "head" -->Tutorial<br>
+        <font size=4>Using Decision Tables </font><!-- #EndEditable --></h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="../images/logo.gif" width="150" height="115" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+<p><font size="-1"><b><a href="../index.htm" target=_top>Top</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../index_install.htm" target=_top>Installation</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../index_intro.htm" target=_top>Introduction</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../samples.htm">Samples</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="../index_tutor.htm" target=_top>Tutorial</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../index_ref.htm" target=_top>Reference</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../release_notes.htm" target=_top>Release Notes</a></b></font></p>
+<hr>
+<!-- #BeginEditable "body" --> 
+<h3><a name="decision_tables"></a> Decision Tables </h3>
+<p>Rules can also be coded in decision tables. This representation is easier to 
+  read and write for rule sets that have many rules of a similar form. Using our 
+  prior example, these rules:</p>
+<pre>UnitPrice = 10 When Quantity &lt; 20
+UnitPrice = 8 When Quantity &gt;= 20</pre>
+<p>can be written in a decision table as shown below:</p>
+<p align="center"><img src="../images/Tutorial%2005.gif" width="551" height="215"></p>
+<p>To create a table in a rule set:</p>
+<ul>
+  <li>The first row and column must contain the word 'Table' followed by a space 
+    separated list of output fact names.</li>
+  <li>The second row has column headers for the input and output facts. Each of 
+    the output facts must occur, and any number of additional input facts.</li>
+  <li>There can be any number of rows of data. The columns for output facts must 
+    contain values or expressions that evaluate to a value which will be assigned 
+    to the fact.</li>
+  <li>The input facts can be values and expressions which are compared to the 
+    fact, or can contain the comparison operators &gt;, &lt;, &gt;=, &lt;=, and, 
+    or, not.</li>
+</ul>
+<p>ARulesXL will draw a single line border around the table after you click outside 
+  the rule set. This lets you verify that your tables are set up correctly. </p>
+<p>You can intermix rules and decision tables in the same rule set. See the <i>Decision 
+  Table.xls</i> sample and the <a href="../reference/ref_decision_tables.htm">Decision 
+  Table Reference</a> for more information. </p>
+<p>&nbsp; </p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <th width="50%" scope="col"> 
+      <div align="left"> 
+        <h3><a href="../tutor_ruleset_query.htm">Previous</a></h3>
+      </div>
+    </th>
+    <th width="50%" scope="col"> 
+      <div align="right"> 
+        <h3><a href="tutor_debug.htm">Next</a></h3>
+      </div>
+    </th>
+  </tr>
+  <tr> 
+    <th colspan="2" scope="col"> 
+      <h4><a href="tutor_ruleset_query.htm" target="_blank">Open in New Window 
+        to Print</a></h4>
+    </th>
+  </tr>
+</table>
+<!-- #EndEditable --> 
+<hr>
+<table width=100%>
+<tr>
+<td>
+<img src="../images/logo_very_small.gif">
+</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-7 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2>
+</td>
+</tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,39 @@
+<html>
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="../arulesxl.css" />
+<!-- #BeginEditable "doctitle" -->
+<title>ARulesXL</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1><!-- #BeginEditable "head" -->TITLE<!-- #EndEditable --></h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="../images/logo.gif" width="150" height="115" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+<p><font size="-1"><b><a href="../tutorial.htm" target=_top>Tutorial Index</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../tutorial/collections/collections_01-02_rules_decision_tables.htm" target=_top>Rules &amp; Decision Tables</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../tutorial/collections/collections_03_column_queries.htm" target=_top>Column Queries</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../tutorial/collections/collections_04_property_arrays.htm" target=_top>Arrays</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../tutorial/collections/collections_05_data_tables.htm">Tables &amp; Pattern Matching</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="../tutorial/collections/collections_06_lists.htm" target=_top>Lists</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../tutorial/collections/collections_07_vba.htm" target=_top>VBA</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../tutorial/collections/collections_08_modules.htm" target=_top>Multiple Rule Sets</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../tutorial/collections/collections_09_array_queries.htm" target=_top>Array Queries</a></b></font></p>
+<hr>
+<!-- #BeginEditable "body" --> 
+<h2>BODY</h2>
+<!-- #EndEditable --> 
+<hr>
+<table width=100%>
+<tr>
+<td>
+<img src="../images/logo_very_small.gif">
+</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-7 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2>
+</td>
+</tr>
+</table>
+</body>
+</html>

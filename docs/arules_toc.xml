@@ -1,0 +1,244 @@
+<toc label="ARulesXL">
+  <topic label="Requirements" href="install.htm">
+  </topic>
+  <topic label="Installing ARulesXL" href="install.htm#installing">
+  </topic>
+  <topic label="Licensing" href="install.htm#licensing">
+   <topic label="Activating Your License" href="install.htm#activating">
+   </topic>
+  </topic>
+  <topic label="Updating &amp; Software Maintenance" href="install.htm#updating">
+  </topic>
+  <topic label="Uninstalling ARulesXL" href="install.htm#uninstalling_arulesxl">
+  </topic>
+  <topic label="Rule Technology" href="introduction.htm">
+  </topic>
+  <topic label="Integrated Dependencies" href="introduction.htm#integrated_dependencies">
+   <topic label="Common Spreadsheet Interface" href="introduction.htm#common_spreadsheet_interface">
+   </topic>
+   <topic label="Linked Dependencies" href="introduction.htm#linked_dependencies">
+   </topic>
+  </topic>
+  <topic label="Pricing Example" href="introduction.htm#pricing_example">
+  </topic>
+  <topic label="Loan Approval Example" href="introduction.htm#loan_approval_example">
+  </topic>
+  <topic label="More Applications for Rules" href="introduction.htm#applications">
+  </topic>
+  <topic label="Techniques" href="samples.htm">
+  </topic>
+  <topic label="Applications" href="samples.htm#applications">
+  </topic>
+  <topic label="Advanced Topics" href="samples.htm#advanced_topics">
+  </topic>
+  <topic label="A Quick Tour of the ARulesXL Excel Environment" href="tutorial.htm">
+  </topic>
+  <topic label="Learning ARulesXL" href="tutorial.htm#learning_arulesxl">
+  </topic>
+  <topic label="Designing Rules and Rule Sets" href="tutorial.htm#rules_101">
+  </topic>
+  <topic label="Tables, Collections, Variables and Loops" href="tutorial.htm#collections">
+  </topic>
+  <topic label="Techniques Spreadsheets" href="tutorial.htm#tutorial_spreadsheets">
+   <topic label="Rules" href="tutorial/tutor_ruleset_query.htm">
+   </topic>
+   <topic label="Rule Sets" href="tutorial/tutor_ruleset_query.htm#rule_sets">
+   </topic>
+   <topic label="Implementing the Example" href="tutorial/tutor_ruleset_query.htm#implementing_the_example">
+   </topic>
+   <topic label="Order of Rules" href="tutorial/tutor_ruleset_query.htm#order_of_rules">
+   </topic>
+   <topic label="Syntax Checking" href="tutorial/tutor_ruleset_query.htm#syntax_checking">
+   </topic>
+   <topic label="Resizing, Renaming and Removing Rule Sets" href="tutorial/tutor_ruleset_query.htm#other_tools">
+   </topic>
+   <topic label="Using Cell Values as Inputs to Queries" href="tutorial/tutor_using_cell_values.htm">
+   </topic>
+   <topic label="Using Cell Values in Rules" href="tutorial/tutor_using_cell_values.htm#linking_rules_cells">
+    <topic label="Best Practices" href="tutorial/tutor_using_cell_values.htm#style">
+    </topic>
+   </topic>
+   <topic label="Asking the User" href="tutorial/tutor_formulas.htm">
+   </topic>
+   <topic label="Document Assembly" href="tutorial/tutor_formulas.htm#document_assembly">
+   </topic>
+  </topic>
+  <topic label="Using Tables, Arrays and Lists" href="tutorial/tutor_tables_variables.htm">
+  </topic>
+  <topic label="Multiple Fact Rules" href="tutorial/tutor_tables_variables.htm#object_property_rules">
+  </topic>
+  <topic label="Pattern Matching Variables" href="tutorial/tutor_tables_variables.htm#pattern_matching_variables">
+   <topic label="How it Works" href="tutorial/tutor_tables_variables.htm#how_it_works">
+   </topic>
+  </topic>
+  <topic label="Running Rule Sets Outside of Excel" href="tutorial/tutor_runtime.htm">
+   <topic label="1. Identify the Outputs" href="tutorial/tutor_rules101.htm">
+   </topic>
+   <topic label="2. Determine the Inputs" href="tutorial/tutor_rules101.htm#determine_the_inputs">
+   </topic>
+   <topic label="3. Write the Rules Naturally" href="tutorial/tutor_rules101.htm#write_the_rules_naturally">
+   </topic>
+   <topic label="4. Determine the How You will Use the Outputs" href="tutorial/tutor_rules101.htm#determine_how_you_will_use_the_outputs">
+   </topic>
+   <topic label="5. Determine How You will Get the Inputs" href="tutorial/tutor_rules101.htm#determine_how_you_will_get_the_inputs">
+   </topic>
+   <topic label="6. Write the First Rules" href="tutorial/tutor_rules101.htm#write_the_first_rules">
+   </topic>
+   <topic label="7. Test the First Rules" href="tutorial/tutor_rules101.htm#test_the_first_rules">
+   </topic>
+   <topic label="8. Write More Rules" href="tutorial/tutor_rules101.htm#write_more_rules">
+   </topic>
+   <topic label="9. Test More Rules" href="tutorial/tutor_rules101.htm#test_more_rules">
+   </topic>
+   <topic label="loans_01_rules.xls loans_02_decision_tables.xls" href="tutorial/collections/collections_01-02_rules_decision_tables.htm">
+   </topic>
+  </topic>
+  <topic label="Facts" href="tutorial/collections/collections_01-02_rules_decision_tables.htm#facts">
+  </topic>
+  <topic label="Rules" href="tutorial/collections/collections_01-02_rules_decision_tables.htm#rules">
+  </topic>
+  <topic label="Rule Sets" href="tutorial/collections/collections_01-02_rules_decision_tables.htm#rulesets">
+  </topic>
+  <topic label="Inputs/Outputs ( RQuery() )" href="tutorial/collections/collections_01-02_rules_decision_tables.htm#inputs_outputs">
+  </topic>
+  <topic label="Rule Engine" href="tutorial/collections/collections_01-02_rules_decision_tables.htm#rule_engine">
+  </topic>
+  <topic label="Decision Tables" href="tutorial/collections/collections_01-02_rules_decision_tables.htm#decision_tables">
+   <topic label="loans_03_column_queries.xls" href="tutorial/collections/collections_03_column_queries.htm">
+   </topic>
+   <topic label="loans_04_property_arrays.xls" href="tutorial/collections/collections_04_property_arrays.htm">
+   </topic>
+   <topic label="loans_05_data_tables.xls" href="tutorial/collections/collections_05_data_tables.htm">
+   </topic>
+   <topic label="loans_06_lists.xls" href="tutorial/collections/collections_06_lists.htm">
+   </topic>
+   <topic label="loans_07_vba.xls" href="tutorial/collections/collections_07_vba.htm">
+   </topic>
+   <topic label="loans_08_modules.xls" href="tutorial/collections/collections_08_modules.htm">
+   </topic>
+   <topic label="loans_09_array_queries.xls" href="tutorial/collections/collections_09_array_queries.htm">
+   </topic>
+   <topic label="Modelling Cumulative Rate Adjustment Rules" href="tutorial/collections/collections_09_array_queries.htm#modelling_cumulative_rate_adjustment">
+   </topic>
+   <topic label="Creating the Output Array of Data" href="tutorial/collections/collections_09_array_queries.htm#creating_the_output_array">
+   </topic>
+   <topic label="Formatting an Excel Array" href="tutorial/collections/collections_09_array_queries.htm#formatting_excel_array">
+   </topic>
+  </topic>
+  <topic label="ARulesXL Reference Topics" href="reference.htm">
+  </topic>
+  <topic label="Product Architecture" href="reference/ref_architecture.htm">
+  </topic>
+  <topic label="The ARulesXL Reasoning Engine and Excel Calculation" href="reference/ref_reasoning.htm">
+   <topic label="Spreadsheet Calculation" href="reference/ref_reasoning.htm#spreadsheet_calculation">
+   </topic>
+   <topic label="Rule Base Reasoning" href="reference/ref_reasoning.htm#rule_base_reasoning">
+   </topic>
+   <topic label="Example" href="reference/ref_reasoning.htm#calculation_reasoning_example">
+   </topic>
+   <topic label="Integration" href="reference/ref_reasoning.htm#integration">
+   </topic>
+  </topic>
+  <topic label="Reasoning Algorithm Step-by-Step" href="reference/ref_reasoning.htm#reasoning_algorithm">
+  </topic>
+  <topic label="Rule Set Syntax and Components" href="reference/ref_ruleset_syntax.htm">
+   <topic label="Resizing, Renaming, Removing and Moving Rule Sets" href="reference/ref_ruleset_syntax.htm#other_tools">
+    <topic label="Resizing Rule Sets" href="reference/ref_ruleset_syntax.htm#resizing">
+    </topic>
+    <topic label="Renaming Rule Sets" href="reference/ref_ruleset_syntax.htm#renaming">
+    </topic>
+    <topic label="Removing Rule Sets" href="reference/ref_ruleset_syntax.htm#removing">
+    </topic>
+    <topic label="Moving Rule Sets" href="reference/ref_ruleset_syntax.htm#moving">
+    </topic>
+   </topic>
+   <topic label="Comments" href="reference/ref_ruleset_syntax.htm#comments">
+   </topic>
+  </topic>
+  <topic label="Rule Syntax" href="reference/ref_rule_syntax.htm">
+   <topic label="Rules" href="reference/ref_rule_syntax.htm#rules">
+   </topic>
+   <topic label="Facts" href="reference/ref_rule_syntax.htm#object_properties">
+   </topic>
+   <topic label="Fact Values" href="reference/ref_rule_syntax.htm#property_values">
+   </topic>
+   <topic label="Formulas" href="reference/ref_rule_syntax.htm#formulas">
+   </topic>
+   <topic label="Conditions" href="reference/ref_rule_syntax.htm#conditions">
+   </topic>
+   <topic label="Pattern Matching Variables" href="reference/ref_rule_syntax.htm#rule_variables">
+   </topic>
+   <topic label="Linking Facts and Cells" href="reference/ref_rule_syntax.htm#linking_properties_cells">
+   </topic>
+  </topic>
+  <topic label="Rule Functions" href="reference/ref_rule_functions.htm">
+   <topic label="General" href="reference/ref_rule_functions.htm#general">
+   </topic>
+   <topic label="Arrays &amp; Lists" href="reference/ref_rule_functions.htm#arraysandlists">
+   </topic>
+   <topic label="Sets" href="reference/ref_rule_functions.htm#sets">
+   </topic>
+   <topic label="Date/Time" href="reference/ref_rule_functions.htm#datetime">
+   </topic>
+   <topic label="Arithmetic" href="reference/ref_rule_functions.htm#arithmetic">
+   </topic>
+  </topic>
+  <topic label="Decision Tables" href="reference/ref_decision_tables.htm">
+   <topic label="Format" href="reference/ref_decision_tables.htm#format">
+   </topic>
+   <topic label="Mixing Rules and Decision Tables" href="reference/ref_decision_tables.htm#mixing_rules_and_decision_tables">
+   </topic>
+   <topic label="Copying and Pasting Table Data" href="reference/ref_decision_tables.htm#copying_pasting_table_data">
+   </topic>
+  </topic>
+  <topic label="Spreadsheet Functions" href="reference/ref_spreadsheet_functions.htm">
+   <topic label="RCell( FactName, Cell )" href="reference/ref_spreadsheet_functions.htm#RCell">
+   </topic>
+   <topic label="RQuery( RuleSet, QueryText, Cell_1,..., Cell_N )" href="reference/ref_spreadsheet_functions.htm#RQuery">
+   </topic>
+   <topic label="RArray( FactName, Range, [hasRowHeaders], [hasColumnHeaders], [isVector])" href="reference/ref_spreadsheet_functions.htm#RTable">
+   </topic>
+   <topic label="RXLDependency( RuleSet_1,..., RuleSet_N )" href="reference/ref_spreadsheet_functions.htm#RXLDependency">
+   </topic>
+  </topic>
+  <topic label="Debugging Rule Sets" href="reference/ref_debug.htm">
+   <topic label="Trace" href="reference/ref_debug.htm#trace">
+   </topic>
+   <topic label="Formatting the Trace Spreadsheet" href="reference/ref_debug.htm#formatting_trace">
+   </topic>
+   <topic label="Trace Log File" href="reference/ref_debug.htm#text_output">
+   </topic>
+   <topic label="Diagnostic Messages" href="reference/ref_debug.htm#diagnostic_messages">
+   </topic>
+  </topic>
+  <topic label="Common Errors" href="reference/ref_debug.htm#common_errors">
+  </topic>
+  <topic label="Using Dates &amp; Times in Rules" href="reference/ref_date_time.htm">
+  </topic>
+  <topic label="Using Logic Relations for Advanced Pattern Matching" href="reference/ref_logic_relations.htm">
+   <topic label="Recursion" href="reference/ref_logic_relations.htm#recursion">
+   </topic>
+   <topic label="Lists" href="reference/ref_logic_relations.htm#lists">
+   </topic>
+   <topic label="Not Using Logic Relations" href="reference/ref_logic_relations.htm#not_using_logic_relations">
+   </topic>
+  </topic>
+  <topic label="Multiple Rule Sets and Inheritance" href="reference/ref_multiple_rulesets.htm">
+   <topic label="Logical Relationships" href="reference/ref_multiple_rulesets.htm#logical_relationships">
+   </topic>
+   <topic label="Excel Dependency" href="reference/ref_multiple_rulesets.htm#excel_dependency">
+   </topic>
+   <topic label="Inheritance" href="reference/ref_multiple_rulesets.htm#inheritance">
+   </topic>
+  </topic>
+  <topic label="International Language Support" href="reference/ref_international.htm">
+  </topic>
+  <topic label="Excel Menu Commands" href="reference/ref_menu_commands.htm">
+  </topic>
+  <topic label="Cell Mouse Menu Commands" href="reference/ref_menu_commands.htm#cell_menu_items">
+  </topic>
+ <topic label="Release Notes" href="release_notes.htm">
+ </topic>
+<topic label="Index" href="html_idx_xml.htm">
+</topic>
+</toc>

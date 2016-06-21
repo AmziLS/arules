@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>A Quick Tour of ARulesXL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h1><font face="Arial, Helvetica, sans-serif">A Quick Tour of the ARulesXL Excel 
+  Environment</font></h1>
+<p><font face="Arial, Helvetica, sans-serif">An ARulesXL rule set is a collection 
+  of facts, decision tables, rules, formulas and logical relations that are used 
+  to determine the output fact values based on input fact values.</font></p>
+<p><img src="inputs_rules_output.gif" width="484" height="304"></p>
+<h3><font face="Arial, Helvetica, sans-serif">A Simple Example</font></h3>
+<p><font face="Arial, Helvetica, sans-serif">For example,consider these rules 
+  used to determine the price of a phone call based on whether the call was made 
+  on a weekend or weekday and during the day or night:</font></p>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif">A weekend call costs 4 cents.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif">A weekday call during the day 
+    costs 8 cents.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif">A weekday call at night costs 
+    6 cents.</font></li>
+</ul>
+<p><font face="Arial, Helvetica, sans-serif">The output is the value of the fact 
+  <var>rate</var>, and the inputs are the values of the facts <var>weekend</var> 
+  and <var>daytime</var>. Here are the rules in an ARulesXL rule set:</font></p>
+<p><img src="price_rules_00.gif" width="641" height="199"></p>
+<p><font face="Arial, Helvetica, sans-serif">The rule set is queried very much 
+  like a database using the function RQuery(). In the function window above you 
+  can see the query that asks to find the value of <var>rate</var>. It also sets 
+  the input facts, <var>weekend</var> and <var>daytime</var> to the values in 
+  cells C4 and C5. RQuery() returns the value of <var>rate</var> derived from 
+  the rules in the rule set named RateRules.</font></p>
+<p><font face="Arial, Helvetica, sans-serif">ARulesXL also supports decision tables. 
+  The same application could have been expressed using a decision table:</font></p>
+<p><img src="price_rules_0.gif" width="678" height="238"></p>
+<p><font face="Arial, Helvetica, sans-serif">The choice of which to use really 
+  just depends on which seems to fit the specifications more naturally.</font></p>
+<h3><font face="Arial, Helvetica, sans-serif">A More Complex Example</font></h3>
+<p><font face="Arial, Helvetica, sans-serif">In addition to input and output properties, 
+  a rule set can have intermediate facts that are used to determine the value 
+  of output properties.</font></p>
+<p><font face="Arial, Helvetica, sans-serif">Suppose we wanted the inputs to be:</font></p>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif"> the day of the week,</font></li>
+  <li><font face="Arial, Helvetica, sans-serif">the time of day and</font></li>
+  <li><font face="Arial, Helvetica, sans-serif">the duration of the call.</font></li>
+</ul>
+<p><font face="Arial, Helvetica, sans-serif"> And we wanted the rule set to determine 
+  the price of the call. Also, the rate is not fixed, but a multiple of a single 
+  base rate. The new specifications are:</font></p>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif">Price is duration * rate</font></li>
+  <li><font face="Arial, Helvetica, sans-serif">A weekend is Saturday, Sunday, 
+    and Friday after 8:00PM.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif">Daytime is between the hours of 
+    8:00AM and 6:00PM.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif">The rates of calls are based on 
+    a single base rate, which is 4 cents.</font></li>
+</ul>
+<p><font face="Arial, Helvetica, sans-serif">The output fact will now be <var>price</var>. 
+  The output fact is also called a goal of the rule set.</font></p>
+<p><font face="Arial, Helvetica, sans-serif">A combination of decision tables, 
+  rules, and fact values are used in the rule set to determine the value of <var>price</var>. 
+  Note that decision tables and rules can be used together to determine fact values. 
+  <var>Weekend</var> is determined with a simple decision case for the easy days, 
+  but rules are used for the exception case of Friday, which can be either a weekend 
+  or not depending on the time.</font></p>
+<p><img src="price_rules_1.gif" width="707" height="547"></p>
+<h2><font face="Arial, Helvetica, sans-serif">How it works</font></h2>
+<p><font face="Arial, Helvetica, sans-serif">The decision tables, rules, facts 
+  and formulas are entered in any order in the rule set, much as data is entered 
+  in a database. A rule engine is used to determine the output property value 
+  from the inputs. It will dynamically choose the rules and table entries necessary 
+  for producing the answer.</font></p>
+<p><font face="Arial, Helvetica, sans-serif">The output property becomes a goal 
+  of the rule engine. If that property depends on other properties, those properties 
+  become sub-goals of the rule engine. Each of those might require further sub-goals 
+  until the input properties are reached. Here are the sub-goals used in the example 
+  query.</font></p>
+<p><img src="sub_goals.gif" width="662" height="266"></p>
+<p><font face="Arial, Helvetica, sans-serif">Internally, the rules are stored 
+  in an optimized format allowing for fast query execution based on differing 
+  inputs. Because the goal tree is dynamically generated, the developer does NOT 
+  have to worry about flow of control. The rules are simply written as specified.</font></p>
+<p><font face="Arial, Helvetica, sans-serif">This is why it is easy to develop, 
+  maintain and audit this type of application using a rule engine like ARulesXL.</font></p>
+</body>
+</html>

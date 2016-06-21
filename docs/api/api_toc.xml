@@ -1,0 +1,158 @@
+<toc label="ARulesXL API">
+  <topic label="Overview" href="introduction.htm">
+  </topic>
+  <topic label="Implementation" href="introduction.htm#implementation">
+  </topic>
+  <topic label="Exporting and Using Rulesets" href="introduction.htm#exportingrulesets">
+  </topic>
+  <topic label="Overview" href="api.htm">
+  </topic>
+  <topic label="Runtime Licensing" href="api.htm#runtime_licensing">
+  </topic>
+  <topic label="Methods" href="api.htm#methods">
+   <topic label="AddObject" href="api.htm#AddObject">
+   </topic>
+   <topic label="AddToTable" href="api.htm#AddToTable">
+   </topic>
+   <topic label="AddToVector" href="api.htm#AddToVector">
+   </topic>
+   <topic label="ClearTable" href="api.htm#ClearTable">
+   </topic>
+   <topic label="ClearVector" href="api.htm#ClearVector">
+   </topic>
+   <topic label="CloseRules" href="api.htm#CloseRules">
+   </topic>
+   <topic label="GetLS" href="api.htm#GetLS">
+   </topic>
+   <topic label="OpenRules" href="api.htm#OpenRules">
+   </topic>
+   <topic label="QueryRules" href="api.htm#QueryRules">
+   </topic>
+   <topic label="QueryMore" href="api.htm#QueryMore">
+   </topic>
+   <topic label="ARulesRegisterRuntime" href="api.htm#ARulesRegisterRuntime">
+   </topic>
+  </topic>
+  <topic label="Installation" href="dotnet.htm">
+   <topic label="Debugging ASP.NET Problems" href="dotnet.htm#debugging_aspnet_problems">
+    <topic label="Cannot find arulesnet.dll or one of its dependencies" href="dotnet.htm#cannot_find_arulesnet">
+    </topic>
+    <topic label="Stop/Restart IIS" href="dotnet.htm#stop_restart_iis">
+    </topic>
+    <topic label="Turn on ASP.NET's Trace Facility" href="dotnet.htm#turn_on_aspnet_trace">
+    </topic>
+    <topic label="Run Under Visual Studio in Debug Mode" href="dotnet.htm#run_under_visual_studio">
+    </topic>
+    <topic label="Open an Amzi! Logic Server Trace File for Amzi! Tech Support" href="dotnet.htm#open_logic_server_trace">
+    </topic>
+   </topic>
+  </topic>
+  <topic label="API Additions &amp; Changes" href="dotnet.htm#apiadditionsandchanges">
+  </topic>
+  <topic label="Using the Amzi! Logic Server" href="dotnet.htm#usingtheamzilogicserver">
+  </topic>
+  <topic label="Advice Samples" href="dotnet.htm#advicesample">
+   <topic label="VB and C#.NET Application" href="dotnet.htm#vbnetapplication">
+    <topic label="Running the Sample" href="dotnet.htm#runningtheadvicesample">
+    </topic>
+   </topic>
+   <topic label="IIS Web Application" href="dotnet.htm#iiswebapplication">
+    <topic label="Running the Sample" href="dotnet.htm#runningtheadvicesample">
+    </topic>
+   </topic>
+  </topic>
+  <topic label="Installation" href="delphi.htm">
+  </topic>
+  <topic label="API Additions &amp; Changes" href="delphi.htm#apiadditionsandchanges">
+   <topic label="QueryRulesToStringList" href="delphi.htm#QueryRulesToStringList">
+   </topic>
+   <topic label="QueryMoreToStringList" href="delphi.htm#QueryMoreToStringList">
+   </topic>
+   <topic label="LoadTableFromNameValueList" href="delphi.htm#LoadTableFromNameValueList">
+   </topic>
+  </topic>
+  <topic label="Using the Amzi! Logic Server" href="delphi.htm#usingtheamzilogicserver">
+  </topic>
+  <topic label="Advice Sample" href="delphi.htm#advicesample">
+   <topic label="Building the Sample" href="delphi.htm#buildingthesample">
+   </topic>
+   <topic label="Running the Sample" href="delphi.htm#runningthesample">
+   </topic>
+  </topic>
+  <topic label="Installation" href="excel.htm">
+  </topic>
+  <topic label="Using the Runtime Add-In" href="excel.htm#using_runtime_addin">
+  </topic>
+  <topic label="Installation" href="java.htm">
+  </topic>
+  <topic label="API Additions &amp; Changes" href="java.htm#apiadditionsandchanges">
+   <topic label="QueryRulesToStringList" href="java.htm#QueryRulesToStringList">
+   </topic>
+  </topic>
+  <topic label="Using the Amzi! Logic Server" href="java.htm#usingtheamzilogicserver">
+  </topic>
+  <topic label="Advice Samples" href="java.htm#advicesample">
+   <topic label="Java Application" href="java.htm#standalone_java">
+    <topic label="Building the Sample" href="java.htm#buildingthesample">
+    </topic>
+    <topic label="Running the Sample" href="java.htm#runningthesample">
+    </topic>
+   </topic>
+   <topic label="Java Servlet" href="java.htm#java_servlet">
+    <topic label="Building the Sample" href="java.htm#buildingthesample">
+    </topic>
+    <topic label="Running the Sample" href="java.htm#runningthesample">
+    </topic>
+   </topic>
+  </topic>
+  <topic label="Installation" href="modl.htm">
+  </topic>
+  <topic label="API Additions &amp; Changes" href="modl.htm#apiadditionsandchanges">
+   <topic label="Error Codes" href="modl.htm#error_codes">
+   </topic>
+   <topic label="AddObject" href="modl.htm#AddObject">
+   </topic>
+   <topic label="AddToTable" href="modl.htm#AddObject">
+   </topic>
+   <topic label="AddToVector" href="modl.htm#AddObject">
+   </topic>
+   <topic label="InitRules" href="modl.htm#InitRules">
+   </topic>
+   <topic label="LoadVectorFromArray" href="modl.htm#AddToVector">
+   </topic>
+   <topic label="OpenRules" href="modl.htm#OpenRules">
+   </topic>
+   <topic label="QueryRules" href="modl.htm#QueryRules">
+   </topic>
+   <topic label="QueryRulesToVector" href="modl.htm#QueryRulesToVector">
+   </topic>
+   <topic label="QueryMore" href="modl.htm#QueryMore">
+   </topic>
+  </topic>
+  <topic label="Sample" href="modl.htm#sample">
+   <topic label="Building the Sample" href="modl.htm#buildingthesample">
+   </topic>
+   <topic label="Running the Sample" href="modl.htm#runningthesample">
+   </topic>
+  </topic>
+  <topic label="Installation" href="vba.htm">
+  </topic>
+  <topic label="API Additions &amp; Changes" href="vba.htm#apiadditionsandchanges">
+   <topic label="VBARQuery" href="vba.htm#VBARQuery">
+   </topic>
+   <topic label="VBARQueryMore" href="vba.htm#VBARQueryMore">
+   </topic>
+   <topic label="VBARArrayQuery" href="vba.htm#VBARArrayQuery">
+   </topic>
+  </topic>
+  <topic label="Using the Amzi! Logic Server" href="vba.htm#usingtheamzilogicserver">
+  </topic>
+  <topic label="Samples" href="vba.htm#sample">
+   <topic label="ARulesXL Add-In Macro/Command Sample" href="vba.htm#vba">
+   </topic>
+   <topic label="VB6 Advice" href="vba.htm#vb6">
+   </topic>
+  </topic>
+<topic label="Index" href="api_idx_xml.htm">
+</topic>
+</toc>

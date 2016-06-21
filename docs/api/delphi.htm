@@ -1,0 +1,160 @@
+<html><!-- #BeginTemplate "/Templates/api.dwt" --><!-- DW6 -->
+<!-- saved from url=about:internet -->
+<head>
+<link rel="stylesheet" type="text/css"
+href="../arulesxl.css" />
+<!-- #BeginEditable "doctitle" -->
+<title>Delphi Interface</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000033" link="#990066" vlink="#990099" alink="#9900FF">
+<table width=100%>
+<tr>
+<td><h1><!-- #BeginEditable "head" -->Delphi Interface <!-- #EndEditable --><br><font size=4>Professional Edition</font></h1></td>
+    <td><a href="http://www.arulesxl.com" target="_top"><img src="../images/logo.gif" width="150" height="115" border="0" align="right"></a></td>
+</tr>
+</table>
+<hr>
+<!-- #BeginEditable "body" --> 
+<h2><a name="installation"></a>Installation</h2>
+<p><b>
+  <!amzi_index=Delphi;arulesxl.pas>
+</b>The Delphi interface consists of 8 files. The first 5 files are in the arulesxl\api\bin_redist directory. The last 3 files are in the arulesxl\api\delphi directory. </p>
+<ul>
+  <li>arulesrt.cfg &#8212; The ARulesXL engine configuration file.</li>
+  <li>arulesrt.dll, ar_mysqlrt.lsx, ar_osutilsrt.lsx, arulesrt.xpl &#8212;The ARulesXL engine</li>
+  <li>arules.pas, arules.dcr  &#8212; The Delphi component that provides the Amzi! Logic Server interface to the ARulesXL engine (arulesrt.dll). </li>
+  <li>arulesxl.pas &#8212; The ARulesXL component named 'arulesxl' and its procedures and functions. </li>
+</ul>
+<p>To use the Delphi interface you need to install the Arules component as follows:</p>
+<OL>
+  <LI>Open Delphi.   
+  <LI>Select from the menu 'Component/Install Component&hellip;'   
+  <LI>Select the 'Into existing package' tab which will by default install into   the "Borland User Components" package in the file   \borland\delphi<I>N</I>\Lib\dclusr.dpk.   
+  <LI>Press the button marked 'Browse' next to the 'Unit file name' box.   
+  <LI>Select ARulesXL\api\delphi\arules.pas   
+  <LI>Note the search path should now include arulesxl\api\delphi.   
+  <LI>Select 'OK' on the Install Component dialog box.   
+  <LI>Select 'Yes' on the 'Package dclusr.dpk will be rebuilt' confirmation box.   
+  <LI>Select 'OK' on the dialog box informing you that TLSARules has been added to   the package.   
+  <LI>You should now see the ARulesXL mountain logo in the Additional   components. </LI>
+</OL>
+<p>Then:</p>
+<ol>
+  <li>Create a new project.</li>
+  <li>Add ARulesXL\api\delphi\arulesxl.pas to your project.</li>
+  <li>In the 'uses' section of your application add 'ARulesXL, Arules'.  </li>
+  <li>Put arulesrt.dll, ar_osutilsrt.lsx, ar_mysqlrt.lsx, arulesrt.xpl and arulesrt.cfg in the same directory as your application. </li>
+</ol>
+<h2><a name="apiadditionsandchanges"></a>API Additions  &amp; Changes </h2>
+<h3><a name="QueryRulesToStringList"></a>QueryRulesToStringList</h3>
+<p><b>
+  <!amzi_index=QueryRulesToStringList()>
+Description:</b></p>
+<p>function QueryRulesToStringList(ruleset: string; query: string; answer: TStringList): boolean;</p>
+<DL>
+  <DT>ruleset   
+  <DD>The name of the ruleset 
+  <DT>query   
+  <DD> The query to run in the same format as is used for <a href="../reference.htm#RQuery">RQuery()</a>
+  <DT>answer   
+  <DD> The TStringList 
+</DL>
+<p><B>Remarks:</B> </p>
+<BLOCKQUOTE>
+  <p>Queries the named ruleset and returns the result as a list of strings. </p>
+</BLOCKQUOTE>
+<p><B>Return Value:</B> </p>
+<BLOCKQUOTE>
+  <p>The result of the query as a Delphi TStringList.</p>
+  <p>Returns false  on failure. </p>
+</BLOCKQUOTE>
+<p><B>Example:</B> </p>
+<UL>
+  <PRE>plan := TStringList.Create;<br>arxl.QueryRulesToStringList('vaclogic', 'FIND plans', plan);  </PRE>
+</UL>
+<h3><a name="QueryMoreToStringList"></a>QueryMoreToStringList</h3>
+<p><b>
+  <!amzi_index=QueryMoreToStringList()>
+Description:</b></p>
+<p>function QueryRulesToStringList(ruleset: string; query: string; answer: TStringList): boolean;</p>
+<DL>
+  <DT>ruleset   
+  <DD>The name of the ruleset 
+  <DT>query   
+  <DD> The query to run in the same format as is used for <a href="../reference.htm#RQuery">RQuery()</a>
+  <DT>answer   
+  <DD> The TStringList 
+</DL>
+<p><B>Remarks:</B> </p>
+<BLOCKQUOTE>
+  <p>Queries the named ruleset and returns the result as a list of strings. This call differs from QueryRulesToStringList() because any values that were found during prior queries are retained. This lets you query the same ruleset repeatedly gaining new information each time, instead of having to compute the values for all the objects each time. </p>
+</BLOCKQUOTE>
+<p><B>Return Value:</B> </p>
+<BLOCKQUOTE>
+  <p>The result of the query as a Delphi TStringList.</p>
+  <p>Returns false  on failure. </p>
+</BLOCKQUOTE>
+<p><B>Example:</B> </p>
+<UL>
+  <PRE>history := TStringList.Create;<br>arxl.QueryMoreToStringList('vaclogic', 'FIND history', history);  </PRE>
+</UL>
+<h3><a name="LoadTableFromNameValueList"></a>LoadTableFromNameValueList</h3>
+<p><b>
+  <!amzi_index=LoadTableFromNameValueList()>
+Description:</b></p>
+<p>procedure LoadTableFromNameValueList(ruleset: string; objectname: string; col1name: string; col2name: string; nvlist: TStrings);</p>
+<DL>
+  <DT>ruleset   
+  <DD>The name of the ruleset 
+  <DT>objectname   
+  <DD> The name of the fact to load 
+  <DT>col1name   
+  <DD> The name of the 'name' column 
+  <DT>col2name   
+  <DD> The name of the 'value' column
+  <DT>nvlist   
+  <DD> TStrings in Delphi name-value list format 
+</DL>
+<p><B>Remarks:</B> </p>
+<BLOCKQUOTE>
+  <p>Loads the specified fact in the specified ruleset with a list of names and values in a Delphi TStrings object. The TStrings object needs to use the Delphi NameValueSeparator to distinguish the 'name' and 'value' entries. </p>
+</BLOCKQUOTE>
+<p><B>Return Value:</B> </p>
+<BLOCKQUOTE>
+  <p>Throws an exception on failure.  </p>
+</BLOCKQUOTE>
+<p><B>Example:</B> </p>
+<UL>
+  <PRE>arxl.LoadTableFromNameValueList('CommonRules', 'raw_vaccination', 'Vaccination', 'Date', nvlist);  </PRE>
+</UL>
+<h2><a name="usingtheamzilogicserver"></a>Using the Amzi! Logic Server </h2>
+<p>The function <b>GetLS()</b> does not return a TLSEngine object as documented in the Amzi! Logic Server Reference Guide. Instead it returns a TLSARules object. This is so you can have both the Amzi! and ARulesXL Delphi components installed at the same time. Other than that, the Logic Server functions are identical. </p>
+<h2><a name="advicesample"></a>Advice Sample</h2>
+<h3><a name="buildingthesample"></a>Building the Sample</h3>
+<p>First install the Delphi component as outlined <a href="#installation">above</a>. Then:</p>
+<ol>
+  <li>Open the 'Product Advice.xls' spreadsheet sample and select ARulesXL | Export from the main menu to export a file named 'advice.axl'. </li>
+  <li>Copy advice.axl,  arulesrt.dll, ar_osutilsrt.lsx, ar_mysqlrt.lsx, arulesrt.xpl and arulesrt.cfg to the advice sample directory. </li>
+  <li>Build the project in the Delphi IDE. </li>
+</ol>
+<h3><a name="runningthesample"></a>Running the Sample</h3>
+<p>Run from the Delphi IDE. Enter a value for swing speed, and select other choices from the pull-down menus then press 'Query'.    </p>
+<!-- #EndEditable --> 
+<hr>
+<table width=100%>
+<tr>
+<td>
+<img src="../images/logo_very_small.gif">
+</td>
+<td>
+<h2 align="right">
+<font size="2"><i>Copyright &copy;2005-7 <a href="http://www.amzi.com/">Amzi! inc.</a> All Rights Reserved.</i></font><br>
+<font size="1"><i>ARulesXL and Amzi! are trademarks or registered trademarks of Amzi! <br>
+Microsoft and Excel  are trademarks or registered trademarks of   Microsoft Corporation.</i></font></h2>
+</td>
+</tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>
