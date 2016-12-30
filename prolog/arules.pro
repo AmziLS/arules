@@ -1,5 +1,5 @@
 % ARulesXL
-% Copyright(c) 2009 Amzi! inc.  All rights reserved
+% Copyright(c) 2017 Amzi! inc.  All rights reserved
 %
 % Extended Predicates defined in VBA:
 %
@@ -41,7 +41,7 @@
 :- sorted stored_query/4.
 
 % arules_release( [`4`, `0`, `1`, `Beta`] ).
-arules_release( [`5`, `0`, `1`] ).
+arules_release( [`5`, `10`, `2`] ).
 
 /*
 beta_expires( date(2009,6,15) ).

@@ -5,9 +5,9 @@ Licensed under the MIT Open Source License
 
 This is the source code for ARulesXL. The system has two major components.
 
-Prolog - the rule language and reasoning engine used in ARulesXL are written in Prolog, using DCG for the language.  Note that it would be relatively easy to create a new language with the same integration points as the existing one.
+Prolog - the rule language and reasoning engine used in ARulesXL are written in Prolog, using DCG for the language.  Note that it would be relatively easy to create a new language with the same integration points as the existing one.  Use the makefile in the arules/prolog directory to rebuild arules.xpl, the binary executable that is in the Library directory from whence ARulesXL is run.
 
-Visual Basic for Applications (VBA) - The glue that connects the rule engine and language to spreadsheet cells is written using VBA.  The application is called ARulesXL.xla.
+Visual Basic for Applications (VBA) - The glue that connects the rule engine and language to spreadsheet cells is written using VBA.  The application is called ARulesXL.xla.  Use 'developer mode' in Excel to access the source for ARulesXL.xla and modify it as necessary.
 
 ARulesXL is a perfect example of the sorts of things that can be built using Amzi! Prolog + Logic Server.  The Amzi! Prolog portion is used as a meta-language for creating a new rule language and reasoning engine.  The Logic Server is used to allow easy integration with VBA and thus an Excel spreadsheet.
 
