@@ -102,6 +102,7 @@ maintenance_action(?MDL) :-
    message(?msg),
    !.
 
+check_license :- !.  % Not doing that anymore.  dcm
 check_license :-
    regression_testing(true),  % asserted by test.pro
    !.
