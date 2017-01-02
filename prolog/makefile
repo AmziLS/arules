@@ -3,7 +3,7 @@
 
 #CDIR = c:\amzi\source\apls\compile
 #LDIR = c:\amzi\source\apls\libs
-CDIR = $(APLS_SOURCE)\compile
+CDIR = $(APLS_SOURCE)\..\amzi-apls-compile2
 LDIR = $(APLS_SOURCE)\libs
 ACMP = $(APLS_RELEASE)\bin\acmp
 ALNK = $(APLS_RELEASE)\bin\alnk

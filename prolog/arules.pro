@@ -41,7 +41,7 @@
 :- sorted stored_query/4.
 
 % arules_release( [`4`, `0`, `1`, `Beta`] ).
-arules_release( [`5`, `10`, `2`] ).
+arules_release( [`5`, `10`, `3`] ).
 
 /*
 beta_expires( date(2009,6,15) ).
